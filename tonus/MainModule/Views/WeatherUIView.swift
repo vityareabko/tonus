@@ -12,7 +12,6 @@ class WeatherUIView: UIView {
     private let titleWeatherLabel: UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.3176470588, green: 0.3176470588, blue: 0.3137254902, alpha: 1)
-        label.textAlignment = .left
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.text = "Sunny"
         return label
@@ -21,10 +20,11 @@ class WeatherUIView: UIView {
     private let wishTaskLabel: UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.7607843137, green: 0.7607843137, blue: 0.7607843137, alpha: 1)
-        label.textAlignment = .left
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.text = "Хорошая погода, чтобы позаниматься на улице"
         label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         return label
     }()
     
@@ -74,9 +74,9 @@ extension WeatherUIView {
             
             wishTaskLabel.topAnchor.constraint(equalTo: titleWeatherLabel.bottomAnchor, constant: 5),
             wishTaskLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            wishTaskLabel.trailingAnchor.constraint(equalTo: kindWeatherImage.leadingAnchor, constant: -40),
+            wishTaskLabel.trailingAnchor.constraint(equalTo: kindWeatherImage.leadingAnchor, constant: -20),
             
-            kindWeatherImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            kindWeatherImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             kindWeatherImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
             kindWeatherImage.widthAnchor.constraint(equalToConstant: 62),
             kindWeatherImage.heightAnchor.constraint(equalToConstant: 62),
