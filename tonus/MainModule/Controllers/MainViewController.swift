@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     // MARK: - UI Components
     let userImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = #colorLiteral(red: 0.8044065833, green: 0.8044064641, blue: 0.8044064641, alpha: 1)
+        image.backgroundColor = .specialGray
         image.layer.borderColor = UIColor.white.cgColor
         image.layer.borderWidth = 5
 //        let screenSize: CGRect = UIScreen.main.bounds
@@ -30,7 +30,8 @@ class MainViewController: UIViewController {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+//        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = .robotoMedium24()
         label.text = "Jhon Smith"
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.7
@@ -39,15 +40,14 @@ class MainViewController: UIViewController {
     
     private lazy var addWorkoutButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = #colorLiteral(red: 0.9963226914, green: 0.8627573252, blue: 0.4291374087, alpha: 1)
-        button.tintColor = #colorLiteral(red: 0.1411764706, green: 0.2941176471, blue: 0.262745098, alpha: 1)
+        button.backgroundColor = .specialYellow
+        button.tintColor = .specialDarkGreen
         button.imageEdgeInsets = .init(top: 0, left: 20, bottom: 15, right: 0)
         button.titleEdgeInsets = .init(top: 50, left: -40, bottom: 0, right: 0)
-        button.titleLabel?.font = .systemFont(ofSize: 12)
+        button.titleLabel?.font = .robotoMedium12()
         button.layer.cornerRadius = 10
         button.setTitle("Add Workout", for: .normal)
         button.setImage(UIImage(named: "plus"), for: .normal)
-//        button
         return button
     }()
     
@@ -64,9 +64,9 @@ class MainViewController: UIViewController {
     
     // MARK: - UI Setup
     private func setupUI() {
-        view.backgroundColor = #colorLiteral(red: 0.9437981248, green: 0.9289113879, blue: 0.8816363215, alpha: 1)
+        view.backgroundColor = .specialMainBackground
         
-        
+        addWorkoutButton.addShadowOnView()
         
         self.view.addSubview(calendarUIView)
         self.view.addSubview(userImage)

@@ -9,18 +9,18 @@ import UIKit
 
 class WeatherUIView: UIView {
 
-    private let titleWeatherLabel: UILabel = {
+    private let weatherTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = #colorLiteral(red: 0.3176470588, green: 0.3176470588, blue: 0.3137254902, alpha: 1)
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.text = "Sunny"
+        label.textColor = .specialBlack
+        label.font = .robotoBold16()
+        label.text = "Солнечно"
         return label
     }()
     
-    private let wishTaskLabel: UILabel = {
+    private let weatherSubtitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = #colorLiteral(red: 0.7607843137, green: 0.7607843137, blue: 0.7607843137, alpha: 1)
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .specialLightBrown
+        label.font = .robotoMedium14()
         label.text = "Хорошая погода, чтобы позаниматься на улице"
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
@@ -28,18 +28,15 @@ class WeatherUIView: UIView {
         return label
     }()
     
-    let kindWeatherImage: UIImageView = {
+    let weatherStatusIconWeather: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "sunny")
 //        image.contentMode = .scaleAspectFit
         return image
     }()
 
-    
-    
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        
         setupUI()
         setConstraints()
         
@@ -52,36 +49,34 @@ class WeatherUIView: UIView {
     private func setupUI() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 10
+        self.addShadowOnView()
         
-        self.addSubview(titleWeatherLabel)
-        self.addSubview(wishTaskLabel)
-        self.addSubview(kindWeatherImage)
+        self.addSubview(weatherTitleLabel)
+        self.addSubview(weatherSubtitleLabel)
+        self.addSubview(weatherStatusIconWeather)
         
-        titleWeatherLabel.translatesAutoresizingMaskIntoConstraints = false
-        wishTaskLabel.translatesAutoresizingMaskIntoConstraints = false
-        kindWeatherImage.translatesAutoresizingMaskIntoConstraints = false
+        weatherTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        weatherSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        weatherStatusIconWeather.translatesAutoresizingMaskIntoConstraints = false
         
     }
 }
 
 extension WeatherUIView {
-    
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            titleWeatherLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            titleWeatherLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            titleWeatherLabel.trailingAnchor.constraint(equalTo: kindWeatherImage.leadingAnchor, constant: 10),
+            weatherTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            weatherTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            weatherTitleLabel.trailingAnchor.constraint(equalTo: weatherStatusIconWeather.leadingAnchor, constant: 10),
             
-            wishTaskLabel.topAnchor.constraint(equalTo: titleWeatherLabel.bottomAnchor, constant: 5),
-            wishTaskLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            wishTaskLabel.trailingAnchor.constraint(equalTo: kindWeatherImage.leadingAnchor, constant: -20),
+            weatherSubtitleLabel.topAnchor.constraint(equalTo: weatherTitleLabel.bottomAnchor, constant: 5),
+            weatherSubtitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            weatherSubtitleLabel.trailingAnchor.constraint(equalTo: weatherStatusIconWeather.leadingAnchor, constant: -20),
             
-            kindWeatherImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            kindWeatherImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
-            kindWeatherImage.widthAnchor.constraint(equalToConstant: 62),
-            kindWeatherImage.heightAnchor.constraint(equalToConstant: 62),
-            
-            
+            weatherStatusIconWeather.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            weatherStatusIconWeather.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
+            weatherStatusIconWeather.widthAnchor.constraint(equalToConstant: 62),
+            weatherStatusIconWeather.heightAnchor.constraint(equalToConstant: 62),
         ])
     }
 }

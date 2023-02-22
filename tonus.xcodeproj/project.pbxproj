@@ -14,6 +14,11 @@
 		579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C4329A4329D0090D715 /* CalendarUIView.swift */; };
 		579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C4529A449B30090D715 /* WeatherUIView.swift */; };
 		579A0C4C29A458170090D715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579A0C4B29A458170090D715 /* Assets.xcassets */; };
+		57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */; };
+		57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */; };
+		57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */; };
+		57FAE4C729A6CB34004DFE2E /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57FAE4C529A6CB34004DFE2E /* Roboto-Medium.ttf */; };
+		57FAE4C829A6CB34004DFE2E /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57FAE4C629A6CB34004DFE2E /* Roboto-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		579A0C4329A4329D0090D715 /* CalendarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUIView.swift; sourceTree = "<group>"; };
 		579A0C4529A449B30090D715 /* WeatherUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUIView.swift; sourceTree = "<group>"; };
 		579A0C4B29A458170090D715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
+		57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
+		57FAE4C529A6CB34004DFE2E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		57FAE4C629A6CB34004DFE2E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,7 @@
 			children = (
 				579A0C4029A41FAE0090D715 /* Application */,
 				579A0C3E29A41F710090D715 /* MainModule */,
+				57FAE4BB29A6BA1E004DFE2E /* Extenstions */,
 				579A0C3F29A41F830090D715 /* Supporting */,
 			);
 			path = tonus;
@@ -77,6 +88,7 @@
 		579A0C3F29A41F830090D715 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				57FAE4C429A6CB11004DFE2E /* Fonts */,
 				579A0C3529A41A0A0090D715 /* LaunchScreen.storyboard */,
 				579A0C3829A41A0A0090D715 /* Info.plist */,
 				579A0C4B29A458170090D715 /* Assets.xcassets */,
@@ -108,6 +120,25 @@
 				579A0C4529A449B30090D715 /* WeatherUIView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		57FAE4BB29A6BA1E004DFE2E /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */,
+				57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */,
+				57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */,
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		57FAE4C429A6CB11004DFE2E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				57FAE4C629A6CB34004DFE2E /* Roboto-Bold.ttf */,
+				57FAE4C529A6CB34004DFE2E /* Roboto-Medium.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +201,8 @@
 			files = (
 				579A0C4C29A458170090D715 /* Assets.xcassets in Resources */,
 				579A0C3729A41A0A0090D715 /* LaunchScreen.storyboard in Resources */,
+				57FAE4C829A6CB34004DFE2E /* Roboto-Bold.ttf in Resources */,
+				57FAE4C729A6CB34004DFE2E /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +215,9 @@
 			files = (
 				579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */,
 				579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */,
+				57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */,
+				57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */,
+				57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */,
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
 				579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */,

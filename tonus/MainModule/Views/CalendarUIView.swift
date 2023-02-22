@@ -9,8 +9,6 @@ import UIKit
 
 class CalendarUIView: UIView {
     
-
-
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
@@ -24,7 +22,7 @@ class CalendarUIView: UIView {
     
     private func setupUI() {
         
-        self.backgroundColor = #colorLiteral(red: 0.2421928048, green: 0.6150656343, blue: 0.5633327961, alpha: 1)
+        self.backgroundColor = .specialLightGreen
         self.layer.cornerRadius = 10
         self.translatesAutoresizingMaskIntoConstraints = false
         
