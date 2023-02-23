@@ -41,15 +41,27 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var isSelected: Bool{
+        didSet{
+            if self.isSelected{
+                self.backgroundColor = .specialYellow
+                self.cellWeekDayLabel.textColor = .specialBlack
+                self.cellNumberOfDayLabel.textColor = .specialDarkGreen
+            } else {
+                self.backgroundColor = .specialLightGreen
+                self.cellWeekDayLabel.textColor = .white
+                self.cellNumberOfDayLabel.textColor = .white
+            }
+    
+        }
+    }
+    
     private func setupUI() {
         self.layer.cornerRadius = 10
-        self.backgroundColor = .green
         
         self.addSubview(cellWeekDayLabel)
         self.addSubview(cellNumberOfDayLabel)
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
+    
         cellWeekDayLabel.translatesAutoresizingMaskIntoConstraints = false
         cellNumberOfDayLabel.translatesAutoresizingMaskIntoConstraints = false
         

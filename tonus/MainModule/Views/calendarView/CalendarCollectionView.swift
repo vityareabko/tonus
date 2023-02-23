@@ -14,14 +14,13 @@ class CalendarCollectionView: UICollectionView {
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: collectionLayout)
+        self.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
         
         config()
-        setupLayout()
+        
         
         self.dataSource = self
         self.delegate = self
-        
-        self.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
     }
     
     required init?(coder: NSCoder) {
@@ -29,17 +28,18 @@ class CalendarCollectionView: UICollectionView {
     }
     
     private func config(){
-        self.backgroundColor = .red
-        self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .specialLightGreen
+        setupLayout()
     }
     
     private func setupLayout(){
-        collectionLayout.minimumInteritemSpacing = 1
+        collectionLayout.minimumInteritemSpacing = 3
     }
     
 }
 
 extension CalendarCollectionView : UICollectionViewDataSource{
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         7
     }
@@ -51,9 +51,6 @@ extension CalendarCollectionView : UICollectionViewDataSource{
         
         return cell
     }
-    
-    
-    
 }
 
 extension CalendarCollectionView : UICollectionViewDelegateFlowLayout{ // вид ячейки ширина висота и т д
@@ -62,13 +59,11 @@ extension CalendarCollectionView : UICollectionViewDelegateFlowLayout{ // вид
         CGSize(width: self.frame.width / 7.2,
                height: self.frame.height)
     }
-    
-    
 }
 
 extension CalendarCollectionView : UICollectionViewDelegate{ // для взаимодействия с ячейкой
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("did tap item: ", indexPath.item)
+        print("did tap item: ", indexPath)
     }
     
 }
