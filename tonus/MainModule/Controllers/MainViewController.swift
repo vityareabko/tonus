@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     // MARK: - Variables
     let calendarUIView = CalendarUIView()
     let weatherUIView = WeatherUIView()
+
     
     // MARK: - UI Components
     let userImage: UIImageView = {

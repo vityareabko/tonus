@@ -9,11 +9,13 @@ import UIKit
 
 class CalendarUIView: UIView {
     
+    private let callendarCollection = CalendarCollectionView()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
         setupUI()
-//        setConstraints()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -26,39 +28,28 @@ class CalendarUIView: UIView {
         self.layer.cornerRadius = 10
         self.translatesAutoresizingMaskIntoConstraints = false
         
-//        self.addSubview(<#T##UIView#>)
-//        <#T##UIView#>.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        NSLayoutConstraint.activate([
-//            <#T##UIView#>.topAnchor.constraint(equalTo: self.view.topAnchor),
-//            <#T##UIView#>.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-//            <#T##UIView#>.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-//            <#T##UIView#>.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-//
-//            <#T##UIView#>.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//            <#T##UIView#>.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-//            <#T##UIView#>.widthAnchor.constraint(equalToConstant: <#T##CGFloat#>),
-//            <#T##UIView#>.heightAnchor.constraint(equalToConstant: <#T##CGFloat#>),
-//
-//        ])
+        self.addSubview(callendarCollection)
+        callendarCollection.translatesAutoresizingMaskIntoConstraints = false
+        
+
     }
     
 }
 
-//extension CalendarUIView {
-//
-//    private func setConstraints() {
-//        NSLayoutConstraint.activate([
-//            <#T##UIView#>.topAnchor.constraint(equalTo: self.view.topAnchor),
-//            <#T##UIView#>.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-//            <#T##UIView#>.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-//            <#T##UIView#>.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-//
-//            <#T##UIView#>.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//            <#T##UIView#>.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+extension CalendarUIView {
+
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            callendarCollection.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            callendarCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
+            callendarCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 105),
+            callendarCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            
+            
+//            callendarCollection.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            
 //            <#T##UIView#>.widthAnchor.constraint(equalToConstant: <#T##CGFloat#>),
 //            <#T##UIView#>.heightAnchor.constraint(equalToConstant: <#T##CGFloat#>),
-//        ])
-//    }
-//}
+        ])
+    }
+}

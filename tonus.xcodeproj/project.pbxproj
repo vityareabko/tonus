@@ -19,6 +19,8 @@
 		57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */; };
 		57FAE4C729A6CB34004DFE2E /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57FAE4C529A6CB34004DFE2E /* Roboto-Medium.ttf */; };
 		57FAE4C829A6CB34004DFE2E /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57FAE4C629A6CB34004DFE2E /* Roboto-Bold.ttf */; };
+		57FAE4CD29A6E896004DFE2E /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4CC29A6E896004DFE2E /* CalendarCollectionView.swift */; };
+		57FAE4D129A6EB02004DFE2E /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4D029A6EB02004DFE2E /* CalendarCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		57FAE4C529A6CB34004DFE2E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		57FAE4C629A6CB34004DFE2E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		57FAE4CC29A6E896004DFE2E /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
+		57FAE4D029A6EB02004DFE2E /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +120,9 @@
 		579A0C4229A41FE60090D715 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				579A0C4329A4329D0090D715 /* CalendarUIView.swift */,
+				57FAE4C929A6E4C5004DFE2E /* calendarView */,
 				579A0C4529A449B30090D715 /* WeatherUIView.swift */,
+				579A0C4329A4329D0090D715 /* CalendarUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +144,15 @@
 				57FAE4C529A6CB34004DFE2E /* Roboto-Medium.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		57FAE4C929A6E4C5004DFE2E /* calendarView */ = {
+			isa = PBXGroup;
+			children = (
+				57FAE4CC29A6E896004DFE2E /* CalendarCollectionView.swift */,
+				57FAE4D029A6EB02004DFE2E /* CalendarCollectionViewCell.swift */,
+			);
+			path = calendarView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +231,8 @@
 				579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */,
 				57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */,
 				57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */,
+				57FAE4D129A6EB02004DFE2E /* CalendarCollectionViewCell.swift in Sources */,
+				57FAE4CD29A6E896004DFE2E /* CalendarCollectionView.swift in Sources */,
 				57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */,
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
