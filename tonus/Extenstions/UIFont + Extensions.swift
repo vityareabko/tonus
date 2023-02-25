@@ -36,6 +36,10 @@ extension UIFont {
         return UIFont.init(name: "Roboto-Medium", size: 24)
     }
     
+    static func robotoMedium36() -> UIFont? {
+        return UIFont.init(name: "Roboto-Medium", size: 36)
+    }
+    
     //Bold
     static func robotoBold16() -> UIFont? {
         return UIFont.init(name: "Roboto-Bold", size: 16)
@@ -47,6 +51,10 @@ extension UIFont {
     
     static func robotoBold24() -> UIFont? {
         return UIFont.init(name: "Roboto-Bold", size: 24)
+    }
+    
+    static func robotoBold36() -> UIFont? {
+        return UIFont.init(name: "Roboto-Bold", size: 36)
     }
     
     static func robotoBold48() -> UIFont? {
