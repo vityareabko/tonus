@@ -8,33 +8,15 @@
 import UIKit
 
 class WeatherUIView: UIView {
-
-    private let weatherTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .specialBlack
-        label.font = .robotoBold16()
-        label.text = "Солнечно"
-        return label
-    }()
     
-    private let weatherSubtitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .specialLightBrown
-        label.font = .robotoMedium14()
-        label.text = "Хорошая погода, чтобы позаниматься на улице"
-        label.numberOfLines = 2
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.7
-        return label
-    }()
+    // MARK: - UI Components
     
-    let weatherStatusIconWeather: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "sunny")
-//        image.contentMode = .scaleAspectFit
-        return image
-    }()
+    private let weatherTitleLabel = UILabel(text: "Солнечно", textColor: .specialBlack, font: .robotoBold16()!)
+    private let weatherSubtitleLabel = UILabel(text: "Хорошая погода, чтобы позаниматься на улице", textColor: .specialLightBrown, font: .robotoMedium14()!)
+    private let weatherStatusIconWeather = UIImageView(nameImage: "sunny")
 
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupUI()
@@ -46,10 +28,13 @@ class WeatherUIView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - setupUI
+    
     private func setupUI() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 10
         self.addShadowOnView()
+        weatherSubtitleLabel.numberOfLines = 2
         
         self.addSubview(weatherTitleLabel)
         self.addSubview(weatherSubtitleLabel)
@@ -61,6 +46,8 @@ class WeatherUIView: UIView {
         
     }
 }
+
+// MARK: - Extensions
 
 extension WeatherUIView {
     private func setConstraints() {

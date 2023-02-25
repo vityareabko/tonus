@@ -9,6 +9,8 @@ import UIKit
 
 class StatisticTableView : UITableView {
     
+    // MARK: - Init
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: style)
         register(StatisticTableViewCell.self, forCellReuseIdentifier: StatisticTableViewCell.identifier)
@@ -21,11 +23,11 @@ class StatisticTableView : UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Configuration
     
     private func config(){
         self.backgroundColor = .none
         self.separatorStyle = .none
-//        self.bounces = false
         self.showsVerticalScrollIndicator = false
     }
 }

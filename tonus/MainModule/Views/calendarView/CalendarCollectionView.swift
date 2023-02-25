@@ -9,15 +9,17 @@ import UIKit
 
 class CalendarCollectionView: UICollectionView {
 
+    // MARK: - Variables
+    
     private let collectionLayout = UICollectionViewFlowLayout()
     
+    // MARK: - Init
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: collectionLayout)
         self.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
         
         config()
-        
         
         self.dataSource = self
         self.delegate = self
@@ -26,6 +28,8 @@ class CalendarCollectionView: UICollectionView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Configuaration
     
     private func config(){
         self.backgroundColor = .specialLightGreen
@@ -37,6 +41,8 @@ class CalendarCollectionView: UICollectionView {
     }
     
 }
+
+// MARK: - Extensions
 
 extension CalendarCollectionView : UICollectionViewDataSource{
 
@@ -56,7 +62,7 @@ extension CalendarCollectionView : UICollectionViewDataSource{
 extension CalendarCollectionView : UICollectionViewDelegateFlowLayout{ // вид ячейки ширина висота и т д
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: self.frame.width / 7.2,
+        CGSize(width: self.frame.width / 8,
                height: self.frame.height)
     }
 }

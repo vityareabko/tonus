@@ -8,8 +8,12 @@
 import UIKit
 
 class WorkOutTasksView: UIView {
-
+    
+    // MARK: - Variables
+    
     let workoutTasksTableView = WorkoutTasksTableView()
+
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -21,15 +25,17 @@ class WorkOutTasksView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup UI
+    
     private func setupUI() {
-//        self.backgroundColor = .white
-        
         self.addSubview(workoutTasksTableView)
         workoutTasksTableView.translatesAutoresizingMaskIntoConstraints = false
         setConstraints()
     }
     
 }
+
+// MARK: - Extensions
 
 extension WorkOutTasksView {
     

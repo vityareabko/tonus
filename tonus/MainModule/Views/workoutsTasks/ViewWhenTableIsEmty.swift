@@ -8,35 +8,16 @@
 import UIKit
 
 class ViewWhenTableIsEmty: UIView {
-
-    let imagePeople: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "People")
-        image.contentMode = .scaleAspectFit
-//        image.backgroundColor = .orange
-        return image
-    }()
     
-    private let title: UILabel = {
-        let label = UILabel()
-        label.textColor = .specialGray
-        label.textAlignment = .left
-        label.font = .robotoMedium36()
-        label.text = "NO TRAINING"
-//        label.backgroundColor = .lightGray
-        return label
-    }()
     
-    private let subTitle: UILabel = {
-        let label = UILabel()
-        label.textColor = .specialGray
-        label.textAlignment = .right
-        label.font = .robotoMedium18()
-        label.text = "press the plus button"
-//        label.backgroundColor = .cyan
-        return label
-    }()
+    // MARK: - UI Components
+    
+    private let imagePeople = UIImageView(nameImage: "People")
+    private let title = UILabel(text: "NO TRAINING", textColor: .specialGray, font: .robotoMedium36()!)
+    private let subTitle = UILabel(text: "press the plus button", textColor: .specialGray, font: .robotoMedium18()!)
 
+    // MARK: - init
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
@@ -47,20 +28,25 @@ class ViewWhenTableIsEmty: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: - Setup UI
+    
     private func setupUI() {
-//        self.backgroundColor = .white
+        subTitle.textAlignment = .right
         
-            self.addSubview(imagePeople)
-            self.addSubview(title)
-            self.addSubview(subTitle)
-        
-            imagePeople.translatesAutoresizingMaskIntoConstraints = false
-            title.translatesAutoresizingMaskIntoConstraints = false
-            subTitle.translatesAutoresizingMaskIntoConstraints = false
-        
-            setConstraints()
+        self.addSubview(imagePeople)
+        self.addSubview(title)
+        self.addSubview(subTitle)
+    
+        imagePeople.translatesAutoresizingMaskIntoConstraints = false
+        title.translatesAutoresizingMaskIntoConstraints = false
+        subTitle.translatesAutoresizingMaskIntoConstraints = false
+    
+        setConstraints()
     }
 }
+
+// MARK: - Extensions
 
 extension ViewWhenTableIsEmty {
     private func setConstraints() {
@@ -72,12 +58,11 @@ extension ViewWhenTableIsEmty {
             
             title.topAnchor.constraint(equalTo: self.imagePeople.bottomAnchor, constant: 13),
             title.leadingAnchor.constraint(equalTo: imagePeople.leadingAnchor, constant: -25),
-//            title.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+            title.trailingAnchor.constraint(equalTo: imagePeople.trailingAnchor, constant: 20),
             
             subTitle.topAnchor.constraint(equalTo: self.title.bottomAnchor, constant: 0),
             subTitle.trailingAnchor.constraint(equalTo: imagePeople.trailingAnchor, constant: 25),
-//            subTitle.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
-            
+            subTitle.leadingAnchor.constraint(equalTo: imagePeople.leadingAnchor, constant: -20),
         ])
     }
 }
