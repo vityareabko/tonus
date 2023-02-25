@@ -26,6 +26,10 @@
 		57FAE50829A91761004DFE2E /* WorkoutTasksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE50729A91761004DFE2E /* WorkoutTasksTableView.swift */; };
 		57FAE50A29A9190B004DFE2E /* WorkoutTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE50929A9190B004DFE2E /* WorkoutTasksTableViewCell.swift */; };
 		57FAE50C29A97448004DFE2E /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE50B29A97448004DFE2E /* UIStackView + Extensions.swift */; };
+		57FAE51229AA1154004DFE2E /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51129AA1154004DFE2E /* StatisticsViewController.swift */; };
+		57FAE51429AA11EF004DFE2E /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */; };
+		57FAE51729AA2249004DFE2E /* StatisticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51629AA2249004DFE2E /* StatisticTableView.swift */; };
+		57FAE51929AA3478004DFE2E /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		57FAE50729A91761004DFE2E /* WorkoutTasksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTasksTableView.swift; sourceTree = "<group>"; };
 		57FAE50929A9190B004DFE2E /* WorkoutTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTasksTableViewCell.swift; sourceTree = "<group>"; };
 		57FAE50B29A97448004DFE2E /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
+		57FAE51129AA1154004DFE2E /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		57FAE51629AA2249004DFE2E /* StatisticTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableView.swift; sourceTree = "<group>"; };
+		57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,7 @@
 		579A0C2929A41A080090D715 /* tonus */ = {
 			isa = PBXGroup;
 			children = (
+				57FAE50D29AA10DB004DFE2E /* StatisticModule */,
 				579A0C4029A41FAE0090D715 /* Application */,
 				579A0C3E29A41F710090D715 /* MainModule */,
 				57FAE4BB29A6BA1E004DFE2E /* Extenstions */,
@@ -144,6 +153,7 @@
 				57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */,
 				57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */,
 				57FAE50B29A97448004DFE2E /* UIStackView + Extensions.swift */,
+				57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -176,6 +186,40 @@
 				57FAE50929A9190B004DFE2E /* WorkoutTasksTableViewCell.swift */,
 			);
 			path = workoutsTasks;
+			sourceTree = "<group>";
+		};
+		57FAE50D29AA10DB004DFE2E /* StatisticModule */ = {
+			isa = PBXGroup;
+			children = (
+				57FAE50F29AA1109004DFE2E /* controllers */,
+				57FAE50E29AA10FA004DFE2E /* views */,
+			);
+			path = StatisticModule;
+			sourceTree = "<group>";
+		};
+		57FAE50E29AA10FA004DFE2E /* views */ = {
+			isa = PBXGroup;
+			children = (
+				57FAE51529AA2205004DFE2E /* StatisticTableView */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		57FAE50F29AA1109004DFE2E /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				57FAE51129AA1154004DFE2E /* StatisticsViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		57FAE51529AA2205004DFE2E /* StatisticTableView */ = {
+			isa = PBXGroup;
+			children = (
+				57FAE51629AA2249004DFE2E /* StatisticTableView.swift */,
+				57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */,
+			);
+			path = StatisticTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,10 +297,13 @@
 				57FAE50A29A9190B004DFE2E /* WorkoutTasksTableViewCell.swift in Sources */,
 				579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */,
 				579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */,
+				57FAE51229AA1154004DFE2E /* StatisticsViewController.swift in Sources */,
 				57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */,
 				57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */,
+				57FAE51729AA2249004DFE2E /* StatisticTableView.swift in Sources */,
 				57FAE4D129A6EB02004DFE2E /* CalendarCollectionViewCell.swift in Sources */,
 				57FAE50129A8F786004DFE2E /* ViewWhenTableIsEmty.swift in Sources */,
+				57FAE51429AA11EF004DFE2E /* UILabel + Extensions.swift in Sources */,
 				57FAE4CD29A6E896004DFE2E /* CalendarCollectionView.swift in Sources */,
 				57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */,
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
@@ -265,6 +312,7 @@
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
 				57FAE50C29A97448004DFE2E /* UIStackView + Extensions.swift in Sources */,
 				579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */,
+				57FAE51929AA3478004DFE2E /* StatisticTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
