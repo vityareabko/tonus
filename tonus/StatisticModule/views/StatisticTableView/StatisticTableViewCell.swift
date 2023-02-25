@@ -11,63 +11,29 @@ class StatisticTableViewCell: UITableViewCell {
 
     static let identifier = "StatisticTableCell"
     
+    // MARK: - Variables
     let stackView = UIStackView()
     
+    // MARK: - UI Components
     private let cellTitleLabel = UILabel(text: "Biceps",
                                          textColor: .specialGray,
                                          font: .robotoBold24()!)
-//    private let cellTitleLabel: UILabel = {
-//        let label = UILabel()
-//        label.textColor = .label
-//        label.textAlignment = .left
-//        label.font = .systemFont(ofSize: 12, weight: .regular)
-//        label.text = "Error"
-//        return label
-//    }()
-    
     private let cellSubtitleBeforeLable = UILabel(text: "Before 18",
                                                   textColor: .specialLightBrown,
                                                   font: .robotoMedium14()!)
-//    private let cellSubtitleBeforeLable: UILabel = {
-//        let label = UILabel()
-//        label.textColor = .label
-//        label.textAlignment = .left
-//        label.font = .systemFont(ofSize: 12, weight: .regular)
-//        label.text = "Error"
-//        return label
-//    }()
-    
     private let cellSubtitleNowLable = UILabel(text: "Now 20",
                                                textColor: .specialLightBrown,
                                                font: .robotoMedium14()!)
-//    private let cellSubtitleNowLable: UILabel = {
-//        let label = UILabel()
-//        label.textColor = .label
-//        label.textAlignment = .left
-//        label.font = .systemFont(ofSize: 12, weight: .regular)
-//        label.text = "Error"
-//        return label
-//    }()
-    
     private let cellCountLable = UILabel(text: "0",
                                          textColor: .specialYellow,
                                          font: .robotoMedium24()!)
-//    private let cellCountLable: UILabel = {
-//        let label = UILabel()
-//        label.textColor = .label
-//        label.textAlignment = .left
-//        label.font = .systemFont(ofSize: 12, weight: .regular)
-//        label.text = "Error"
-//        return label
-//    }()
-    
     private let customSeparator : UIView = {
         let view = UIView()
         view.backgroundColor = .specialLine
         return view
     }()
     
-    
+    // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -78,8 +44,10 @@ class StatisticTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - setupUI
+    
     private func setupUI() {
-//        self.selectionStyle = .none
+        self.selectionStyle = .none
         self.backgroundColor = .clear
         setStackView()
         
@@ -87,7 +55,6 @@ class StatisticTableViewCell: UITableViewCell {
         self.addSubview(stackView)
         self.addSubview(cellCountLable)
         self.addSubview(customSeparator)
-        
         
         cellTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -102,9 +69,11 @@ class StatisticTableViewCell: UITableViewCell {
         stackView.addArrangedSubview(cellSubtitleBeforeLable)
         stackView.axis = .horizontal
         stackView.spacing = 10
-        
     }
 }
+
+
+// MARK: - Extensions
 
 extension StatisticTableViewCell {
     

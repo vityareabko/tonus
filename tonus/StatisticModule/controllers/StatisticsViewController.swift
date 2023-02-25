@@ -10,17 +10,18 @@ import UIKit
 class StatisticsViewController: UIViewController {
 
     // MARK: - Variables
-    let headerLabel = UILabel(text: "STATISTICS", textColor: .specialGray, font: .robotoMedium24()!)
-    let exirciceLabel = UILabel(text: "Exircises", textColor: .specialLightBrown, font: .robotoMedium14()! )
+    
     let statisticTableView = StatisticTableView()
+    
     // MARK: - UI Components
     
+    let headerLabel = UILabel(text: "STATISTICS", textColor: .specialGray, font: .robotoMedium24()!)
+    let exirciceLabel = UILabel(text: "Exircises", textColor: .specialLightBrown, font: .robotoMedium14()! )
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -41,10 +42,6 @@ class StatisticsViewController: UIViewController {
         
         setConstraints()
     }
-    
-    // MARK: - Selectors
-    
-
 }
 
 extension StatisticsViewController {
@@ -55,7 +52,7 @@ extension StatisticsViewController {
             headerLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
             headerLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
             
-            // TODO: - here need add segmentView
+            // TODO: - segmentView
             
             exirciceLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 75),
             exirciceLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
@@ -65,8 +62,6 @@ extension StatisticsViewController {
             statisticTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             statisticTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             statisticTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            
-            
 
         ])
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 class StatisticTableView : UITableView {
-
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: style)
         register(StatisticTableViewCell.self, forCellReuseIdentifier: StatisticTableViewCell.identifier)
@@ -21,14 +21,16 @@ class StatisticTableView : UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     private func config(){
         self.backgroundColor = .none
         self.separatorStyle = .none
 //        self.bounces = false
         self.showsVerticalScrollIndicator = false
-        
     }
 }
+
+// MARK: - Extensions
 
 extension StatisticTableView : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +38,9 @@ extension StatisticTableView : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StatisticTableViewCell.identifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticTableViewCell.identifier, for: indexPath) as? StatisticTableViewCell else {
+            fatalError("The table view could not dequeue a StatisticTableViewCell in StatisticTableView")
+        }
 
         return cell
     }
