@@ -9,9 +9,16 @@ import UIKit
 
 class WorkoutTasksTableViewCell : UITableViewCell {
     
+    // MARK: - Variables
     static let identifier = "workoutTableCell"
     
-    let stackView = UIStackView()
+    // MARK: - UI Components
+    
+    private let workoutTypeTaskIcon = UIImageView(nameImage: "sunny")
+    private let titleTask = UILabel(text: "Pull Ups", textColor: .specialBlack, font: .robotoMedium22()!)
+    private let subTitleReps = UILabel(text: "Reps. 10", textColor: .specialGray, font: .robotoMedium16()!)
+    private let subTitleSets = UILabel(text: "Sets 2", textColor: .specialGray, font: .robotoMedium16()!)
+    private let stackView = UIStackView()
     
     private var bagroundCell: UIView = {
         let view = UIView()
@@ -19,48 +26,12 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         view.layer.cornerRadius = 20
         return view
     }()
-
-
-    
-    private let workoutTypeTaskIcon: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "sunny")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-//        image.contentMode = .scaleAspectFit
-        return image
-    }()
     
     private let bagroundIcon: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9294117647, blue: 0.8862745098, alpha: 1)
         view.layer.cornerRadius = 20
         return view
-    }()
-
-    private let titleTask: UILabel = {
-        let label = UILabel()
-        label.textColor = .specialBlack
-        label.textAlignment = .left
-        label.font = .robotoMedium22()
-        label.text = "Pull Ups"
-        return label
-    }()
-    
-    private let subTitleReps: UILabel = {
-        let label = UILabel()
-        label.textColor = .specialGray
-        label.textAlignment = .left
-        label.font = .robotoMedium16()
-        label.text = "Reps. 10"
-        return label
-    }()
-    
-    private lazy var subTitleSets: UILabel = {
-        let label = UILabel()
-        label.textColor = .specialGray
-        label.textAlignment = .left
-        label.font = .robotoMedium16()
-        label.text = "Sets 2"
-        return label
     }()
     
     private lazy var button: UIButton = {
@@ -74,7 +45,7 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         return button
     }()
     
-    
+    // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -86,11 +57,13 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - SetupUI
     
     private func setupUI() {
         self.selectionStyle = .none
         self.backgroundColor = .clear
-        
+ 
+        workoutTypeTaskIcon.image?.withTintColor(.red, renderingMode: .alwaysOriginal) // TODO: - doesn't work
         
         self.addSubview(bagroundCell)
         self.addSubview(bagroundIcon)
@@ -100,8 +73,7 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         self.addSubview(subTitleSets)
         self.addSubview(button)
         
-        self.contentView.addSubview(button)
-        
+        self.contentView.addSubview(button) // we had put button up to the cell for user can do some action with button
         stackViewTask()
         
         bagroundCell.translatesAutoresizingMaskIntoConstraints = false
@@ -132,6 +104,8 @@ class WorkoutTasksTableViewCell : UITableViewCell {
     
 }
 
+// MARK: - Extensions
+
 extension WorkoutTasksTableViewCell {
     
     private func setConstraints() {
@@ -158,7 +132,6 @@ extension WorkoutTasksTableViewCell {
             
             stackView.topAnchor.constraint(equalTo: titleTask.bottomAnchor, constant: 0),
             stackView.leadingAnchor.constraint(equalTo: bagroundIcon.trailingAnchor, constant: 10),
-//            stackView.trailingAnchor.constraint(equalTo: bagroundCell.trailingAnchor, constant: -10),
 //            stackView.heightAnchor.constraint(equalToConstant: 20),
             stackView.bottomAnchor.constraint(equalTo: button.topAnchor),
             

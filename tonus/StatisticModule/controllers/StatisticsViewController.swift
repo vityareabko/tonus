@@ -15,8 +15,8 @@ class StatisticsViewController: UIViewController {
     
     // MARK: - UI Components
     
-    let headerLabel = UILabel(text: "STATISTICS", textColor: .specialGray, font: .robotoMedium24()!)
-    let exirciceLabel = UILabel(text: "Exircises", textColor: .specialLightBrown, font: .robotoMedium14()! )
+    private let headerLabel = UILabel(text: "STATISTICS", textColor: .specialGray, font: .robotoMedium24()!)
+    private let exirciceLabel = UILabel(text: "Exircises", textColor: .specialLightBrown, font: .robotoMedium14()! )
     
     // MARK: - Lifecycle
     
@@ -43,6 +43,8 @@ class StatisticsViewController: UIViewController {
         setConstraints()
     }
 }
+
+// MARK: - Extensions
 
 extension StatisticsViewController {
     

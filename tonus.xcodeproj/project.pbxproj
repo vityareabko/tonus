@@ -30,6 +30,7 @@
 		57FAE51429AA11EF004DFE2E /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */; };
 		57FAE51729AA2249004DFE2E /* StatisticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51629AA2249004DFE2E /* StatisticTableView.swift */; };
 		57FAE51929AA3478004DFE2E /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */; };
+		57FAE51B29AA7FD7004DFE2E /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		57FAE51629AA2249004DFE2E /* StatisticTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableView.swift; sourceTree = "<group>"; };
 		57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
+		57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */,
 				57FAE50B29A97448004DFE2E /* UIStackView + Extensions.swift */,
 				57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */,
+				57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				57FAE4CD29A6E896004DFE2E /* CalendarCollectionView.swift in Sources */,
 				57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */,
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
+				57FAE51B29AA7FD7004DFE2E /* UIImage + Extension.swift in Sources */,
 				57FAE50829A91761004DFE2E /* WorkoutTasksTableView.swift in Sources */,
 				57FAE50329A91574004DFE2E /* WorkOutTasksView.swift in Sources */,
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,

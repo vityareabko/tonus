@@ -9,26 +9,16 @@ import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Variables
+    
     static let identifier = "CustomCell"
     
-    private let cellWeekDayLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.font = .robotoBold16()
-        label.text = "wd"
-        return label
-    }()
+    // MARK: - UI Components
     
-    private let cellNumberOfDayLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.font = .robotoBold20()
-        label.text = "22"
-        return label
-    }()
-    
+    private let cellWeekDayLabel = UILabel(text: "wd", textColor: .white, font: .robotoBold16()!)
+    private let cellNumberOfDayLabel = UILabel(text: "22", textColor: .white, font: .robotoBold20()!)
+
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -40,6 +30,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Observer for status cell
     
     override var isSelected: Bool{
         didSet{
@@ -56,8 +48,13 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - Setup UI
+    
     private func setupUI() {
         self.layer.cornerRadius = 10
+        
+        cellWeekDayLabel.textAlignment = .center
+        cellNumberOfDayLabel.textAlignment = .center
         
         self.addSubview(cellWeekDayLabel)
         self.addSubview(cellNumberOfDayLabel)
@@ -67,6 +64,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         
     }
 }
+
+// MARK: - Extensions
 
 extension CalendarCollectionViewCell {
     

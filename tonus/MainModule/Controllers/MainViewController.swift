@@ -10,38 +10,16 @@ import UIKit
 class MainViewController: UIViewController {
     
     // MARK: - Variables
+    
     let calendarUIView = CalendarUIView()
     let weatherUIView = WeatherUIView()
-    
     // let viewWhenTableIsEmty = ViewWhenTableIsEmty() // TODO: - is view whe our table is empty
-    
     let workOutTasksView = WorkOutTasksView()
-
     
     // MARK: - UI Components
-    let userImage: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .specialGray
-        image.layer.borderColor = UIColor.white.cgColor
-        image.layer.borderWidth = 5
-//        let screenSize: CGRect = UIScreen.main.bounds
-//        let screenWidth = screenSize.width
-//        image.layer.cornerRadius = (screenWidth * 0.2) / 2
-        image.contentMode = .scaleAspectFit
-        return image
-    }()
     
-    private let userNameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .label
-        label.textAlignment = .left
-//        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.font = .robotoMedium24()
-        label.text = "Jhon Smith"
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.7
-        return label
-    }()
+    private let userImage = UIImageView(nameImage: "")
+    private let userNameLabel = UILabel(text: "Jhon Smith", textColor: .specialGray, font: .robotoMedium24()!)
     
     private lazy var addWorkoutButton: UIButton = {
         let button = UIButton(type: .system)
@@ -57,6 +35,7 @@ class MainViewController: UIViewController {
     }()
     
     // MARK: - Lifecycle
+    
     override func viewDidLayoutSubviews() {
         userImage.layer.cornerRadius = userImage.frame.width / 2
     }
@@ -68,8 +47,12 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - UI Setup
+    
     private func setupUI() {
         view.backgroundColor = .specialMainBackground
+        userImage.backgroundColor = .specialGray
+        userImage.layer.borderColor = UIColor.white.cgColor
+        userImage.layer.borderWidth = 5
         
         addWorkoutButton.addShadowOnView()
         
@@ -93,8 +76,6 @@ class MainViewController: UIViewController {
     // MARK: - Selectors
     
 }
-    
-
 
 extension MainViewController {
     private func setConstraints(){

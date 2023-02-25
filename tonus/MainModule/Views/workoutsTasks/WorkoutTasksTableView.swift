@@ -9,10 +9,15 @@ import UIKit
 
 class WorkoutTasksTableView : UITableView {
     
+    
+    // MARK: - Init
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: style)
         register(WorkoutTasksTableViewCell.self, forCellReuseIdentifier: WorkoutTasksTableViewCell.identifier)
-        
+
+        self.dataSource = self
+        self.delegate = self
         setupUI()
     }
     
@@ -20,45 +25,19 @@ class WorkoutTasksTableView : UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - SetupUI
+    
     private func setupUI() {
         self.backgroundColor = .clear
         self.separatorStyle = .none
         self.bounces = false
         self.showsVerticalScrollIndicator = false
-        
-        
-        
-        self.dataSource = self
-        self.delegate = self
-        
-        //    self.view.addSubview(<#T##UIView#>)
-        //    <#T##UIView#>.translatesAutoresizingMaskIntoConstraints = false
-        
-        setConstraints()
-        
     }
 }
 
-extension WorkoutTasksTableView {
-    
-    private func setConstraints() {
-        NSLayoutConstraint.activate([
-            //            <#T##UIView#>.topAnchor.constraint(equalTo: self.view.topAnchor),
-            //            <#T##UIView#>.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            //            <#T##UIView#>.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            //            <#T##UIView#>.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            //
-            //            <#T##UIView#>.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            //            <#T##UIView#>.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            //            <#T##UIView#>.widthAnchor.constraint(equalToConstant: <#T##CGFloat#>),
-            //            <#T##UIView#>.heightAnchor.constraint(equalToConstant: <#T##CGFloat#>),
-        ])
-    }
-}
+// MARK: - Extensions
 
 extension WorkoutTasksTableView : UITableViewDataSource{
-    
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         115
     }
@@ -72,11 +51,11 @@ extension WorkoutTasksTableView : UITableViewDataSource{
         
         return cell
     }
-    
-    
 }
 
 extension WorkoutTasksTableView : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("our cell with index at:", indexPath)
+    }
 }
 
