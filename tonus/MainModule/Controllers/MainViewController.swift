@@ -11,15 +11,13 @@ class MainViewController: UIViewController {
     
     // MARK: - Variables
     
-    let calendarUIView = CalendarUIView()
-    let weatherUIView = WeatherUIView()
-    // let viewWhenTableIsEmty = ViewWhenTableIsEmty() // TODO: - is view whe our table is empty
-    let workOutTasksView = WorkOutTasksView()
+    
     
     // MARK: - UI Components
-    
-    private let userImage = UIImageView(nameImage: "")
-    private let userNameLabel = UILabel(text: "Jhon Smith", textColor: .specialGray, font: .robotoMedium24()!)
+    private let header = HeaderUIView()
+    private let weatherUIView = WeatherUIView()
+    // let viewWhenTableIsEmty = ViewWhenTableIsEmty() // TODO: - is view whe our table is empty
+    private let workOutTasksView = WorkOutTasksView()
     
     private lazy var addWorkoutButton: UIButton = {
         let button = UIButton(type: .system)
@@ -37,7 +35,7 @@ class MainViewController: UIViewController {
     // MARK: - Lifecycle
     
     override func viewDidLayoutSubviews() {
-        userImage.layer.cornerRadius = userImage.frame.width / 2
+        header.userImage.layer.cornerRadius = header.userImage.frame.width / 2 // вызываем свойство из класса вию
     }
     
     override func viewDidLoad() {
@@ -50,23 +48,17 @@ class MainViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .specialMainBackground
-        userImage.backgroundColor = .specialGray
-        userImage.layer.borderColor = UIColor.white.cgColor
-        userImage.layer.borderWidth = 5
-        
+
         addWorkoutButton.addShadowOnView()
         
-        self.view.addSubview(calendarUIView)
-        self.view.addSubview(userImage)
-        self.view.addSubview(userNameLabel)
+        self.view.addSubview(header)
         self.view.addSubview(addWorkoutButton)
         self.view.addSubview(weatherUIView)
 //        self.view.addSubview(viewWhenTableIsEmty)
         self.view.addSubview(workOutTasksView)
         
-        userImage.translatesAutoresizingMaskIntoConstraints = false
-        calendarUIView.translatesAutoresizingMaskIntoConstraints = false
-        userNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        header.translatesAutoresizingMaskIntoConstraints = false
         addWorkoutButton.translatesAutoresizingMaskIntoConstraints = false
         weatherUIView.translatesAutoresizingMaskIntoConstraints = false
 //        viewWhenTableIsEmty.translatesAutoresizingMaskIntoConstraints = false
@@ -81,26 +73,17 @@ extension MainViewController {
     private func setConstraints(){
         
         NSLayoutConstraint.activate([
-            userImage.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            userImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
-            userImage.widthAnchor.constraint(equalToConstant: 100),
-            userImage.heightAnchor.constraint(equalToConstant: 100),
+            header.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            header.heightAnchor.constraint(equalToConstant: 120),
             
-            calendarUIView.topAnchor.constraint(equalTo: userImage.centerYAnchor),
-            calendarUIView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
-            calendarUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
-            calendarUIView.heightAnchor.constraint(equalToConstant: 70),
-        
-            userNameLabel.leadingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 5),
-            userNameLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6),
-            userNameLabel.bottomAnchor.constraint(equalTo: calendarUIView.topAnchor, constant: -10),
-            
-            addWorkoutButton.topAnchor.constraint(equalTo: calendarUIView.bottomAnchor, constant: 10),
+            addWorkoutButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 10),
             addWorkoutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
             addWorkoutButton.widthAnchor.constraint(equalToConstant: 80),
             addWorkoutButton.heightAnchor.constraint(equalToConstant: 80),
             
-            weatherUIView.topAnchor.constraint(equalTo: calendarUIView.bottomAnchor, constant: 10),
+            weatherUIView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 10),
             weatherUIView.leadingAnchor.constraint(equalTo: addWorkoutButton.trailingAnchor, constant: 15),
             weatherUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
             weatherUIView.heightAnchor.constraint(equalToConstant: 80),

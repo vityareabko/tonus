@@ -31,6 +31,7 @@
 		57FAE51729AA2249004DFE2E /* StatisticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51629AA2249004DFE2E /* StatisticTableView.swift */; };
 		57FAE51929AA3478004DFE2E /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */; };
 		57FAE51B29AA7FD7004DFE2E /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */; };
+		57FAE52629AAAA59004DFE2E /* HeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE52529AAAA59004DFE2E /* HeaderUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		57FAE51629AA2249004DFE2E /* StatisticTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableView.swift; sourceTree = "<group>"; };
 		57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 		57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		57FAE52529AAAA59004DFE2E /* HeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		579A0C4229A41FE60090D715 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57FAE52229AAA975004DFE2E /* header */,
 				57FAE50429A9170C004DFE2E /* workoutsTasks */,
 				57FAE4C929A6E4C5004DFE2E /* calendarView */,
 				579A0C4529A449B30090D715 /* WeatherUIView.swift */,
@@ -223,6 +226,14 @@
 				57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */,
 			);
 			path = StatisticTableView;
+			sourceTree = "<group>";
+		};
+		57FAE52229AAA975004DFE2E /* header */ = {
+			isa = PBXGroup;
+			children = (
+				57FAE52529AAAA59004DFE2E /* HeaderUIView.swift */,
+			);
+			path = header;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +326,7 @@
 				57FAE50329A91574004DFE2E /* WorkOutTasksView.swift in Sources */,
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
 				57FAE50C29A97448004DFE2E /* UIStackView + Extensions.swift in Sources */,
+				57FAE52629AAAA59004DFE2E /* HeaderUIView.swift in Sources */,
 				579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */,
 				57FAE51929AA3478004DFE2E /* StatisticTableViewCell.swift in Sources */,
 			);
