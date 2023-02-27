@@ -86,18 +86,17 @@ extension StatisticTableViewCell {
             stackView.topAnchor.constraint(equalTo: cellTitleLabel.bottomAnchor, constant: 3),
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             stackView.bottomAnchor.constraint(equalTo: customSeparator.topAnchor, constant: -10),
-        
 
             cellCountLable.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             cellCountLable.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            cellCountLable.leadingAnchor.constraint(equalTo: cellTitleLabel.trailingAnchor, constant: 10),
+            cellCountLable.widthAnchor.constraint(equalToConstant: 30),
 
             customSeparator.heightAnchor.constraint(equalToConstant: 1),
             customSeparator.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             customSeparator.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            customSeparator.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            
+            customSeparator.trailingAnchor.constraint(equalTo: self.trailingAnchor),            
         
         ])
     }
 }
+
