@@ -49,6 +49,8 @@ class StatisticTableViewCell: UITableViewCell {
     private func setupUI() {
         self.selectionStyle = .none
         self.backgroundColor = .clear
+        cellCountLable.textAlignment = .right
+        
         setStackView()
         
         self.addSubview(cellTitleLabel)
@@ -79,22 +81,22 @@ extension StatisticTableViewCell {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            cellTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
-            cellTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            cellTitleLabel.trailingAnchor.constraint(equalTo: cellCountLable.leadingAnchor, constant: -10),
+            cellTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            cellTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            cellTitleLabel.trailingAnchor.constraint(equalTo: cellCountLable.leadingAnchor, constant: -20),
             
             stackView.topAnchor.constraint(equalTo: cellTitleLabel.bottomAnchor, constant: 3),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: customSeparator.topAnchor, constant: -10),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            stackView.bottomAnchor.constraint(equalTo: customSeparator.topAnchor, constant: -5),
 
             cellCountLable.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            cellCountLable.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            cellCountLable.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             cellCountLable.widthAnchor.constraint(equalToConstant: 30),
 
             customSeparator.heightAnchor.constraint(equalToConstant: 1),
             customSeparator.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            customSeparator.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            customSeparator.trailingAnchor.constraint(equalTo: self.trailingAnchor),            
+            customSeparator.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            customSeparator.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
         
         ])
     }

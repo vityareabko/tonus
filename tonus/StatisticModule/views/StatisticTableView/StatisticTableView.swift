@@ -44,6 +44,8 @@ extension StatisticTableView : UITableViewDataSource {
             fatalError("The table view could not dequeue a StatisticTableViewCell in StatisticTableView")
         }
 
+        print("()")
+        
         return cell
     }
 }
@@ -55,8 +57,9 @@ extension StatisticTableView : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        75
+        70
     }
     
 }
+
 
