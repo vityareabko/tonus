@@ -8,7 +8,10 @@
 import UIKit
 
 class RepsOrTimerView: UIView {
-    private let repsOrTimerLabel = UILabel(text: "Reps or timer", textColor: .specialLightBrown, font: .robotoMedium14()!)
+    
+    private let repsOrTimerLabel = UILabel(text: "Reps or timer",
+                                           textColor: .specialLightBrown,
+                                           font: .robotoMedium14()!)
     
     private let bagroundView: UIView = {
         let view = UIView()
@@ -16,56 +19,24 @@ class RepsOrTimerView: UIView {
         view.layer.cornerRadius = 10
         return view
     }()
-//    
-//    private let setView = ParamsAndSliderView(sliderLabel: "Sets", curentSliderValueLabel: 3, slideValue: 3, minValue: 1, maxValue: 10, minColor: .specialLightGreen, maxColor: .specialLightBrown)
     
-    private let setsLabel = UILabel(text: "Sets", textColor: .specialGray, font: .robotoMedium18()!)
-    private let setsCountLabel = UILabel(text: "", textColor: .specialGray, font: .robotoMedium24()!)
-    private let choseRepeatOrTimerLabel = UILabel(text: "Choose repeat or timer", textColor: .specialLightBrown, font: .robotoMedium14()!)
-    private let repsLabel = UILabel(text: "Reps", textColor: .specialGray, font: .robotoMedium18()!)
-    private let repsCountLabel = UILabel(text: "", textColor: .specialGray, font: .robotoMedium24()!)
-    private let timerLabel = UILabel(text: "Timer", textColor: .specialGray, font: .robotoMedium18()!)
-    private let timerCountLabel = UILabel(text: "1min 30 sec", textColor: .specialGray, font: .robotoMedium24()!)
+    private let setsBlockView = WrapperSliderAndLabelView(name: "Sets",
+                                                          minValue: 1,
+                                                          maxValue: 10)
     
-    private lazy var sliderSets: UISlider = {
-        let slider = UISlider()
-        slider.minimumValue = 1
-        slider.maximumValue = 6
-        slider.value = 3
-        slider.minimumTrackTintColor = .specialLightGreen
-        slider.tag = 0
-        setsCountLabel.text = String(Int(slider.value))
-        slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
-        return slider
-    }()
+    private let repsBlockView = WrapperSliderAndLabelView(name: "Reps",
+                                                          minValue: 1,
+                                                          maxValue: 30)
     
-    private lazy var sliderReps: UISlider = {
-        let slider = UISlider()
-        slider.minimumValue = 1
-        slider.maximumValue = 30
-        slider.value = 5
-        slider.minimumTrackTintColor = .specialLightGreen
-        slider.tag = 1
-        repsCountLabel.text = String(Int(slider.value))
-        slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
-        return slider
-    }()
+    private let timerBlockView = WrapperSliderAndLabelView(name: "Timer",
+                                                          minValue: 1,
+                                                          maxValue: 59)
     
-    private lazy var sliderTimer: UISlider = {
-        let slider = UISlider()
-        slider.minimumValue = 1
-        slider.maximumValue = 30
-        slider.value = 5
-        slider.minimumTrackTintColor = .specialLightGreen
-        slider.tag = 2
-//        repsCountLabel.text = String(Int(slider.value))
-        slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
-        return slider
-    }()
-    
-    private var stackViewSets = UIStackView()
-    private var stackViewReps = UIStackView()
-    private var stackViewTimer = UIStackView()
+    private let choseRepeatOrTimerLabel = UILabel(text: "Choose repeat or timer",
+                                                  textColor: .specialLightBrown,
+                                                  font: .robotoMedium14()!)
+
+    private var stackViewBlocks = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -80,57 +51,50 @@ class RepsOrTimerView: UIView {
     private func setupUI() {
         self.backgroundColor = .clear
         
-        stackViewSets = UIStackView(arrangedSubviews: [setsLabel, setsCountLabel], axis: .horizontal, spacing: 10)
-        stackViewReps = UIStackView(arrangedSubviews: [repsLabel, repsCountLabel], axis: .horizontal, spacing: 10)
-        stackViewTimer = UIStackView(arrangedSubviews: [timerLabel, timerCountLabel], axis: .horizontal, spacing: 10)
-        stackViewSets.distribution = .equalCentering
-        stackViewReps.distribution = .equalCentering
-        stackViewTimer.distribution = .equalCentering
+        stackViewBlocks = UIStackView(arrangedSubviews:
+                                        [ setsBlockView,
+                                          choseRepeatOrTimerLabel,
+                                          repsBlockView,
+                                          timerBlockView ],
+                                      axis: .vertical,
+                                      spacing: 15)
+        stackViewBlocks.distribution = .equalSpacing
         
-        
+        choseRepeatOrTimerLabel.textAlignment = .center
+        setsBlockView.slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
+        repsBlockView.slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
+        timerBlockView.slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
+        timerBlockView.currentValueSliderLabel.text = "1min 30 sec"
+        timerBlockView.slider.value = 30
+        setsBlockView.slider.value = setsBlockView.slider.maximumValue * 0.5
+        repsBlockView.slider.value = repsBlockView.slider.maximumValue * 0.5
         
         self.addSubview(repsOrTimerLabel)
         self.addSubview(bagroundView)
-        bagroundView.addSubview(stackViewSets)
-        bagroundView.addSubview(sliderSets)
-        bagroundView.addSubview(choseRepeatOrTimerLabel)
-        bagroundView.addSubview(stackViewReps)
-        bagroundView.addSubview(sliderReps)
-        bagroundView.addSubview(stackViewTimer)
-        bagroundView.addSubview(sliderTimer)
-        
+        bagroundView.addSubview(stackViewBlocks)
+
         repsOrTimerLabel.translatesAutoresizingMaskIntoConstraints = false
         bagroundView.translatesAutoresizingMaskIntoConstraints = false
-        setsLabel.translatesAutoresizingMaskIntoConstraints = false
-        setsCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        sliderSets.translatesAutoresizingMaskIntoConstraints = false
+        setsBlockView.translatesAutoresizingMaskIntoConstraints = false
         choseRepeatOrTimerLabel.translatesAutoresizingMaskIntoConstraints = false
-        repsLabel.translatesAutoresizingMaskIntoConstraints = false
-        repsCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        sliderReps.translatesAutoresizingMaskIntoConstraints = false
-        timerLabel.translatesAutoresizingMaskIntoConstraints = false
-        timerCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        sliderTimer.translatesAutoresizingMaskIntoConstraints = false
-        
+        repsBlockView.translatesAutoresizingMaskIntoConstraints = false
+        timerBlockView.translatesAutoresizingMaskIntoConstraints = false
         
         setConstraints()
     }
     
     @objc private func didChangeSlider(sender: UISlider) {
         
-        switch sender.tag{
-        case 0:
-            setsCountLabel.text = String(Int(sliderSets.value))
-            print(sliderSets.value)
-        case 1:
-            repsCountLabel.text = String(Int(sliderReps.value))
-            print(sliderSets.value)
-        case 2:
-            break
+        switch sender{
+        case setsBlockView.slider:
+            setsBlockView.currentValueSliderLabel.text = String(Int(sender.value))
+        case repsBlockView.slider:
+            repsBlockView.currentValueSliderLabel.text = String(Int(sender.value))
+        case timerBlockView.slider:
+            timerBlockView.currentValueSliderLabel.text = "1min \(Int(sender.value))sec"
         default:
             break
         }
-        
     }
 }
 
@@ -148,35 +112,15 @@ extension RepsOrTimerView {
             bagroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             bagroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            stackViewSets.topAnchor.constraint(equalTo: bagroundView.topAnchor, constant:20),
-            stackViewSets.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
-            stackViewSets.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
-            stackViewSets.heightAnchor.constraint(equalToConstant: 25),
+            setsBlockView.heightAnchor.constraint(equalToConstant: 60),
+            choseRepeatOrTimerLabel.heightAnchor.constraint(equalToConstant: 15),
+            repsBlockView.heightAnchor.constraint(equalToConstant: 60),
+            timerBlockView.heightAnchor.constraint(equalToConstant: 60),
             
-            sliderSets.topAnchor.constraint(equalTo: stackViewSets.bottomAnchor, constant: 3),
-            sliderSets.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
-            sliderSets.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
-            
-            choseRepeatOrTimerLabel.topAnchor.constraint(equalTo: sliderSets.bottomAnchor, constant: 10),
-            choseRepeatOrTimerLabel.centerXAnchor.constraint(equalTo: bagroundView.centerXAnchor),
-            
-            stackViewReps.topAnchor.constraint(equalTo: choseRepeatOrTimerLabel.bottomAnchor, constant: 3),
-            stackViewReps.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
-            stackViewReps.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
-            stackViewReps.heightAnchor.constraint(equalToConstant: 25),
-            
-            sliderReps.topAnchor.constraint(equalTo: stackViewReps.bottomAnchor, constant: 3),
-            sliderReps.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
-            sliderReps.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
-            
-            stackViewTimer.topAnchor.constraint(equalTo: sliderReps.bottomAnchor, constant: 15),
-            stackViewTimer.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
-            stackViewTimer.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
-            stackViewTimer.heightAnchor.constraint(equalToConstant: 25),
-            
-            sliderTimer.topAnchor.constraint(equalTo: stackViewTimer.bottomAnchor, constant: 3),
-            sliderTimer.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
-            sliderTimer.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
+            stackViewBlocks.topAnchor.constraint(equalTo: bagroundView.topAnchor, constant: 15),
+            stackViewBlocks.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor),
+            stackViewBlocks.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor),
+            stackViewBlocks.bottomAnchor.constraint(equalTo: bagroundView.bottomAnchor, constant: -15),
         ])
     }
 }

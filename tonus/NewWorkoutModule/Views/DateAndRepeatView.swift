@@ -10,7 +10,6 @@ import UIKit
 class DateAndRepeatView: UIView {
 
     private let dateAndRepeatLabel = UILabel(text: "Date And Repeat", textColor: .specialLightBrown, font: .robotoMedium14()!)
-    
     private let bagroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .specialBrown
@@ -19,7 +18,6 @@ class DateAndRepeatView: UIView {
     }()
     
     private let dateLabel = UILabel(text: "Date", textColor: .specialGray, font: .robotoMedium18()!)
-    
     private let switchLabel = UILabel(text: "Repeat every 7 days", textColor: .specialGray, font: .robotoMedium18()!)
     
     private let datePicker: UIDatePicker = {
@@ -30,11 +28,13 @@ class DateAndRepeatView: UIView {
         datePicker.subviews[0].subviews[0].subviews[0].alpha = 0
         return datePicker
     }()
-    
     private var switchReapeat: UISwitch = {
         let switchReapeat = UISwitch()
         return switchReapeat
     }()
+    
+    private var dateStackView = UIStackView()
+    private var switchStackView = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -49,14 +49,21 @@ class DateAndRepeatView: UIView {
     private func setupUI() {
         self.backgroundColor = .clear
         
+        dateStackView = UIStackView(arrangedSubviews: [dateLabel, datePicker],
+                                    axis: .horizontal,
+                                    spacing: 10)
+        switchStackView = UIStackView(arrangedSubviews: [switchLabel, switchReapeat],
+                                  axis: .horizontal,
+                                  spacing: 10)
+        
+        dateStackView.distribution = .equalSpacing
+        switchStackView.distribution = .equalSpacing
+        
         self.addSubview(dateAndRepeatLabel)
         self.addSubview(bagroundView)
-        
-        bagroundView.addSubview(dateLabel)
-        bagroundView.addSubview(switchLabel)
-        bagroundView.addSubview(datePicker)
-        bagroundView.addSubview(switchReapeat)
-        
+        bagroundView.addSubview(dateStackView)
+        bagroundView.addSubview(switchStackView)
+    
         dateAndRepeatLabel.translatesAutoresizingMaskIntoConstraints = false
         bagroundView.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -82,19 +89,29 @@ extension DateAndRepeatView {
             bagroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             bagroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            dateLabel.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: -20),
-            dateLabel.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
-            dateLabel.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
+            dateStackView.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: -15),
+            dateStackView.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
+            dateStackView.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
             
-            datePicker.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: -20),
-            datePicker.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
+            switchStackView.topAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: 10),
+            switchStackView.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
+            switchStackView.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -20),
             
-            switchLabel.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: 20),
-            switchLabel.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
-            switchLabel.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
             
-            switchReapeat.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: 20),
-            switchReapeat.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -20),
+            
+//            dateLabel.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: -20),
+//            dateLabel.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
+//            dateLabel.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
+//
+//            datePicker.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: -20),
+//            datePicker.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
+//
+//            switchLabel.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: 20),
+//            switchLabel.leadingAnchor.constraint(equalTo: bagroundView.leadingAnchor, constant: 10),
+//            switchLabel.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -10),
+//
+//            switchReapeat.centerYAnchor.constraint(equalTo: bagroundView.centerYAnchor, constant: 20),
+//            switchReapeat.trailingAnchor.constraint(equalTo: bagroundView.trailingAnchor, constant: -20),
         
         ])
     }

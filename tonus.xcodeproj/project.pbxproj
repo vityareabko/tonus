@@ -12,8 +12,8 @@
 		573A7C6D29B0F51A006FF7DE /* WorkoutInputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C6C29B0F51A006FF7DE /* WorkoutInputNameView.swift */; };
 		573A7C6F29B0FE71006FF7DE /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */; };
 		573A7C7129B1085C006FF7DE /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */; };
-		573A7C7829B26E79006FF7DE /* ParamsAndSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C7729B26E78006FF7DE /* ParamsAndSliderView.swift */; };
-		573A7C7A29B2700E006FF7DE /* UISlider + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C7929B2700E006FF7DE /* UISlider + Extensions.swift */; };
+		573A7C8229B28B44006FF7DE /* UIGreenSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */; };
+		573A7C8429B28BC4006FF7DE /* WrapperSliderAndLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C8329B28BC4006FF7DE /* WrapperSliderAndLabelView.swift */; };
 		579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2A29A41A080090D715 /* AppDelegate.swift */; };
 		579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2C29A41A080090D715 /* SceneDelegate.swift */; };
 		579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2E29A41A080090D715 /* MainViewController.swift */; };
@@ -48,8 +48,8 @@
 		573A7C6C29B0F51A006FF7DE /* WorkoutInputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInputNameView.swift; sourceTree = "<group>"; };
 		573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
 		573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
-		573A7C7729B26E78006FF7DE /* ParamsAndSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamsAndSliderView.swift; sourceTree = "<group>"; };
-		573A7C7929B2700E006FF7DE /* UISlider + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISlider + Extensions.swift"; sourceTree = "<group>"; };
+		573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGreenSlider.swift; sourceTree = "<group>"; };
+		573A7C8329B28BC4006FF7DE /* WrapperSliderAndLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperSliderAndLabelView.swift; sourceTree = "<group>"; };
 		579A0C2729A41A080090D715 /* tonus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tonus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		579A0C2A29A41A080090D715 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		579A0C2C29A41A080090D715 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,12 +126,21 @@
 			path = reusableUIViews;
 			sourceTree = "<group>";
 		};
-		573A7C7429B26DE9006FF7DE /* specialUIWrappers */ = {
+		573A7C7429B26DE9006FF7DE /* SpecialUIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				573A7C7729B26E78006FF7DE /* ParamsAndSliderView.swift */,
+				573A7C8529B28BD1006FF7DE /* configSubviews */,
+				573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */,
 			);
-			path = specialUIWrappers;
+			path = SpecialUIComponents;
+			sourceTree = "<group>";
+		};
+		573A7C8529B28BD1006FF7DE /* configSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				573A7C8329B28BC4006FF7DE /* WrapperSliderAndLabelView.swift */,
+			);
+			path = configSubviews;
 			sourceTree = "<group>";
 		};
 		579A0C1E29A41A080090D715 = {
@@ -158,7 +167,7 @@
 				57FAE50D29AA10DB004DFE2E /* StatisticModule */,
 				579A0C3E29A41F710090D715 /* MainModule */,
 				57DD8F0329AD4DF000B12D06 /* NavigationModule */,
-				57FAE4BB29A6BA1E004DFE2E /* Extenstions */,
+				57FAE4BB29A6BA1E004DFE2E /* Extenstions + UIComponents */,
 				579A0C4029A41FAE0090D715 /* Application */,
 				579A0C3F29A41F830090D715 /* Supporting */,
 			);
@@ -221,19 +230,18 @@
 			path = NavigationModule;
 			sourceTree = "<group>";
 		};
-		57FAE4BB29A6BA1E004DFE2E /* Extenstions */ = {
+		57FAE4BB29A6BA1E004DFE2E /* Extenstions + UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				573A7C7429B26DE9006FF7DE /* specialUIWrappers */,
+				573A7C7429B26DE9006FF7DE /* SpecialUIComponents */,
 				57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */,
 				57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */,
 				57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */,
 				57FAE50B29A97448004DFE2E /* UIStackView + Extensions.swift */,
 				57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */,
 				57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */,
-				573A7C7929B2700E006FF7DE /* UISlider + Extensions.swift */,
 			);
-			path = Extenstions;
+			path = "Extenstions + UIComponents";
 			sourceTree = "<group>";
 		};
 		57FAE4C429A6CB11004DFE2E /* Fonts */ = {
@@ -382,23 +390,23 @@
 			files = (
 				57FAE50A29A9190B004DFE2E /* WorkoutTasksTableViewCell.swift in Sources */,
 				579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */,
-				573A7C7A29B2700E006FF7DE /* UISlider + Extensions.swift in Sources */,
 				573A7C6D29B0F51A006FF7DE /* WorkoutInputNameView.swift in Sources */,
 				579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */,
 				57FAE51229AA1154004DFE2E /* StatisticsViewController.swift in Sources */,
 				573A7C6F29B0FE71006FF7DE /* DateAndRepeatView.swift in Sources */,
+				573A7C8429B28BC4006FF7DE /* WrapperSliderAndLabelView.swift in Sources */,
 				57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */,
 				57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */,
 				57FAE51729AA2249004DFE2E /* StatisticTableView.swift in Sources */,
 				57FAE4D129A6EB02004DFE2E /* CalendarCollectionViewCell.swift in Sources */,
 				57FAE50129A8F786004DFE2E /* ViewWhenTableIsEmty.swift in Sources */,
+				573A7C8229B28B44006FF7DE /* UIGreenSlider.swift in Sources */,
 				57FAE51429AA11EF004DFE2E /* UILabel + Extensions.swift in Sources */,
 				57FAE4CD29A6E896004DFE2E /* CalendarCollectionView.swift in Sources */,
 				57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */,
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
 				57FAE51B29AA7FD7004DFE2E /* UIImage + Extension.swift in Sources */,
 				57FAE50829A91761004DFE2E /* WorkoutTasksTableView.swift in Sources */,
-				573A7C7829B26E79006FF7DE /* ParamsAndSliderView.swift in Sources */,
 				573A7C7129B1085C006FF7DE /* RepsOrTimerView.swift in Sources */,
 				57FAE50329A91574004DFE2E /* WorkOutTasksView.swift in Sources */,
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
