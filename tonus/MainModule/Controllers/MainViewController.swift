@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.setTitle("Add Workout", for: .normal)
         button.setImage(UIImage(named: "plus"), for: .normal)
+        button.addTarget(self, action: #selector(didTappedAddWorkoutButton), for: .touchUpInside)
         return button
     }()
     
@@ -66,6 +67,12 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Selectors
+    
+    @objc private func didTappedAddWorkoutButton(){
+        let vc = NewWorkoutController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
     
 }
 

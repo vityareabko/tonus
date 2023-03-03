@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		573A7C6829B0B5E5006FF7DE /* NewWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C6729B0B5E5006FF7DE /* NewWorkoutController.swift */; };
+		573A7C6B29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C6A29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift */; };
+		573A7C6D29B0F51A006FF7DE /* WorkoutInputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C6C29B0F51A006FF7DE /* WorkoutInputNameView.swift */; };
+		573A7C6F29B0FE71006FF7DE /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */; };
+		573A7C7129B1085C006FF7DE /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */; };
+		573A7C7829B26E79006FF7DE /* ParamsAndSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C7729B26E78006FF7DE /* ParamsAndSliderView.swift */; };
+		573A7C7A29B2700E006FF7DE /* UISlider + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C7929B2700E006FF7DE /* UISlider + Extensions.swift */; };
 		579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2A29A41A080090D715 /* AppDelegate.swift */; };
 		579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2C29A41A080090D715 /* SceneDelegate.swift */; };
 		579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2E29A41A080090D715 /* MainViewController.swift */; };
@@ -36,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		573A7C6729B0B5E5006FF7DE /* NewWorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutController.swift; sourceTree = "<group>"; };
+		573A7C6A29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndCloseButtonUIView.swift; sourceTree = "<group>"; };
+		573A7C6C29B0F51A006FF7DE /* WorkoutInputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInputNameView.swift; sourceTree = "<group>"; };
+		573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
+		573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
+		573A7C7729B26E78006FF7DE /* ParamsAndSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamsAndSliderView.swift; sourceTree = "<group>"; };
+		573A7C7929B2700E006FF7DE /* UISlider + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISlider + Extensions.swift"; sourceTree = "<group>"; };
 		579A0C2729A41A080090D715 /* tonus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tonus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		579A0C2A29A41A080090D715 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		579A0C2C29A41A080090D715 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +91,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		573A7C6329B0B5AB006FF7DE /* NewWorkoutModule */ = {
+			isa = PBXGroup;
+			children = (
+				573A7C6529B0B5BF006FF7DE /* Contrtollers */,
+				573A7C6429B0B5B9006FF7DE /* Views */,
+			);
+			path = NewWorkoutModule;
+			sourceTree = "<group>";
+		};
+		573A7C6429B0B5B9006FF7DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				573A7C6C29B0F51A006FF7DE /* WorkoutInputNameView.swift */,
+				573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */,
+				573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		573A7C6529B0B5BF006FF7DE /* Contrtollers */ = {
+			isa = PBXGroup;
+			children = (
+				573A7C6729B0B5E5006FF7DE /* NewWorkoutController.swift */,
+			);
+			path = Contrtollers;
+			sourceTree = "<group>";
+		};
+		573A7C6929B0B6DF006FF7DE /* reusableUIViews */ = {
+			isa = PBXGroup;
+			children = (
+				573A7C6A29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift */,
+			);
+			path = reusableUIViews;
+			sourceTree = "<group>";
+		};
+		573A7C7429B26DE9006FF7DE /* specialUIWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				573A7C7729B26E78006FF7DE /* ParamsAndSliderView.swift */,
+			);
+			path = specialUIWrappers;
+			sourceTree = "<group>";
+		};
 		579A0C1E29A41A080090D715 = {
 			isa = PBXGroup;
 			children = (
@@ -96,11 +153,13 @@
 		579A0C2929A41A080090D715 /* tonus */ = {
 			isa = PBXGroup;
 			children = (
-				57DD8F0329AD4DF000B12D06 /* NavigationModule */,
+				573A7C6929B0B6DF006FF7DE /* reusableUIViews */,
+				573A7C6329B0B5AB006FF7DE /* NewWorkoutModule */,
 				57FAE50D29AA10DB004DFE2E /* StatisticModule */,
-				579A0C4029A41FAE0090D715 /* Application */,
 				579A0C3E29A41F710090D715 /* MainModule */,
+				57DD8F0329AD4DF000B12D06 /* NavigationModule */,
 				57FAE4BB29A6BA1E004DFE2E /* Extenstions */,
+				579A0C4029A41FAE0090D715 /* Application */,
 				579A0C3F29A41F830090D715 /* Supporting */,
 			);
 			path = tonus;
@@ -165,12 +224,14 @@
 		57FAE4BB29A6BA1E004DFE2E /* Extenstions */ = {
 			isa = PBXGroup;
 			children = (
+				573A7C7429B26DE9006FF7DE /* specialUIWrappers */,
 				57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */,
 				57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */,
 				57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */,
 				57FAE50B29A97448004DFE2E /* UIStackView + Extensions.swift */,
 				57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */,
 				57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */,
+				573A7C7929B2700E006FF7DE /* UISlider + Extensions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -321,8 +382,11 @@
 			files = (
 				57FAE50A29A9190B004DFE2E /* WorkoutTasksTableViewCell.swift in Sources */,
 				579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */,
+				573A7C7A29B2700E006FF7DE /* UISlider + Extensions.swift in Sources */,
+				573A7C6D29B0F51A006FF7DE /* WorkoutInputNameView.swift in Sources */,
 				579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */,
 				57FAE51229AA1154004DFE2E /* StatisticsViewController.swift in Sources */,
+				573A7C6F29B0FE71006FF7DE /* DateAndRepeatView.swift in Sources */,
 				57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */,
 				57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */,
 				57FAE51729AA2249004DFE2E /* StatisticTableView.swift in Sources */,
@@ -334,13 +398,17 @@
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
 				57FAE51B29AA7FD7004DFE2E /* UIImage + Extension.swift in Sources */,
 				57FAE50829A91761004DFE2E /* WorkoutTasksTableView.swift in Sources */,
+				573A7C7829B26E79006FF7DE /* ParamsAndSliderView.swift in Sources */,
+				573A7C7129B1085C006FF7DE /* RepsOrTimerView.swift in Sources */,
 				57FAE50329A91574004DFE2E /* WorkOutTasksView.swift in Sources */,
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
 				57FAE50C29A97448004DFE2E /* UIStackView + Extensions.swift in Sources */,
+				573A7C6B29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift in Sources */,
 				57DD8F0729AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift in Sources */,
 				57FAE52629AAAA59004DFE2E /* HeaderUIView.swift in Sources */,
 				579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */,
 				57FAE51929AA3478004DFE2E /* StatisticTableViewCell.swift in Sources */,
+				573A7C6829B0B5E5006FF7DE /* NewWorkoutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

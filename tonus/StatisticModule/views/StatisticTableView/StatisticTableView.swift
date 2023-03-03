@@ -43,9 +43,7 @@ extension StatisticTableView : UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticTableViewCell.identifier, for: indexPath) as? StatisticTableViewCell else {
             fatalError("The table view could not dequeue a StatisticTableViewCell in StatisticTableView")
         }
-
-        print("()")
-        
+      
         return cell
     }
 }
