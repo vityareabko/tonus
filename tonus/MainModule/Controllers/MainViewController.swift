@@ -85,12 +85,12 @@ extension MainViewController {
             header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             header.heightAnchor.constraint(equalToConstant: 120),
             
-            addWorkoutButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 10),
+            addWorkoutButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
             addWorkoutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
             addWorkoutButton.widthAnchor.constraint(equalToConstant: 80),
             addWorkoutButton.heightAnchor.constraint(equalToConstant: 80),
             
-            weatherUIView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 10),
+            weatherUIView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
             weatherUIView.leadingAnchor.constraint(equalTo: addWorkoutButton.trailingAnchor, constant: 15),
             weatherUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
             weatherUIView.heightAnchor.constraint(equalToConstant: 80),

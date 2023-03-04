@@ -22,6 +22,8 @@
 		579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C4529A449B30090D715 /* WeatherUIView.swift */; };
 		579A0C4C29A458170090D715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579A0C4B29A458170090D715 /* Assets.xcassets */; };
 		57DD8F0729AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */; };
+		57F9964729B3BA930062E8E9 /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9964629B3BA930062E8E9 /* UIButton + Extensions.swift */; };
+		57F9964929B3BC910062E8E9 /* CircleCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9964829B3BC910062E8E9 /* CircleCloseButton.swift */; };
 		57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */; };
 		57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */; };
 		57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */; };
@@ -60,6 +62,8 @@
 		579A0C4529A449B30090D715 /* WeatherUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUIView.swift; sourceTree = "<group>"; };
 		579A0C4B29A458170090D715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerMainTabBarController.swift; sourceTree = "<group>"; };
+		57F9964629B3BA930062E8E9 /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
+		57F9964829B3BC910062E8E9 /* CircleCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCloseButton.swift; sourceTree = "<group>"; };
 		57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			children = (
 				573A7C8529B28BD1006FF7DE /* configSubviews */,
 				573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */,
+				57F9964829B3BC910062E8E9 /* CircleCloseButton.swift */,
 			);
 			path = SpecialUIComponents;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				57FAE50B29A97448004DFE2E /* UIStackView + Extensions.swift */,
 				57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */,
 				57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */,
+				57F9964629B3BA930062E8E9 /* UIButton + Extensions.swift */,
 			);
 			path = "Extenstions + UIComponents";
 			sourceTree = "<group>";
@@ -407,8 +413,10 @@
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
 				57FAE51B29AA7FD7004DFE2E /* UIImage + Extension.swift in Sources */,
 				57FAE50829A91761004DFE2E /* WorkoutTasksTableView.swift in Sources */,
+				57F9964729B3BA930062E8E9 /* UIButton + Extensions.swift in Sources */,
 				573A7C7129B1085C006FF7DE /* RepsOrTimerView.swift in Sources */,
 				57FAE50329A91574004DFE2E /* WorkOutTasksView.swift in Sources */,
+				57F9964929B3BC910062E8E9 /* CircleCloseButton.swift in Sources */,
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
 				57FAE50C29A97448004DFE2E /* UIStackView + Extensions.swift in Sources */,
 				573A7C6B29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift in Sources */,

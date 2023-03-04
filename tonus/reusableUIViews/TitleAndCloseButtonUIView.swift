@@ -13,15 +13,14 @@ class TitleAndCloseButtonUIView: UIView {
     
     var clouser: (() -> Void)?
 
-    
-    var closeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
-        button.addTarget(self, action: #selector(didTappedCloseButton), for: .touchUpInside)
-        return button
-    }()
+    private var closeButton = CircleCloseButton()
+//    var closeButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
+//        button.addTarget(self, action: #selector(didTappedCloseButton), for: .touchUpInside)
+//        return button
+//    }()
 
-    
     init(title: String) {
         super.init(frame: .zero)
         titleLabel.text = title
@@ -33,23 +32,19 @@ class TitleAndCloseButtonUIView: UIView {
     }
     
     @objc func didTappedCloseButton() {
-        print("tap")
         clouser!()
     }
     
     private func setupUI() {
-        self.backgroundColor = .white
+        self.backgroundColor = .clear
         
-        titleLabel.backgroundColor = .blue
-        closeButton.backgroundColor = .red
+        closeButton.addTarget(self, action: #selector(didTappedCloseButton), for: .touchUpInside)
         
         self.addSubview(titleLabel)
         self.addSubview(closeButton)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         closeButton.translatesAutoresizingMaskIntoConstraints = false
-        
-//        contentView.addSubview(closeButton)
-        
+
         setConstraints()
     }
 }
@@ -65,7 +60,6 @@ extension TitleAndCloseButtonUIView {
             closeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             closeButton.widthAnchor.constraint(equalToConstant: 33),
             closeButton.heightAnchor.constraint(equalToConstant: 33),
-            
         ])
     }
 }

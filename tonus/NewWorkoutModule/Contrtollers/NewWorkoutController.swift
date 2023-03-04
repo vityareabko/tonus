@@ -9,26 +9,11 @@ import UIKit
 
 class NewWorkoutController: UIViewController {
     
-//    private let titleAndCloseButtonUIView = TitleAndCloseButtonUIView(title: "NEW WORKOUT")
+    private let titleAndCloseButtonUIView = TitleAndCloseButtonUIView(title: "NEW WORKOUT")
     
-    private let titleLabel = UILabel(text: "NEW WORKOUT", textColor: .specialGray, font: .robotoMedium24()!)
-    
-    private lazy var closeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
-        button.addTarget(self, action: #selector(didTappedCloseButton), for: .touchUpInside)
-        return button
-    }()
-    
-    private let saveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("SAVE", for: .normal)
-        button.backgroundColor = .specialLightGreen
-        button.tintColor = .white
-        button.layer.cornerRadius = 10
-        button.titleLabel?.font = .robotoBold16()!
-        return button
-    }()
+    private let saveButton = UIButton(text: "SAVE",
+                                      bagroungColor: .specialLightGreen,
+                                      textColor: .white)
     
     
     private let workoutInputNameView = WorkoutInputNameView()
@@ -44,19 +29,16 @@ class NewWorkoutController: UIViewController {
     private func setupUI() {
         self.view.backgroundColor = .specialMainBackground
                
-//        titleAndCloseButtonUIView.clouser = { [weak self] in
-//            print(1)
-//            self?.dismiss(animated: true)
-//        }
+        titleAndCloseButtonUIView.clouser = { [weak self] in
+            self?.dismiss(animated: true)
+        }
 
-        self.view.addSubview(titleLabel)
-        self.view.addSubview(closeButton)
+        self.view.addSubview(titleAndCloseButtonUIView)
         self.view.addSubview(workoutInputNameView)
         self.view.addSubview(dateAndRepeatView)
         self.view.addSubview(repsOrTimerView)
         self.view.addSubview(saveButton)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        titleAndCloseButtonUIView.translatesAutoresizingMaskIntoConstraints = false
         workoutInputNameView.translatesAutoresizingMaskIntoConstraints = false
         dateAndRepeatView.translatesAutoresizingMaskIntoConstraints = false
         repsOrTimerView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +48,6 @@ class NewWorkoutController: UIViewController {
     }
     
     @objc private func didTappedCloseButton(){
-        print("tap")
         dismiss(animated: true)
     }
 }
@@ -75,15 +56,12 @@ extension NewWorkoutController {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            titleAndCloseButtonUIView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            titleAndCloseButtonUIView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            titleAndCloseButtonUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            titleAndCloseButtonUIView.heightAnchor.constraint(equalToConstant: 30),
             
-            closeButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            closeButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-            closeButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.08),
-            closeButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.08),
-
-            workoutInputNameView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            workoutInputNameView.topAnchor.constraint(equalTo: titleAndCloseButtonUIView.bottomAnchor, constant: 5),
             workoutInputNameView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             workoutInputNameView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             workoutInputNameView.heightAnchor.constraint(equalToConstant: 60),
@@ -102,7 +80,6 @@ extension NewWorkoutController {
             saveButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             saveButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             saveButton.heightAnchor.constraint(equalToConstant: 50),
-            
         ])
     }
 }

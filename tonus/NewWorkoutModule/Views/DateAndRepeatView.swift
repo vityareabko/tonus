@@ -10,12 +10,14 @@ import UIKit
 class DateAndRepeatView: UIView {
 
     private let dateAndRepeatLabel = UILabel(text: "Date And Repeat", textColor: .specialLightBrown, font: .robotoMedium14()!)
+    
     private let bagroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .specialBrown
         view.layer.cornerRadius = 10
         return view
     }()
+    
     
     private let dateLabel = UILabel(text: "Date", textColor: .specialGray, font: .robotoMedium18()!)
     private let switchLabel = UILabel(text: "Repeat every 7 days", textColor: .specialGray, font: .robotoMedium18()!)
@@ -28,6 +30,7 @@ class DateAndRepeatView: UIView {
         datePicker.subviews[0].subviews[0].subviews[0].alpha = 0
         return datePicker
     }()
+    
     private var switchReapeat: UISwitch = {
         let switchReapeat = UISwitch()
         return switchReapeat
