@@ -11,8 +11,8 @@ class WeatherUIView: UIView {
     
     // MARK: - UI Components
     
-    private let weatherTitleLabel = UILabel(text: "Солнечно", textColor: .specialBlack, font: .robotoBold16()!)
-    private let weatherSubtitleLabel = UILabel(text: "Хорошая погода, чтобы позаниматься на улице", textColor: .specialLightBrown, font: .robotoMedium14()!)
+    private let weatherTitleLabel = UILabel(text: "Солнечно", textColor: .specialBlack, font: .robotoBold16())
+    private let weatherSubtitleLabel = UILabel(text: "Хорошая погода, чтобы позаниматься на улице", textColor: .specialLightBrown, font: .robotoMedium14())
     private let weatherStatusIconWeather = UIImageView(nameImage: "sunny")
 
     // MARK: - Init

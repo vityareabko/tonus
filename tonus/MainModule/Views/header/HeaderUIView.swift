@@ -10,7 +10,7 @@ import UIKit
 class HeaderUIView: UIView {
     
     private let calendarUIView = CalendarUIView()
-    private let userNameLabel = UILabel(text: "Jhon Smith", textColor: .specialGray, font: .robotoMedium24()!)
+    private let userNameLabel = UILabel(text: "Jhon Smith", textColor: .specialGray, font: .robotoMedium24())
     let userImage = UIImageView(nameImage: "")
     
 

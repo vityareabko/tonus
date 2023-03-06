@@ -9,7 +9,7 @@ import UIKit
 
 class TitleAndCloseButtonUIView: UIView {
     
-    private let titleLabel = UILabel(text: "Error", textColor: .specialGray, font: .robotoMedium24()!)
+    private let titleLabel = UILabel(text: "Error", textColor: .specialGray, font: .robotoMedium24())
     
     var clouser: (() -> Void)?
 

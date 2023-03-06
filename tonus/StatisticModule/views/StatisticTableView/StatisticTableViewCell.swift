@@ -17,16 +17,16 @@ class StatisticTableViewCell: UITableViewCell {
     // MARK: - UI Components
     private let cellTitleLabel = UILabel(text: "Biceps",
                                          textColor: .specialGray,
-                                         font: .robotoBold24()!)
+                                         font: .robotoBold24())
     private let cellSubtitleBeforeLable = UILabel(text: "Before 18",
                                                   textColor: .specialLightBrown,
-                                                  font: .robotoMedium14()!)
+                                                  font: .robotoMedium14())
     private let cellSubtitleNowLable = UILabel(text: "Now 20",
                                                textColor: .specialLightBrown,
-                                               font: .robotoMedium14()!)
+                                               font: .robotoMedium14())
     private let cellCountLable = UILabel(text: "0",
                                          textColor: .specialYellow,
-                                         font: .robotoMedium24()!)
+                                         font: .robotoMedium24())
     private let customSeparator : UIView = {
         let view = UIView()
         view.backgroundColor = .specialLine

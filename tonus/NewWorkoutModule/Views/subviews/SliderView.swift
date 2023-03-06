@@ -1,5 +1,5 @@
 //
-//  WrapperSliderAndLabelView.swift
+//  SliderView.swift
 //  tonus
 //
 //  Created by Витя Рябко on 03/03/23.
@@ -7,26 +7,52 @@
 
 import UIKit
 
-class WrapperSliderAndLabelView : UIView {
+
+protocol SliderViewProtocol : AnyObject {
+    func changeValue(type: SlideType, value: Int)
+}
+
+class SliderView : UIView {
     
-    let slider = UIGreenSlider()
+    weak var delegate : SliderViewProtocol?
+    
+    private lazy var slider = UIGreenSlider()
+    
     private let nameLabel = UILabel(text: "",
                                     textColor: .specialGray,
-                                    font: .robotoMedium18()!)
-    let currentValueSliderLabel = UILabel(text: "",
+                                    font: .robotoMedium18())
+    private let currentValueSliderLabel = UILabel(text: "",
                                              textColor: .specialGray,
-                                             font: .robotoMedium24()!)
+                                             font: .robotoMedium24())
     
     private var stackView = UIStackView()
+    private var sliderType: SlideType?
     
-    init(name: String, minValue: Float, maxValue: Float){
+    public var isActive: Bool = true {
+        didSet{
+            if self.isActive {
+                nameLabel.alpha = 1
+                currentValueSliderLabel.alpha = 1
+                slider.alpha = 1
+            }else {
+                nameLabel.alpha = 0.5
+                currentValueSliderLabel.alpha = 0.5
+                slider.alpha = 0.5
+                currentValueSliderLabel.text = "0"
+                slider.value = 0
+            }
+        }
+    }
+    
+    init(name: String, minValue: Float, maxValue: Float, sliderType: SlideType){
         super.init(frame: .zero)
         
         nameLabel.text = name
-        currentValueSliderLabel.text = String(Int(maxValue * 0.5))
-        print(maxValue * 0.5)
+        currentValueSliderLabel.text = "\(Int(0))"
         self.slider.minimumValue = minValue
         self.slider.maximumValue = maxValue
+        self.slider.addTarget(self, action: #selector(didChangedValueSlider), for: .valueChanged)
+        self.sliderType = sliderType
         
         setupUI()
     }
@@ -34,6 +60,8 @@ class WrapperSliderAndLabelView : UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+     
     
     
     private func setupUI() {
@@ -54,9 +82,15 @@ class WrapperSliderAndLabelView : UIView {
         
         setConstraints()
     }
+    
+    @objc private func didChangedValueSlider() {
+        currentValueSliderLabel.text = sliderType == .timer ? "\(Int(slider.value).getTimeFromSecond())" : "\(Int(slider.value))"
+        guard let sliderType = sliderType else { return }
+        delegate?.changeValue(type: sliderType, value: Int(slider.value))
+    }
 }
 
-extension WrapperSliderAndLabelView {
+extension SliderView {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: self.topAnchor),

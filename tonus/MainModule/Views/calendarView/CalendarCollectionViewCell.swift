@@ -15,8 +15,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
-    private let cellWeekDayLabel = UILabel(text: "wd", textColor: .white, font: .robotoBold16()!)
-    private let cellNumberOfDayLabel = UILabel(text: "22", textColor: .white, font: .robotoBold20()!)
+    private let cellWeekDayLabel = UILabel(text: "wd", textColor: .white, font: .robotoBold16())
+    private let cellNumberOfDayLabel = UILabel(text: "22", textColor: .white, font: .robotoBold20())
 
     // MARK: - Init
     

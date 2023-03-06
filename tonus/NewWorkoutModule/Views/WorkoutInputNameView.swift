@@ -9,9 +9,9 @@ import UIKit
 
 class WorkoutInputNameView: UIView {
     
-    private let nameLabel = UILabel(text: "Name", textColor: .specialLightBrown, font: .robotoMedium14()!)
+    private let nameLabel = UILabel(text: "Name", textColor: .specialLightBrown, font: .robotoMedium14())
 
-    let nameTextField: UITextField = {
+    private let nameTextField: UITextField = {
         let tf = UITextField()
         tf.textColor = .specialGray
         tf.textAlignment = .left
@@ -50,6 +50,10 @@ class WorkoutInputNameView: UIView {
         setConstraints()
     }
     
+    public func getContainTextField() -> String {
+        guard let containTF = nameTextField.text else { return "" }
+        return containTF
+    }
 }
 
 extension WorkoutInputNameView {

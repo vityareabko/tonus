@@ -14,8 +14,8 @@ class StatisticsViewController: UIViewController {
     let statisticTableView = StatisticTableView()
     
     // MARK: - UI Components
-    private let headerLabel = UILabel(text: "STATISTICS", textColor: .specialGray, font: .robotoMedium24()!)
-    private let exirciceLabel = UILabel(text: "Exircises", textColor: .specialLightBrown, font: .robotoMedium14()! )
+    private let headerLabel = UILabel(text: "STATISTICS", textColor: .specialGray, font: .robotoMedium24())
+    private let exirciceLabel = UILabel(text: "Exircises", textColor: .specialLightBrown, font: .robotoMedium14())
     
     private lazy var segmentControl : UISegmentedControl = {
         let segmentControl = UISegmentedControl(items: ["Week", "Month"])

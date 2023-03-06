@@ -15,9 +15,9 @@ class WorkoutTasksTableViewCell : UITableViewCell {
     // MARK: - UI Components
     
     private let workoutTypeTaskIcon = UIImageView(nameImage: "sunny")
-    private let titleTask = UILabel(text: "Pull Ups", textColor: .specialBlack, font: .robotoMedium22()!)
-    private let subTitleReps = UILabel(text: "Reps. 10", textColor: .specialGray, font: .robotoMedium16()!)
-    private let subTitleSets = UILabel(text: "Sets 2", textColor: .specialGray, font: .robotoMedium16()!)
+    private let titleTask = UILabel(text: "Pull Ups", textColor: .specialBlack, font: .robotoMedium22())
+    private let subTitleReps = UILabel(text: "Reps. 10", textColor: .specialGray, font: .robotoMedium16())
+    private let subTitleSets = UILabel(text: "Sets 2", textColor: .specialGray, font: .robotoMedium16())
     private let stackView = UIStackView()
     
     private var bagroundCell: UIView = {

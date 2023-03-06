@@ -11,7 +11,7 @@ class RepsOrTimerView: UIView {
     
     private let repsOrTimerLabel = UILabel(text: "Reps or timer",
                                            textColor: .specialLightBrown,
-                                           font: .robotoMedium14()!)
+                                           font: .robotoMedium14())
     
     private let bagroundView: UIView = {
         let view = UIView()
@@ -20,28 +20,24 @@ class RepsOrTimerView: UIView {
         return view
     }()
     
-    private let setsBlockView = WrapperSliderAndLabelView(name: "Sets",
-                                                          minValue: 1,
-                                                          maxValue: 10)
-    
-    private let repsBlockView = WrapperSliderAndLabelView(name: "Reps",
-                                                          minValue: 1,
-                                                          maxValue: 30)
-    
-    private let timerBlockView = WrapperSliderAndLabelView(name: "Timer",
-                                                          minValue: 1,
-                                                          maxValue: 59)
+    private let setsBlockView = SliderView(name: "Sets", minValue: 1, maxValue: 10, sliderType: .sets)
+    private let repsBlockView = SliderView(name: "Reps", minValue: 1, maxValue: 30, sliderType: .reps)
+    private let timerBlockView = SliderView(name: "Timer", minValue: 1, maxValue: 600, sliderType: .timer)
     
     private let choseRepeatOrTimerLabel = UILabel(text: "Choose repeat or timer",
                                                   textColor: .specialLightBrown,
-                                                  font: .robotoMedium14()!)
+                                                  font: .robotoMedium14())
 
     private var stackViewBlocks = UIStackView()
+    public var (sets, reps, timer) = (0,0,0)
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
         setupUI()
+        setsBlockView.delegate = self
+        repsBlockView.delegate = self
+        timerBlockView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -61,13 +57,6 @@ class RepsOrTimerView: UIView {
         stackViewBlocks.distribution = .equalSpacing
         
         choseRepeatOrTimerLabel.textAlignment = .center
-        setsBlockView.slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
-        repsBlockView.slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
-        timerBlockView.slider.addTarget(self, action: #selector(didChangeSlider), for: .valueChanged)
-        timerBlockView.currentValueSliderLabel.text = "1min 30 sec"
-        timerBlockView.slider.value = 30
-        setsBlockView.slider.value = setsBlockView.slider.maximumValue * 0.5
-        repsBlockView.slider.value = repsBlockView.slider.maximumValue * 0.5
         
         self.addSubview(repsOrTimerLabel)
         self.addSubview(bagroundView)
@@ -82,18 +71,23 @@ class RepsOrTimerView: UIView {
         
         setConstraints()
     }
-    
-    @objc private func didChangeSlider(sender: UISlider) {
-        
-        switch sender{
-        case setsBlockView.slider:
-            setsBlockView.currentValueSliderLabel.text = String(Int(sender.value))
-        case repsBlockView.slider:
-            repsBlockView.currentValueSliderLabel.text = String(Int(sender.value))
-        case timerBlockView.slider:
-            timerBlockView.currentValueSliderLabel.text = "1min \(Int(sender.value))sec"
-        default:
-            break
+}
+
+extension RepsOrTimerView : SliderViewProtocol {
+    func changeValue(type: SlideType, value: Int) {
+        switch type {
+        case .sets:
+            sets = value
+        case .reps:
+            reps = value
+            repsBlockView.isActive = true
+            timerBlockView.isActive = false
+            timer = 0 // обнуляем перем. из картеж который буде передан в БД
+        case .timer:
+            timer = value
+            timerBlockView.isActive = true
+            repsBlockView.isActive = false
+            reps = 0 // обнуляем перем. из картеж который буде передан в БД
         }
     }
 }
@@ -124,3 +118,4 @@ extension RepsOrTimerView {
         ])
     }
 }
+

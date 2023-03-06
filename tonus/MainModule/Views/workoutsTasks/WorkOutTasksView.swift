@@ -41,10 +41,10 @@ extension WorkOutTasksView {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            workoutTasksTableView.topAnchor.constraint(equalTo: self.topAnchor,constant: 15),
+            workoutTasksTableView.topAnchor.constraint(equalTo: self.topAnchor,constant: 0),
             workoutTasksTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             workoutTasksTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
-            workoutTasksTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15)
+            workoutTasksTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
     }
 }

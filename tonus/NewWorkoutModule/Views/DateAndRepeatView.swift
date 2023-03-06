@@ -9,7 +9,7 @@ import UIKit
 
 class DateAndRepeatView: UIView {
 
-    private let dateAndRepeatLabel = UILabel(text: "Date And Repeat", textColor: .specialLightBrown, font: .robotoMedium14()!)
+    private let dateAndRepeatLabel = UILabel(text: "Date And Repeat", textColor: .specialLightBrown, font: .robotoMedium14())
     
     private let bagroundView: UIView = {
         let view = UIView()
@@ -19,8 +19,8 @@ class DateAndRepeatView: UIView {
     }()
     
     
-    private let dateLabel = UILabel(text: "Date", textColor: .specialGray, font: .robotoMedium18()!)
-    private let switchLabel = UILabel(text: "Repeat every 7 days", textColor: .specialGray, font: .robotoMedium18()!)
+    private let dateLabel = UILabel(text: "Date", textColor: .specialGray, font: .robotoMedium18())
+    private let switchLabel = UILabel(text: "Repeat every 7 days", textColor: .specialGray, font: .robotoMedium18())
     
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
@@ -75,6 +75,10 @@ class DateAndRepeatView: UIView {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         
         setConstraints()
+    }
+    
+    public func getContainDateAndReatView() -> (date: Date, isRepeat: Bool){
+        return (datePicker.date, switchReapeat.isOn)
     }
 }
 

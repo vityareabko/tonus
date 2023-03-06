@@ -6,18 +6,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
-    
-    // MARK: - Variables
-    
-    
-    
+   
     // MARK: - UI Components
     private let header = HeaderUIView()
     private let weatherUIView = WeatherUIView()
     // let viewWhenTableIsEmty = ViewWhenTableIsEmty() // TODO: - is view whe our table is empty
     private let workOutTasksView = WorkOutTasksView()
+    private let exerciceLabel = UILabel(text: "Workout today", textColor: .specialLightBrown, font: .robotoMedium18())
     
     private lazy var addWorkoutButton: UIButton = {
         let button = UIButton(type: .system)
@@ -57,6 +55,7 @@ class MainViewController: UIViewController {
         self.view.addSubview(weatherUIView)
 //        self.view.addSubview(viewWhenTableIsEmty)
         self.view.addSubview(workOutTasksView)
+        self.view.addSubview(exerciceLabel)
         
         
         header.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +63,7 @@ class MainViewController: UIViewController {
         weatherUIView.translatesAutoresizingMaskIntoConstraints = false
 //        viewWhenTableIsEmty.translatesAutoresizingMaskIntoConstraints = false
         workOutTasksView.translatesAutoresizingMaskIntoConstraints = false
+        exerciceLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     // MARK: - Selectors
@@ -85,12 +85,12 @@ extension MainViewController {
             header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             header.heightAnchor.constraint(equalToConstant: 120),
             
-            addWorkoutButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
+            addWorkoutButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 15),
             addWorkoutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
             addWorkoutButton.widthAnchor.constraint(equalToConstant: 80),
             addWorkoutButton.heightAnchor.constraint(equalToConstant: 80),
             
-            weatherUIView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
+            weatherUIView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 15),
             weatherUIView.leadingAnchor.constraint(equalTo: addWorkoutButton.trailingAnchor, constant: 15),
             weatherUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
             weatherUIView.heightAnchor.constraint(equalToConstant: 80),
@@ -100,7 +100,12 @@ extension MainViewController {
 //            viewWhenTableIsEmty.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
 //            viewWhenTableIsEmty.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50),
             
-            workOutTasksView.topAnchor.constraint(equalTo: weatherUIView.bottomAnchor, constant: 0),
+            exerciceLabel.topAnchor.constraint(equalTo: weatherUIView.bottomAnchor, constant: 15),
+            exerciceLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            exerciceLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
+            exerciceLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            workOutTasksView.topAnchor.constraint(equalTo: exerciceLabel.bottomAnchor, constant: 0),
             workOutTasksView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             workOutTasksView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             workOutTasksView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)

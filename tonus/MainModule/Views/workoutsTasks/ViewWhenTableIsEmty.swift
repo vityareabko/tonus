@@ -13,8 +13,8 @@ class ViewWhenTableIsEmty: UIView {
     // MARK: - UI Components
     
     private let imagePeople = UIImageView(nameImage: "People")
-    private let title = UILabel(text: "NO TRAINING", textColor: .specialGray, font: .robotoMedium36()!)
-    private let subTitle = UILabel(text: "press the plus button", textColor: .specialGray, font: .robotoMedium18()!)
+    private let title = UILabel(text: "NO TRAINING", textColor: .specialGray, font: .robotoMedium36())
+    private let subTitle = UILabel(text: "press the plus button", textColor: .specialGray, font: .robotoMedium18())
 
     // MARK: - init
     

@@ -13,7 +13,7 @@
 		573A7C6F29B0FE71006FF7DE /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */; };
 		573A7C7129B1085C006FF7DE /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */; };
 		573A7C8229B28B44006FF7DE /* UIGreenSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */; };
-		573A7C8429B28BC4006FF7DE /* WrapperSliderAndLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C8329B28BC4006FF7DE /* WrapperSliderAndLabelView.swift */; };
+		573A7C8429B28BC4006FF7DE /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C8329B28BC4006FF7DE /* SliderView.swift */; };
 		579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2A29A41A080090D715 /* AppDelegate.swift */; };
 		579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2C29A41A080090D715 /* SceneDelegate.swift */; };
 		579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2E29A41A080090D715 /* MainViewController.swift */; };
@@ -24,6 +24,11 @@
 		57DD8F0729AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */; };
 		57F9964729B3BA930062E8E9 /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9964629B3BA930062E8E9 /* UIButton + Extensions.swift */; };
 		57F9964929B3BC910062E8E9 /* CircleCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9964829B3BC910062E8E9 /* CircleCloseButton.swift */; };
+		57F9969329B618EA0062E8E9 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9969229B618EA0062E8E9 /* Int + Extensions.swift */; };
+		57F9969729B622990062E8E9 /* SliderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9969629B622990062E8E9 /* SliderTypes.swift */; };
+		57F9969A29B63EF60062E8E9 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9969929B63EF60062E8E9 /* WorkoutModel.swift */; };
+		57F9969C29B647210062E8E9 /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9969B29B647210062E8E9 /* Date + Extensions.swift */; };
+		57F9969F29B64DC00062E8E9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9969E29B64DC00062E8E9 /* RealmManager.swift */; };
 		57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */; };
 		57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */; };
 		57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */; };
@@ -42,16 +47,18 @@
 		57FAE51929AA3478004DFE2E /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */; };
 		57FAE51B29AA7FD7004DFE2E /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */; };
 		57FAE52629AAAA59004DFE2E /* HeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAE52529AAAA59004DFE2E /* HeaderUIView.swift */; };
+		649B3CAAA1F788C6709241FB /* Pods_tonus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F70D4F6F97A6594FB12445 /* Pods_tonus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02F70D4F6F97A6594FB12445 /* Pods_tonus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tonus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		573A7C6729B0B5E5006FF7DE /* NewWorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutController.swift; sourceTree = "<group>"; };
 		573A7C6A29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndCloseButtonUIView.swift; sourceTree = "<group>"; };
 		573A7C6C29B0F51A006FF7DE /* WorkoutInputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInputNameView.swift; sourceTree = "<group>"; };
 		573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
 		573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
 		573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGreenSlider.swift; sourceTree = "<group>"; };
-		573A7C8329B28BC4006FF7DE /* WrapperSliderAndLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperSliderAndLabelView.swift; sourceTree = "<group>"; };
+		573A7C8329B28BC4006FF7DE /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		579A0C2729A41A080090D715 /* tonus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tonus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		579A0C2A29A41A080090D715 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		579A0C2C29A41A080090D715 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +71,11 @@
 		57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerMainTabBarController.swift; sourceTree = "<group>"; };
 		57F9964629B3BA930062E8E9 /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 		57F9964829B3BC910062E8E9 /* CircleCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCloseButton.swift; sourceTree = "<group>"; };
+		57F9969229B618EA0062E8E9 /* Int + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extensions.swift"; sourceTree = "<group>"; };
+		57F9969629B622990062E8E9 /* SliderTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTypes.swift; sourceTree = "<group>"; };
+		57F9969929B63EF60062E8E9 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
+		57F9969B29B647210062E8E9 /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
+		57F9969E29B64DC00062E8E9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
@@ -82,6 +94,8 @@
 		57FAE51829AA3478004DFE2E /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 		57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		57FAE52529AAAA59004DFE2E /* HeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderUIView.swift; sourceTree = "<group>"; };
+		B0C87AF98B43F86789510320 /* Pods-tonus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonus.debug.xcconfig"; path = "Target Support Files/Pods-tonus/Pods-tonus.debug.xcconfig"; sourceTree = "<group>"; };
+		FD3C74B068850A725AE3316A /* Pods-tonus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonus.release.xcconfig"; path = "Target Support Files/Pods-tonus/Pods-tonus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,17 +103,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649B3CAAA1F788C6709241FB /* Pods_tonus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B58404CD0B7C8093AFB6664 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02F70D4F6F97A6594FB12445 /* Pods_tonus.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2EF0757DC1F0190E9A5C9DD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0C87AF98B43F86789510320 /* Pods-tonus.debug.xcconfig */,
+				FD3C74B068850A725AE3316A /* Pods-tonus.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		573A7C6329B0B5AB006FF7DE /* NewWorkoutModule */ = {
 			isa = PBXGroup;
 			children = (
-				573A7C6529B0B5BF006FF7DE /* Contrtollers */,
+				57F9969429B6227E0062E8E9 /* Models */,
 				573A7C6429B0B5B9006FF7DE /* Views */,
+				573A7C6529B0B5BF006FF7DE /* Contrtollers */,
 			);
 			path = NewWorkoutModule;
 			sourceTree = "<group>";
@@ -107,6 +140,7 @@
 		573A7C6429B0B5B9006FF7DE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57F9969029B612080062E8E9 /* subviews */,
 				573A7C6C29B0F51A006FF7DE /* WorkoutInputNameView.swift */,
 				573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */,
 				573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */,
@@ -133,19 +167,10 @@
 		573A7C7429B26DE9006FF7DE /* SpecialUIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				573A7C8529B28BD1006FF7DE /* configSubviews */,
 				573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */,
 				57F9964829B3BC910062E8E9 /* CircleCloseButton.swift */,
 			);
 			path = SpecialUIComponents;
-			sourceTree = "<group>";
-		};
-		573A7C8529B28BD1006FF7DE /* configSubviews */ = {
-			isa = PBXGroup;
-			children = (
-				573A7C8329B28BC4006FF7DE /* WrapperSliderAndLabelView.swift */,
-			);
-			path = configSubviews;
 			sourceTree = "<group>";
 		};
 		579A0C1E29A41A080090D715 = {
@@ -153,6 +178,8 @@
 			children = (
 				579A0C2929A41A080090D715 /* tonus */,
 				579A0C2829A41A080090D715 /* Products */,
+				2EF0757DC1F0190E9A5C9DD9 /* Pods */,
+				0B58404CD0B7C8093AFB6664 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +199,7 @@
 				57FAE50D29AA10DB004DFE2E /* StatisticModule */,
 				579A0C3E29A41F710090D715 /* MainModule */,
 				57DD8F0329AD4DF000B12D06 /* NavigationModule */,
+				57F9969D29B64D740062E8E9 /* Service */,
 				57FAE4BB29A6BA1E004DFE2E /* Extenstions + UIComponents */,
 				579A0C4029A41FAE0090D715 /* Application */,
 				579A0C3F29A41F830090D715 /* Supporting */,
@@ -182,6 +210,7 @@
 		579A0C3E29A41F710090D715 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				57F9969829B63EDF0062E8E9 /* Models */,
 				579A0C4229A41FE60090D715 /* Views */,
 				579A0C4129A41FD50090D715 /* Controllers */,
 			);
@@ -235,10 +264,17 @@
 			path = NavigationModule;
 			sourceTree = "<group>";
 		};
-		57FAE4BB29A6BA1E004DFE2E /* Extenstions + UIComponents */ = {
+		57F9969029B612080062E8E9 /* subviews */ = {
 			isa = PBXGroup;
 			children = (
-				573A7C7429B26DE9006FF7DE /* SpecialUIComponents */,
+				573A7C8329B28BC4006FF7DE /* SliderView.swift */,
+			);
+			path = subviews;
+			sourceTree = "<group>";
+		};
+		57F9969129B618B70062E8E9 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
 				57FAE4BC29A6BA6F004DFE2E /* UIView + Extensions.swift */,
 				57FAE4BE29A6BAE8004DFE2E /* UIColor + Extensions.swift */,
 				57FAE4C029A6BB1F004DFE2E /* UIFont + Extensions.swift */,
@@ -246,6 +282,41 @@
 				57FAE51329AA11EF004DFE2E /* UILabel + Extensions.swift */,
 				57FAE51A29AA7FD7004DFE2E /* UIImage + Extension.swift */,
 				57F9964629B3BA930062E8E9 /* UIButton + Extensions.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		57F9969429B6227E0062E8E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57F9969629B622990062E8E9 /* SliderTypes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		57F9969829B63EDF0062E8E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57F9969929B63EF60062E8E9 /* WorkoutModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		57F9969D29B64D740062E8E9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				57F9969E29B64DC00062E8E9 /* RealmManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		57FAE4BB29A6BA1E004DFE2E /* Extenstions + UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				573A7C7429B26DE9006FF7DE /* SpecialUIComponents */,
+				57F9969129B618B70062E8E9 /* UIKit */,
+				57F9969229B618EA0062E8E9 /* Int + Extensions.swift */,
+				57F9969B29B647210062E8E9 /* Date + Extensions.swift */,
 			);
 			path = "Extenstions + UIComponents";
 			sourceTree = "<group>";
@@ -329,9 +400,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 579A0C3B29A41A0A0090D715 /* Build configuration list for PBXNativeTarget "tonus" */;
 			buildPhases = (
+				A9367F5E1C4B5AF7D7CA0ED5 /* [CP] Check Pods Manifest.lock */,
 				579A0C2329A41A080090D715 /* Sources */,
 				579A0C2429A41A080090D715 /* Frameworks */,
 				579A0C2529A41A080090D715 /* Resources */,
+				028871598BB3AC381BAE75E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -389,6 +462,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		028871598BB3AC381BAE75E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tonus/Pods-tonus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tonus/Pods-tonus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tonus/Pods-tonus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9367F5E1C4B5AF7D7CA0ED5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tonus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		579A0C2329A41A080090D715 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -399,8 +514,9 @@
 				573A7C6D29B0F51A006FF7DE /* WorkoutInputNameView.swift in Sources */,
 				579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */,
 				57FAE51229AA1154004DFE2E /* StatisticsViewController.swift in Sources */,
+				57F9969F29B64DC00062E8E9 /* RealmManager.swift in Sources */,
 				573A7C6F29B0FE71006FF7DE /* DateAndRepeatView.swift in Sources */,
-				573A7C8429B28BC4006FF7DE /* WrapperSliderAndLabelView.swift in Sources */,
+				573A7C8429B28BC4006FF7DE /* SliderView.swift in Sources */,
 				57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */,
 				57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */,
 				57FAE51729AA2249004DFE2E /* StatisticTableView.swift in Sources */,
@@ -417,9 +533,13 @@
 				573A7C7129B1085C006FF7DE /* RepsOrTimerView.swift in Sources */,
 				57FAE50329A91574004DFE2E /* WorkOutTasksView.swift in Sources */,
 				57F9964929B3BC910062E8E9 /* CircleCloseButton.swift in Sources */,
+				57F9969A29B63EF60062E8E9 /* WorkoutModel.swift in Sources */,
+				57F9969329B618EA0062E8E9 /* Int + Extensions.swift in Sources */,
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
+				57F9969C29B647210062E8E9 /* Date + Extensions.swift in Sources */,
 				57FAE50C29A97448004DFE2E /* UIStackView + Extensions.swift in Sources */,
 				573A7C6B29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift in Sources */,
+				57F9969729B622990062E8E9 /* SliderTypes.swift in Sources */,
 				57DD8F0729AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift in Sources */,
 				57FAE52629AAAA59004DFE2E /* HeaderUIView.swift in Sources */,
 				579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */,
@@ -558,6 +678,7 @@
 		};
 		579A0C3C29A41A0A0090D715 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0C87AF98B43F86789510320 /* Pods-tonus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -589,6 +710,7 @@
 		};
 		579A0C3D29A41A0A0090D715 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD3C74B068850A725AE3316A /* Pods-tonus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
