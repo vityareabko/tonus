@@ -11,14 +11,14 @@ class WorkoutInputNameView: UIView {
     
     private let nameLabel = UILabel(text: "Name", textColor: .specialLightBrown, font: .robotoMedium14())
 
-    private let nameTextField: UITextField = {
+    let nameTextField: UITextField = {
         let tf = UITextField()
         tf.textColor = .specialGray
         tf.textAlignment = .left
         tf.font = .robotoMedium18()
         tf.layer.cornerRadius = 10
         tf.backgroundColor = .specialBrown
-        tf.clearButtonMode = .always // TODO: - don't work
+        tf.clearButtonMode = .always
 
         tf.leftViewMode = .always
 //        tf.rightViewMode = .always
@@ -35,6 +35,7 @@ class WorkoutInputNameView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupUI()
+        nameTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -73,4 +74,10 @@ extension WorkoutInputNameView {
             
         ])
     }
+}
+
+extension WorkoutInputNameView : UITextFieldDelegate {
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+   }
 }

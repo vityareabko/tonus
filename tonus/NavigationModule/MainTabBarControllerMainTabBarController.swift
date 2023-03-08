@@ -22,6 +22,7 @@ class MainTabBarController : UITabBarController {
         tabBar.unselectedItemTintColor = .specialGray
         tabBar.layer.borderWidth = 2
         tabBar.layer.borderColor = UIColor.specialLightBrown.cgColor
+        tabBar.bounds = tabBar.bounds.insetBy(dx: 0, dy: -3)
     }
     
     private func setupItems(){

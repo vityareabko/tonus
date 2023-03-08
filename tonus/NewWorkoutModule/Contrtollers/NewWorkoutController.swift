@@ -7,28 +7,47 @@
 
 import UIKit
  
-// этот класс будет выполнять поручения босса через делегат в RepsOrTimerView - кстати это и есть наш босс а делегат это наш работник в классе RepsOrTimerView
-
 class NewWorkoutController: UIViewController {
     
     private let titleAndCloseButtonUIView = TitleAndCloseButtonUIView(title: "NEW WORKOUT")
     
-    private let saveButton = UIButton(text: "SAVE",
-                                      bagroungColor: .specialLightGreen,
-                                      textColor: .white)
-    
+    private let saveButton = UIButton(text: "SAVE", bagroungColor: .specialLightGreen, textColor: .white)
     private let workoutInputNameView = WorkoutInputNameView()
+    private let wrapViewForCollectionView = WrapViewForCollectionView()
     private let dateAndRepeatView = DateAndRepeatView()
     private let repsOrTimerView = RepsOrTimerView()
     
     private var workoutModel = WorkoutModel()
-    private let testImage = UIImage(named: "sunny")
+    
+    private lazy var scrollView : UIScrollView = {
+        let scrollView = UIScrollView()
+        
+        scrollView.backgroundColor = .none
+        scrollView.frame = view.bounds
+        scrollView.contentSize = contentSize
+        
+        return scrollView
+    }()
+    
+    private var contentSize: CGSize {
+        CGSize(width: self.view.frame.width, height: 750)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(touchScreen1))
+        self.view.addGestureRecognizer(recognizer)
+        recognizer.cancelsTouchesInView = false
         setupUI()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+        
+    }
+    
+    
     
     private func setupUI() {
         self.view.backgroundColor = .specialMainBackground
@@ -37,20 +56,30 @@ class NewWorkoutController: UIViewController {
             self?.dismiss(animated: true)
         }
         
+        
         saveButton.addTarget(self, action: #selector(didTappedSaveButton), for: .touchUpInside)
-
+        
         self.view.addSubview(titleAndCloseButtonUIView)
-        self.view.addSubview(workoutInputNameView)
-        self.view.addSubview(dateAndRepeatView)
-        self.view.addSubview(repsOrTimerView)
-        self.view.addSubview(saveButton)
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(workoutInputNameView)
+        scrollView.addSubview(wrapViewForCollectionView)
+        scrollView.addSubview(dateAndRepeatView)
+        scrollView.addSubview(repsOrTimerView)
+        scrollView.addSubview(saveButton)
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         titleAndCloseButtonUIView.translatesAutoresizingMaskIntoConstraints = false
         workoutInputNameView.translatesAutoresizingMaskIntoConstraints = false
+        wrapViewForCollectionView.translatesAutoresizingMaskIntoConstraints = false
         dateAndRepeatView.translatesAutoresizingMaskIntoConstraints = false
         repsOrTimerView.translatesAutoresizingMaskIntoConstraints = false
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         
         setConstraints()
+    }
+    
+    @objc private func touchScreen1(){
+        self.view.endEditing(true)
     }
     
     @objc private func didTappedCloseButton(){
@@ -61,6 +90,7 @@ class NewWorkoutController: UIViewController {
         setModel()
         print(workoutModel)
         RealmManager.shared.saveWorkoutModel(model: workoutModel)
+        dismiss(animated: true)
     }
     
     private func setModel(){
@@ -70,7 +100,7 @@ class NewWorkoutController: UIViewController {
         workoutModel.workoutDate = dateAndRepeatView.getContainDateAndReatView().date
         workoutModel.workoutRepeatEveryWeek = dateAndRepeatView.getContainDateAndReatView().isRepeat
         workoutModel.workoutNumberOfDay = getNumberOfDayofWeek
-        workoutModel.workoutImage = testImage?.pngData()
+        workoutModel.workoutImage = wrapViewForCollectionView.getSelectedImage().pngData()
         workoutModel.workoutSets = repsOrTimerView.sets
         workoutModel.workoutReps = repsOrTimerView.reps
         workoutModel.workoutTimer = repsOrTimerView.timer
@@ -87,12 +117,23 @@ extension NewWorkoutController {
             titleAndCloseButtonUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             titleAndCloseButtonUIView.heightAnchor.constraint(equalToConstant: 30),
             
-            workoutInputNameView.topAnchor.constraint(equalTo: titleAndCloseButtonUIView.bottomAnchor, constant: 5),
+            scrollView.topAnchor.constraint(equalTo: titleAndCloseButtonUIView.bottomAnchor, constant: 5),
+            scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+            
+            workoutInputNameView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 5),
             workoutInputNameView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             workoutInputNameView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             workoutInputNameView.heightAnchor.constraint(equalToConstant: 60),
             
-            dateAndRepeatView.topAnchor.constraint(equalTo: workoutInputNameView.bottomAnchor, constant: 15),
+            wrapViewForCollectionView.topAnchor.constraint(equalTo: workoutInputNameView.bottomAnchor, constant: 15),
+            wrapViewForCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            wrapViewForCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            wrapViewForCollectionView.heightAnchor.constraint(equalToConstant: 115),
+            
+            
+            dateAndRepeatView.topAnchor.constraint(equalTo: wrapViewForCollectionView.bottomAnchor, constant: 15),
             dateAndRepeatView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             dateAndRepeatView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             dateAndRepeatView.heightAnchor.constraint(equalToConstant: 120),
@@ -109,3 +150,5 @@ extension NewWorkoutController {
         ])
     }
 }
+
+

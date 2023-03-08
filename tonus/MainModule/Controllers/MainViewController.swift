@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     private let weatherUIView = WeatherUIView()
     // let viewWhenTableIsEmty = ViewWhenTableIsEmty() // TODO: - is view whe our table is empty
     private let workOutTasksView = WorkOutTasksView()
-    private let exerciceLabel = UILabel(text: "Workout today", textColor: .specialLightBrown, font: .robotoMedium18())
+    
     
     private lazy var addWorkoutButton: UIButton = {
         let button = UIButton(type: .system)
@@ -55,7 +55,6 @@ class MainViewController: UIViewController {
         self.view.addSubview(weatherUIView)
 //        self.view.addSubview(viewWhenTableIsEmty)
         self.view.addSubview(workOutTasksView)
-        self.view.addSubview(exerciceLabel)
         
         
         header.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +62,6 @@ class MainViewController: UIViewController {
         weatherUIView.translatesAutoresizingMaskIntoConstraints = false
 //        viewWhenTableIsEmty.translatesAutoresizingMaskIntoConstraints = false
         workOutTasksView.translatesAutoresizingMaskIntoConstraints = false
-        exerciceLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     // MARK: - Selectors
@@ -100,12 +98,7 @@ extension MainViewController {
 //            viewWhenTableIsEmty.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
 //            viewWhenTableIsEmty.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50),
             
-            exerciceLabel.topAnchor.constraint(equalTo: weatherUIView.bottomAnchor, constant: 15),
-            exerciceLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            exerciceLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
-            exerciceLabel.heightAnchor.constraint(equalToConstant: 20),
-            
-            workOutTasksView.topAnchor.constraint(equalTo: exerciceLabel.bottomAnchor, constant: 0),
+            workOutTasksView.topAnchor.constraint(equalTo: weatherUIView.bottomAnchor, constant: 15),
             workOutTasksView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             workOutTasksView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             workOutTasksView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)

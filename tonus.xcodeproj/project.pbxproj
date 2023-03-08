@@ -22,6 +22,9 @@
 		579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C4529A449B30090D715 /* WeatherUIView.swift */; };
 		579A0C4C29A458170090D715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579A0C4B29A458170090D715 /* Assets.xcassets */; };
 		57DD8F0729AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */; };
+		57F1A76A29B8BA48004680D8 /* SelectImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1A76929B8BA48004680D8 /* SelectImageCollectionView.swift */; };
+		57F1A76D29B8BC3E004680D8 /* CollectionViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1A76C29B8BC3E004680D8 /* CollectionViewCustomCell.swift */; };
+		57F1A76F29B8E266004680D8 /* WrapViewForCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1A76E29B8E266004680D8 /* WrapViewForCollectionView.swift */; };
 		57F9964729B3BA930062E8E9 /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9964629B3BA930062E8E9 /* UIButton + Extensions.swift */; };
 		57F9964929B3BC910062E8E9 /* CircleCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9964829B3BC910062E8E9 /* CircleCloseButton.swift */; };
 		57F9969329B618EA0062E8E9 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9969229B618EA0062E8E9 /* Int + Extensions.swift */; };
@@ -69,6 +72,9 @@
 		579A0C4529A449B30090D715 /* WeatherUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUIView.swift; sourceTree = "<group>"; };
 		579A0C4B29A458170090D715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerMainTabBarController.swift; sourceTree = "<group>"; };
+		57F1A76929B8BA48004680D8 /* SelectImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageCollectionView.swift; sourceTree = "<group>"; };
+		57F1A76C29B8BC3E004680D8 /* CollectionViewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCustomCell.swift; sourceTree = "<group>"; };
+		57F1A76E29B8E266004680D8 /* WrapViewForCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapViewForCollectionView.swift; sourceTree = "<group>"; };
 		57F9964629B3BA930062E8E9 /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 		57F9964829B3BC910062E8E9 /* CircleCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCloseButton.swift; sourceTree = "<group>"; };
 		57F9969229B618EA0062E8E9 /* Int + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extensions.swift"; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 		573A7C6429B0B5B9006FF7DE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57F1A76B29B8BC1B004680D8 /* collectionView */,
 				57F9969029B612080062E8E9 /* subviews */,
 				573A7C6C29B0F51A006FF7DE /* WorkoutInputNameView.swift */,
 				573A7C6E29B0FE71006FF7DE /* DateAndRepeatView.swift */,
@@ -262,6 +269,16 @@
 				57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */,
 			);
 			path = NavigationModule;
+			sourceTree = "<group>";
+		};
+		57F1A76B29B8BC1B004680D8 /* collectionView */ = {
+			isa = PBXGroup;
+			children = (
+				57F1A76929B8BA48004680D8 /* SelectImageCollectionView.swift */,
+				57F1A76C29B8BC3E004680D8 /* CollectionViewCustomCell.swift */,
+				57F1A76E29B8E266004680D8 /* WrapViewForCollectionView.swift */,
+			);
+			path = collectionView;
 			sourceTree = "<group>";
 		};
 		57F9969029B612080062E8E9 /* subviews */ = {
@@ -524,6 +541,7 @@
 				57FAE50129A8F786004DFE2E /* ViewWhenTableIsEmty.swift in Sources */,
 				573A7C8229B28B44006FF7DE /* UIGreenSlider.swift in Sources */,
 				57FAE51429AA11EF004DFE2E /* UILabel + Extensions.swift in Sources */,
+				57F1A76D29B8BC3E004680D8 /* CollectionViewCustomCell.swift in Sources */,
 				57FAE4CD29A6E896004DFE2E /* CalendarCollectionView.swift in Sources */,
 				57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */,
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
@@ -541,8 +559,10 @@
 				573A7C6B29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift in Sources */,
 				57F9969729B622990062E8E9 /* SliderTypes.swift in Sources */,
 				57DD8F0729AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift in Sources */,
+				57F1A76F29B8E266004680D8 /* WrapViewForCollectionView.swift in Sources */,
 				57FAE52629AAAA59004DFE2E /* HeaderUIView.swift in Sources */,
 				579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */,
+				57F1A76A29B8BA48004680D8 /* SelectImageCollectionView.swift in Sources */,
 				57FAE51929AA3478004DFE2E /* StatisticTableViewCell.swift in Sources */,
 				573A7C6829B0B5E5006FF7DE /* NewWorkoutController.swift in Sources */,
 			);
