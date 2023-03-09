@@ -41,11 +41,7 @@ class SelectImageCollectionView : UICollectionView {
 
 extension SelectImageCollectionView : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print(indexPath.item)
-        print(imageNames[indexPath.item])
         isSelectedNameImage = imageNames[indexPath.item]
-        
     }
 }
 extension SelectImageCollectionView : UICollectionViewDataSource{

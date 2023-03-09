@@ -12,6 +12,7 @@ class WorkOutTasksView: UIView {
     // MARK: - Variables
     private let exerciceLabel = UILabel(text: "Workout today", textColor: .specialLightBrown, font: .robotoMedium18())
     let workoutTasksTableView = WorkoutTasksTableView()
+    
 
     // MARK: - Init
     
@@ -28,11 +29,16 @@ class WorkOutTasksView: UIView {
     // MARK: - Setup UI
     
     private func setupUI() {
+        self.backgroundColor = .clear
         self.addSubview(exerciceLabel)
         self.addSubview(workoutTasksTableView)
         exerciceLabel.translatesAutoresizingMaskIntoConstraints = false
         workoutTasksTableView.translatesAutoresizingMaskIntoConstraints = false
         setConstraints()
+    }
+    
+    public func reloadDataTable() {
+        workoutTasksTableView.reloadDataTable()
     }
     
 }

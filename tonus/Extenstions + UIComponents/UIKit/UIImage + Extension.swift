@@ -14,5 +14,4 @@ extension UIImageView {
         self.image = UIImage(named: nameImage)
         self.contentMode = .scaleAspectFit
     }
-    
 }

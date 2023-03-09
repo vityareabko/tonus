@@ -14,12 +14,6 @@ class TitleAndCloseButtonUIView: UIView {
     var clouser: (() -> Void)?
 
     private var closeButton = CircleCloseButton()
-//    var closeButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setBackgroundImage(UIImage(named: "closeButton"), for: .normal)
-//        button.addTarget(self, action: #selector(didTappedCloseButton), for: .touchUpInside)
-//        return button
-//    }()
 
     init(title: String) {
         super.init(frame: .zero)

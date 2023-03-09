@@ -14,10 +14,10 @@ class WorkoutTasksTableViewCell : UITableViewCell {
     
     // MARK: - UI Components
     
-    private let workoutTypeTaskIcon = UIImageView(nameImage: "sunny")
-    private let titleTask = UILabel(text: "Pull Ups", textColor: .specialBlack, font: .robotoMedium22())
-    private let subTitleReps = UILabel(text: "Reps. 10", textColor: .specialGray, font: .robotoMedium16())
-    private let subTitleSets = UILabel(text: "Sets 2", textColor: .specialGray, font: .robotoMedium16())
+    var workoutTypeTaskIcon = UIImageView(nameImage: "sunny")
+    var titleTask = UILabel(text: "Pull Ups", textColor: .specialBlack, font: .robotoMedium22())
+    var subTitleReps = UILabel(text: "Reps. 10", textColor: .specialGray, font: .robotoMedium16())
+    var subTitleSets = UILabel(text: "Sets 2", textColor: .specialGray, font: .robotoMedium16())
     private let stackView = UIStackView()
     
     private var bagroundCell: UIView = {
@@ -35,8 +35,9 @@ class WorkoutTasksTableViewCell : UITableViewCell {
     }()
     
     private lazy var button: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("START", for: .normal)
+        button.tintColor = .white
         button.backgroundColor = .specialYellow
         button.titleLabel?.font = .robotoBold16()
         button.layer.cornerRadius = 10
@@ -62,9 +63,7 @@ class WorkoutTasksTableViewCell : UITableViewCell {
     private func setupUI() {
         self.selectionStyle = .none
         self.backgroundColor = .clear
- 
-        workoutTypeTaskIcon.image?.withTintColor(.red, renderingMode: .alwaysOriginal) // TODO: - doesn't work
-        
+
         self.addSubview(bagroundCell)
         self.addSubview(bagroundIcon)
         bagroundIcon.addSubview(workoutTypeTaskIcon)
@@ -92,6 +91,7 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         stackView.addArrangedSubview(subTitleSets)
         stackView.axis = .horizontal
         stackView.spacing = 10
+        stackView.distribution = .equalSpacing
         
         self.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +101,6 @@ class WorkoutTasksTableViewCell : UITableViewCell {
     @objc private func didTappedStart(){
         print("DEBUG PRINT:", "did tapped")
     }
-    
 }
 
 // MARK: - Extensions
@@ -132,16 +131,12 @@ extension WorkoutTasksTableViewCell {
             
             stackView.topAnchor.constraint(equalTo: titleTask.bottomAnchor, constant: 0),
             stackView.leadingAnchor.constraint(equalTo: bagroundIcon.trailingAnchor, constant: 10),
-//            stackView.heightAnchor.constraint(equalToConstant: 20),
-            stackView.bottomAnchor.constraint(equalTo: button.topAnchor),
-            
+            stackView.heightAnchor.constraint(equalToConstant: 20),
+        
             button.topAnchor.constraint(equalTo: subTitleReps.bottomAnchor, constant: 3),
             button.leadingAnchor.constraint(equalTo: bagroundIcon.trailingAnchor, constant: 10),
             button.trailingAnchor.constraint(equalTo: bagroundCell.trailingAnchor, constant: -10),
             button.heightAnchor.constraint(equalTo: bagroundCell.widthAnchor, multiplier: 0.07),
-
-             
-            
         ])
     }
 }

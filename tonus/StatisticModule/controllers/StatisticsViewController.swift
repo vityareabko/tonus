@@ -19,15 +19,12 @@ class StatisticsViewController: UIViewController {
     
     private lazy var segmentControl : UISegmentedControl = {
         let segmentControl = UISegmentedControl(items: ["Week", "Month"])
-        
         segmentControl.selectedSegmentIndex = 0
         segmentControl.backgroundColor = .specialLightGreen
         segmentControl.selectedSegmentTintColor = .specialYellow
         segmentControl.setTitleTextAttributes([.font: UIFont.robotoMedium16()!, .foregroundColor: UIColor.white], for: .normal)
         segmentControl.setTitleTextAttributes([ .foregroundColor: UIColor.specialGray ], for: .selected)
         segmentControl.addTarget(self, action: #selector(didTappedSegmentControl), for: .valueChanged)
-        
-        
         return segmentControl
     }()
     

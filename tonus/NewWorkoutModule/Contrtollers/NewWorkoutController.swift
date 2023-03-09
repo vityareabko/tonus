@@ -17,15 +17,15 @@ class NewWorkoutController: UIViewController {
     private let dateAndRepeatView = DateAndRepeatView()
     private let repsOrTimerView = RepsOrTimerView()
     
+    public var closureReloadData: (() -> Void)?
+    
     private var workoutModel = WorkoutModel()
     
     private lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
-        
         scrollView.backgroundColor = .none
         scrollView.frame = view.bounds
         scrollView.contentSize = contentSize
-        
         return scrollView
     }()
     
@@ -44,10 +44,7 @@ class NewWorkoutController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
-        
     }
-    
-    
     
     private func setupUI() {
         self.view.backgroundColor = .specialMainBackground
@@ -90,12 +87,14 @@ class NewWorkoutController: UIViewController {
         setModel()
         print(workoutModel)
         RealmManager.shared.saveWorkoutModel(model: workoutModel)
+//        WorkoutTasksTableView.reloadData()
+        closureReloadData!()
         dismiss(animated: true)
+        
     }
     
     private func setModel(){
         let getNumberOfDayofWeek = dateAndRepeatView.getContainDateAndReatView().date.getNumberOfDayOfWeek()
-        
         workoutModel.titleWorkout = workoutInputNameView.getContainTextField()
         workoutModel.workoutDate = dateAndRepeatView.getContainDateAndReatView().date
         workoutModel.workoutRepeatEveryWeek = dateAndRepeatView.getContainDateAndReatView().isRepeat
