@@ -111,10 +111,10 @@ extension WorkoutTasksTableViewCell {
     private func setConstraints() {
         NSLayoutConstraint.activate([
         
-            bagroundCell.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
+            bagroundCell.topAnchor.constraint(equalTo: self.topAnchor, constant: 7.5),
             bagroundCell.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
             bagroundCell.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-            bagroundCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            bagroundCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -7.5),
             
             bagroundIcon.centerYAnchor.constraint(equalTo: bagroundCell.centerYAnchor),
             bagroundIcon.leadingAnchor.constraint(equalTo: bagroundCell.leadingAnchor, constant: 10),
