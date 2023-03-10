@@ -11,13 +11,12 @@ class CalendarUIView: UIView {
     
     // MARK: - Variables
     
-    private let callendarCollection = CalendarCollectionView()
+    public let callendarCollection = CalendarCollectionView()
     
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        
         setupUI()
         setConstraints()
     }

@@ -63,6 +63,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         cellNumberOfDayLabel.translatesAutoresizingMaskIntoConstraints = false
         
     }
+    
+    public func dateForCell(numberOfDay: String, dayOfweek: String){
+        cellWeekDayLabel.text = dayOfweek
+        cellNumberOfDayLabel.text = numberOfDay
+    }
 }
 
 // MARK: - Extensions

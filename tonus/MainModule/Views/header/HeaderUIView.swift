@@ -11,11 +11,13 @@ class HeaderUIView: UIView {
     
     private let calendarUIView = CalendarUIView()
     private let userNameLabel = UILabel(text: "Jhon Smith", textColor: .specialGray, font: .robotoMedium24())
-    let userImage = UIImageView(nameImage: "")
+    public let userImage = UIImageView(nameImage: "")
+    public var selectCalendarDate: Date?
     
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        calendarUIView.callendarCollection.calendarDelegate = self
         setupUI()
     }
     
@@ -41,6 +43,14 @@ class HeaderUIView: UIView {
 
         setConstraints()
     }
+}
+
+extension HeaderUIView : CalendarViewProtocol {
+    func selectItem(date: Date) {
+        selectCalendarDate = date
+    }
+    
+    
 }
 
 extension HeaderUIView {

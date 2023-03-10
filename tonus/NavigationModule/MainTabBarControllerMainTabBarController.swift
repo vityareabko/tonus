@@ -18,9 +18,9 @@ class MainTabBarController : UITabBarController {
     
     private func setupTabBar(){
         tabBar.backgroundColor = .specialTabBar
-        tabBar.tintColor = .specialDarkGreen
-        tabBar.unselectedItemTintColor = .specialGray
-        tabBar.layer.borderWidth = 2
+        tabBar.tintColor = .specialYellow
+        tabBar.unselectedItemTintColor = .white
+        tabBar.layer.borderWidth = 0
         tabBar.layer.borderColor = UIColor.specialLightBrown.cgColor
         tabBar.bounds = tabBar.bounds.insetBy(dx: 0, dy: -3)
     }
@@ -28,16 +28,19 @@ class MainTabBarController : UITabBarController {
     private func setupItems(){
         let mainVC = MainViewController()
         let statisticVC = StatisticsViewController()
+        let profileVC = ProfileViewControler()
         
-        self.setViewControllers([mainVC, statisticVC], animated: true)
+        self.setViewControllers([mainVC, statisticVC, profileVC], animated: true)
         
         guard let items = tabBar.items else { return }
         
         items[0].title = "Main"
         items[1].title = "Statistic"
+        items[2].title = "Profile"
         
-        items[0].image = UIImage(named: "main")
-        items[1].image = UIImage(named: "statistic")
+        items[0].image = UIImage(named: "main")?.withTintColor(.white, renderingMode: .alwaysTemplate)
+        items[1].image = UIImage(named: "statistic")?.withTintColor(.white, renderingMode: .alwaysTemplate)
+        items[2].image = UIImage(named: "profile")?.withTintColor(.white, renderingMode: .alwaysTemplate)
         
         UITabBarItem.appearance().setTitleTextAttributes([.font : UIFont.robotoBold12()!], for: .normal)
     }

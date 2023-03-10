@@ -21,6 +21,8 @@
 		579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C4329A4329D0090D715 /* CalendarUIView.swift */; };
 		579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C4529A449B30090D715 /* WeatherUIView.swift */; };
 		579A0C4C29A458170090D715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579A0C4B29A458170090D715 /* Assets.xcassets */; };
+		57B6AFFD29BB615200B303AD /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B6AFFC29BB615200B303AD /* UIViewController + Extensions.swift */; };
+		57B6B00229BB6B6700B303AD /* ProfileViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B6B00129BB6B6700B303AD /* ProfileViewControler.swift */; };
 		57DD8F0729AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */; };
 		57F1A76A29B8BA48004680D8 /* SelectImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1A76929B8BA48004680D8 /* SelectImageCollectionView.swift */; };
 		57F1A76D29B8BC3E004680D8 /* CollectionViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1A76C29B8BC3E004680D8 /* CollectionViewCustomCell.swift */; };
@@ -71,6 +73,8 @@
 		579A0C4329A4329D0090D715 /* CalendarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUIView.swift; sourceTree = "<group>"; };
 		579A0C4529A449B30090D715 /* WeatherUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUIView.swift; sourceTree = "<group>"; };
 		579A0C4B29A458170090D715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		57B6AFFC29BB615200B303AD /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
+		57B6B00129BB6B6700B303AD /* ProfileViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControler.swift; sourceTree = "<group>"; };
 		57DD8F0629AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerMainTabBarController.swift; sourceTree = "<group>"; };
 		57F1A76929B8BA48004680D8 /* SelectImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageCollectionView.swift; sourceTree = "<group>"; };
 		57F1A76C29B8BC3E004680D8 /* CollectionViewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCustomCell.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 		579A0C2929A41A080090D715 /* tonus */ = {
 			isa = PBXGroup;
 			children = (
+				57B6AFFE29BB6B3800B303AD /* ProfileModule */,
 				573A7C6929B0B6DF006FF7DE /* reusableUIViews */,
 				573A7C6329B0B5AB006FF7DE /* NewWorkoutModule */,
 				57FAE50D29AA10DB004DFE2E /* StatisticModule */,
@@ -261,6 +266,30 @@
 				579A0C4529A449B30090D715 /* WeatherUIView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		57B6AFFE29BB6B3800B303AD /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				57B6B00029BB6B4600B303AD /* Controllers */,
+				57B6AFFF29BB6B4100B303AD /* Views */,
+			);
+			path = ProfileModule;
+			sourceTree = "<group>";
+		};
+		57B6AFFF29BB6B4100B303AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		57B6B00029BB6B4600B303AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				57B6B00129BB6B6700B303AD /* ProfileViewControler.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		57DD8F0329AD4DF000B12D06 /* NavigationModule */ = {
@@ -334,6 +363,7 @@
 				57F9969129B618B70062E8E9 /* UIKit */,
 				57F9969229B618EA0062E8E9 /* Int + Extensions.swift */,
 				57F9969B29B647210062E8E9 /* Date + Extensions.swift */,
+				57B6AFFC29BB615200B303AD /* UIViewController + Extensions.swift */,
 			);
 			path = "Extenstions + UIComponents";
 			sourceTree = "<group>";
@@ -528,6 +558,7 @@
 			files = (
 				57FAE50A29A9190B004DFE2E /* WorkoutTasksTableViewCell.swift in Sources */,
 				579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */,
+				57B6B00229BB6B6700B303AD /* ProfileViewControler.swift in Sources */,
 				573A7C6D29B0F51A006FF7DE /* WorkoutInputNameView.swift in Sources */,
 				579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */,
 				57FAE51229AA1154004DFE2E /* StatisticsViewController.swift in Sources */,
@@ -556,6 +587,7 @@
 				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
 				57F9969C29B647210062E8E9 /* Date + Extensions.swift in Sources */,
 				57FAE50C29A97448004DFE2E /* UIStackView + Extensions.swift in Sources */,
+				57B6AFFD29BB615200B303AD /* UIViewController + Extensions.swift in Sources */,
 				573A7C6B29B0B72F006FF7DE /* TitleAndCloseButtonUIView.swift in Sources */,
 				57F9969729B622990062E8E9 /* SliderTypes.swift in Sources */,
 				57DD8F0729AD4E3300B12D06 /* MainTabBarControllerMainTabBarController.swift in Sources */,

@@ -20,9 +20,9 @@ class RepsOrTimerView: UIView {
         return view
     }()
     
-    private let setsBlockView = SliderView(name: "Sets", minValue: 1, maxValue: 10, sliderType: .sets)
-    private let repsBlockView = SliderView(name: "Reps", minValue: 1, maxValue: 30, sliderType: .reps)
-    private let timerBlockView = SliderView(name: "Timer", minValue: 1, maxValue: 600, sliderType: .timer)
+    private let setsBlockView = SliderView(name: "Sets", minValue: 0, maxValue: 10, sliderType: .sets)
+    private let repsBlockView = SliderView(name: "Reps", minValue: 0, maxValue: 30, sliderType: .reps)
+    private let timerBlockView = SliderView(name: "Timer", minValue: 0, maxValue: 600, sliderType: .timer)
     
     private let choseRepeatOrTimerLabel = UILabel(text: "Choose repeat or timer",
                                                   textColor: .specialLightBrown,
@@ -71,6 +71,18 @@ class RepsOrTimerView: UIView {
         
         setConstraints()
     }
+    
+    public func shakeSetsSlider() {
+        setsBlockView.shake(horizontal: 2)
+    }
+    
+    public func shakeRepsSlider() {
+        repsBlockView.shake(horizontal: 2)
+    }
+    
+    public func shakeTimerSlider() {
+        timerBlockView.shake(horizontal: 2)
+    }
 }
 
 extension RepsOrTimerView : SliderViewProtocol {
@@ -88,6 +100,10 @@ extension RepsOrTimerView : SliderViewProtocol {
             timerBlockView.isActive = true
             repsBlockView.isActive = false
             reps = 0 // обнуляем перем. из картеж который буде передан в БД
+        }
+        if timer == 0 && reps == 0 {
+            timerBlockView.isActive = true
+            repsBlockView.isActive = true
         }
     }
 }

@@ -35,16 +35,16 @@ class NewWorkoutController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(touchScreen1))
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(touchScreen))
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(touchScreen))
         self.view.addGestureRecognizer(recognizer)
+        self.view.addGestureRecognizer(swipeRecognizer)
         recognizer.cancelsTouchesInView = false
+        swipeRecognizer.cancelsTouchesInView = false
         setupUI()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        self.view.endEditing(true)
-    }
+    
     
     private func setupUI() {
         self.view.backgroundColor = .specialMainBackground
@@ -52,7 +52,6 @@ class NewWorkoutController: UIViewController {
         titleAndCloseButtonUIView.clouser = { [weak self] in
             self?.dismiss(animated: true)
         }
-        
         
         saveButton.addTarget(self, action: #selector(didTappedSaveButton), for: .touchUpInside)
         
@@ -75,24 +74,6 @@ class NewWorkoutController: UIViewController {
         setConstraints()
     }
     
-    @objc private func touchScreen1(){
-        self.view.endEditing(true)
-    }
-    
-    @objc private func didTappedCloseButton(){
-        dismiss(animated: true)
-    }
-    
-    @objc private func didTappedSaveButton(){
-        setModel()
-        print(workoutModel)
-        RealmManager.shared.saveWorkoutModel(model: workoutModel)
-//        WorkoutTasksTableView.reloadData()
-        closureReloadData!()
-        dismiss(animated: true)
-        
-    }
-    
     private func setModel(){
         let getNumberOfDayofWeek = dateAndRepeatView.getContainDateAndReatView().date.getNumberOfDayOfWeek()
         workoutModel.titleWorkout = workoutInputNameView.getContainTextField()
@@ -103,6 +84,48 @@ class NewWorkoutController: UIViewController {
         workoutModel.workoutSets = repsOrTimerView.sets
         workoutModel.workoutReps = repsOrTimerView.reps
         workoutModel.workoutTimer = repsOrTimerView.timer
+    }
+    
+    private func saveModel() -> Bool{
+        let text = workoutInputNameView.getContainTextField()
+        let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if trimmedText.count != 0 &&
+            repsOrTimerView.sets != 0 &&
+            (repsOrTimerView.reps != 0 || repsOrTimerView.timer != 0){
+            RealmManager.shared.saveWorkoutModel(model: workoutModel)
+            return true
+        }
+        
+        return false
+    }
+    
+    private func shakeViewsWhichNeedToComplited(){
+        if workoutInputNameView.getContainTextField().count == 0 {
+            workoutInputNameView.shake(horizontal: 3)
+        }
+        if repsOrTimerView.sets == 0 {
+            repsOrTimerView.shakeSetsSlider()
+        }
+        if (repsOrTimerView.reps == 0 && repsOrTimerView.timer == 0) {
+            repsOrTimerView.shakeRepsSlider()
+            repsOrTimerView.shakeTimerSlider()
+        }
+    }
+    
+    @objc private func touchScreen(){
+        self.view.endEditing(true)
+    }
+    
+    @objc private func didTappedCloseButton(){
+        dismiss(animated: true)
+    }
+    
+    @objc private func didTappedSaveButton(){
+        setModel()
+        saveModel() ? dismiss(animated: true) : shakeViewsWhichNeedToComplited()
+        closureReloadData!()
+
         
     }
 }

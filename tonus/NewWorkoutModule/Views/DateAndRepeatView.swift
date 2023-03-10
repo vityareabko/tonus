@@ -27,12 +27,15 @@ class DateAndRepeatView: UIView {
         datePicker.datePickerMode = .date
         datePicker.tintColor = .specialGray
         datePicker.backgroundColor = .none
-        datePicker.subviews[0].subviews[0].subviews[0].alpha = 0
+//        datePicker.subviews[0].subviews[0].subviews[0].alpha = 0
+        datePicker.tintColor = .specialLightGreen
         return datePicker
     }()
     
     private var switchReapeat: UISwitch = {
         let switchReapeat = UISwitch()
+        switchReapeat.isOn = true
+        switchReapeat.onTintColor = .specialLightGreen
         return switchReapeat
     }()
     

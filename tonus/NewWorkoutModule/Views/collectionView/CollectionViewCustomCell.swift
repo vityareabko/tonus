@@ -15,8 +15,8 @@ class CollectionViewCustomCell : UICollectionViewCell {
     let imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "testWorkout")?.withRenderingMode(.alwaysOriginal)
-        image.tintColor = .specialDarkGreen
         image.contentMode = .scaleAspectFit
+        image.tintColor = .specialDarkGreen
         image.backgroundColor = .clear
         return image
     }()
@@ -52,7 +52,7 @@ class CollectionViewCustomCell : UICollectionViewCell {
     
     private func setupUI() {
         self.backgroundColor = .clear
-        
+
         self.addSubview(backViewImgage)
         backViewImgage.addSubview(imageView)
         backViewImgage.translatesAutoresizingMaskIntoConstraints = false
@@ -74,8 +74,8 @@ extension CollectionViewCustomCell {
             
             imageView.centerXAnchor.constraint(equalTo: backViewImgage.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: backViewImgage.centerYAnchor),
-            // TODO: - height width for interactive
-            
+            imageView.heightAnchor.constraint(equalToConstant: 64),
+            imageView.widthAnchor.constraint(equalToConstant: 64)
         ])
     }
 }

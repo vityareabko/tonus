@@ -34,11 +34,12 @@ class MainViewController: UIViewController {
     // MARK: - Lifecycle
     
     override func viewDidLayoutSubviews() {
-        header.userImage.layer.cornerRadius = header.userImage.frame.width / 2 // вызываем свойство из класса вию
+        header.userImage.layer.cornerRadius = header.userImage.frame.width / 2
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(header.selectCalendarDate) // TODO: - получаем дату из календаря по тапу и надо обновить даные из бд в таблице
         setupUI()
         setConstraints()
     }
@@ -46,8 +47,9 @@ class MainViewController: UIViewController {
     // MARK: - UI Setup
     
     private func setupUI() {
+        
         view.backgroundColor = .specialMainBackground
-
+        
         addWorkoutButton.addShadowOnView()
         
         self.view.addSubview(header)
@@ -55,7 +57,6 @@ class MainViewController: UIViewController {
         self.view.addSubview(weatherUIView)
         self.view.addSubview(viewWhenTableIsEmty)
         self.view.addSubview(workOutTasksView)
-        
         
         header.translatesAutoresizingMaskIntoConstraints = false
         addWorkoutButton.translatesAutoresizingMaskIntoConstraints = false
@@ -67,6 +68,7 @@ class MainViewController: UIViewController {
     // MARK: - Selectors
     
     @objc private func didTappedAddWorkoutButton(){
+        
         let vc = NewWorkoutController()
         vc.modalPresentationStyle = .fullScreen
         vc.closureReloadData = { [weak self] in
