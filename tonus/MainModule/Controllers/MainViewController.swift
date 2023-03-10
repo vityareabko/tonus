@@ -11,10 +11,11 @@ import RealmSwift
 class MainViewController: UIViewController {
    
     // MARK: - UI Components
-    private let header = HeaderUIView()
+    private let headerView = HeaderUIView()
     private let weatherUIView = WeatherUIView()
     private let viewWhenTableIsEmty = ViewWhenTableIsEmty() // TODO: - is view whe our table is empty
     private let workOutTasksView = WorkOutTasksView()
+    public var closureCalendarDelegate : (()->Void)?
     
     
     private lazy var addWorkoutButton: UIButton = {
@@ -34,12 +35,15 @@ class MainViewController: UIViewController {
     // MARK: - Lifecycle
     
     override func viewDidLayoutSubviews() {
-        header.userImage.layer.cornerRadius = header.userImage.frame.width / 2
+        headerView.userImage.layer.cornerRadius = headerView.userImage.frame.width / 2
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(header.selectCalendarDate) // TODO: - получаем дату из календаря по тапу и надо обновить даные из бд в таблице
+        // TODO: - получаем дату из календаря по тапу и надо обновить даные из бд в таблице
+        headerView.setDelegateCalendarView(self) // mainViewController я стучусь к делегату через функцию в HeaderUIView
+        
+        
         setupUI()
         setConstraints()
     }
@@ -52,13 +56,13 @@ class MainViewController: UIViewController {
         
         addWorkoutButton.addShadowOnView()
         
-        self.view.addSubview(header)
+        self.view.addSubview(headerView)
         self.view.addSubview(addWorkoutButton)
         self.view.addSubview(weatherUIView)
         self.view.addSubview(viewWhenTableIsEmty)
         self.view.addSubview(workOutTasksView)
         
-        header.translatesAutoresizingMaskIntoConstraints = false
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         addWorkoutButton.translatesAutoresizingMaskIntoConstraints = false
         weatherUIView.translatesAutoresizingMaskIntoConstraints = false
         viewWhenTableIsEmty.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +72,6 @@ class MainViewController: UIViewController {
     // MARK: - Selectors
     
     @objc private func didTappedAddWorkoutButton(){
-        
         let vc = NewWorkoutController()
         vc.modalPresentationStyle = .fullScreen
         vc.closureReloadData = { [weak self] in
@@ -80,21 +83,27 @@ class MainViewController: UIViewController {
     
 }
 
+extension MainViewController : CalendarViewProtocol{
+    func selectItem(date: Date) {
+        print(date)
+    }
+}
+
 extension MainViewController {
     private func setConstraints(){
         
         NSLayoutConstraint.activate([
-            header.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            header.heightAnchor.constraint(equalToConstant: 120),
+            headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 120),
             
-            addWorkoutButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 15),
+            addWorkoutButton.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
             addWorkoutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
             addWorkoutButton.widthAnchor.constraint(equalToConstant: 80),
             addWorkoutButton.heightAnchor.constraint(equalToConstant: 80),
             
-            weatherUIView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 15),
+            weatherUIView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
             weatherUIView.leadingAnchor.constraint(equalTo: addWorkoutButton.trailingAnchor, constant: 15),
             weatherUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
             weatherUIView.heightAnchor.constraint(equalToConstant: 80),

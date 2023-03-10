@@ -84,6 +84,22 @@ extension WorkoutTasksTableView : UITableViewDelegate {
         print("our cell with index at:", indexPath)
     }
     
+    
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let pinImage =  UIImage(systemName: "pin")?.withTintColor(.orange, renderingMode: .alwaysOriginal)
+        let pinFullImage =  UIImage(systemName: "pin.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal)
+        
+        let editAction = UIContextualAction(style: .normal, title: "") { action, view, handler in
+            print("edit")
+        }
+        editAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
+        editAction.image = pinImage
+        let config = UISwipeActionsConfiguration(actions: [editAction])
+        
+        return config
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let item = resultsDB[indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: "") { action, view, handler in
@@ -94,8 +110,8 @@ extension WorkoutTasksTableView : UITableViewDelegate {
         }
         
         deleteAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
-        
         deleteAction.image = UIImage(systemName: "trash")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        
         let config = UISwipeActionsConfiguration(actions: [deleteAction])
         
         

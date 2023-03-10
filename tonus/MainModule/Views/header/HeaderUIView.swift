@@ -9,48 +9,48 @@ import UIKit
 
 class HeaderUIView: UIView {
     
-    private let calendarUIView = CalendarUIView()
+    private let callendarCollection = CalendarCollectionView()
     private let userNameLabel = UILabel(text: "Jhon Smith", textColor: .specialGray, font: .robotoMedium24())
-    public let userImage = UIImageView(nameImage: "")
-    public var selectCalendarDate: Date?
+    public let userImage = UIImageView(nameImage: "ssss")
     
-
+    private let backCalendarView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .specialLightGreen
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        calendarUIView.callendarCollection.calendarDelegate = self
         setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
+
     private func setupUI() {
         self.backgroundColor = .none
         userImage.backgroundColor = .specialGray
         userImage.layer.borderColor = UIColor.white.cgColor
         userImage.layer.borderWidth = 5
         
-        self.addSubview(calendarUIView)
-        self.addSubview(userImage)
+        self.addSubview(backCalendarView)
+        backCalendarView.addSubview(callendarCollection)
         self.addSubview(userNameLabel)
+        self.addSubview(userImage)
         
         userImage.translatesAutoresizingMaskIntoConstraints = false
-        calendarUIView.translatesAutoresizingMaskIntoConstraints = false
+        backCalendarView.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        callendarCollection.translatesAutoresizingMaskIntoConstraints = false
 
         setConstraints()
     }
-}
-
-extension HeaderUIView : CalendarViewProtocol {
-    func selectItem(date: Date) {
-        selectCalendarDate = date
+    
+    public func setDelegateCalendarView(_ delegate: CalendarViewProtocol){
+        callendarCollection.calendarDelegate = delegate
     }
-    
-    
 }
 
 extension HeaderUIView {
@@ -62,14 +62,19 @@ extension HeaderUIView {
             userImage.widthAnchor.constraint(equalToConstant: 100),
             userImage.heightAnchor.constraint(equalToConstant: 100),
             
-            calendarUIView.topAnchor.constraint(equalTo: userImage.centerYAnchor),
-            calendarUIView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            calendarUIView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
-            calendarUIView.heightAnchor.constraint(equalToConstant: 70),
+            backCalendarView.topAnchor.constraint(equalTo: userImage.centerYAnchor),
+            backCalendarView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            backCalendarView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
+            backCalendarView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            callendarCollection.topAnchor.constraint(equalTo: backCalendarView.topAnchor, constant: 5),
+            callendarCollection.bottomAnchor.constraint(equalTo: backCalendarView.bottomAnchor, constant: -5),
+            callendarCollection.leadingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 3),
+            callendarCollection.trailingAnchor.constraint(equalTo: backCalendarView.trailingAnchor, constant: -10),
             
             userNameLabel.leadingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 5),
             userNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
-            userNameLabel.bottomAnchor.constraint(equalTo: calendarUIView.topAnchor, constant: -10),
+            userNameLabel.bottomAnchor.constraint(equalTo: userImage.centerYAnchor, constant: -20),
         ])
     }
 }

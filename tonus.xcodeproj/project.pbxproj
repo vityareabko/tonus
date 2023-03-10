@@ -18,7 +18,6 @@
 		579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2C29A41A080090D715 /* SceneDelegate.swift */; };
 		579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2E29A41A080090D715 /* MainViewController.swift */; };
 		579A0C3729A41A0A0090D715 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 579A0C3529A41A0A0090D715 /* LaunchScreen.storyboard */; };
-		579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C4329A4329D0090D715 /* CalendarUIView.swift */; };
 		579A0C4629A449B30090D715 /* WeatherUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C4529A449B30090D715 /* WeatherUIView.swift */; };
 		579A0C4C29A458170090D715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579A0C4B29A458170090D715 /* Assets.xcassets */; };
 		57B6AFFD29BB615200B303AD /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B6AFFC29BB615200B303AD /* UIViewController + Extensions.swift */; };
@@ -70,7 +69,6 @@
 		579A0C2E29A41A080090D715 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		579A0C3629A41A0A0090D715 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		579A0C3829A41A0A0090D715 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		579A0C4329A4329D0090D715 /* CalendarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUIView.swift; sourceTree = "<group>"; };
 		579A0C4529A449B30090D715 /* WeatherUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUIView.swift; sourceTree = "<group>"; };
 		579A0C4B29A458170090D715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57B6AFFC29BB615200B303AD /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
@@ -380,7 +378,6 @@
 		57FAE4C929A6E4C5004DFE2E /* calendarView */ = {
 			isa = PBXGroup;
 			children = (
-				579A0C4329A4329D0090D715 /* CalendarUIView.swift */,
 				57FAE4CC29A6E896004DFE2E /* CalendarCollectionView.swift */,
 				57FAE4D029A6EB02004DFE2E /* CalendarCollectionViewCell.swift */,
 			);
@@ -584,7 +581,6 @@
 				57F9964929B3BC910062E8E9 /* CircleCloseButton.swift in Sources */,
 				57F9969A29B63EF60062E8E9 /* WorkoutModel.swift in Sources */,
 				57F9969329B618EA0062E8E9 /* Int + Extensions.swift in Sources */,
-				579A0C4429A4329D0090D715 /* CalendarUIView.swift in Sources */,
 				57F9969C29B647210062E8E9 /* Date + Extensions.swift in Sources */,
 				57FAE50C29A97448004DFE2E /* UIStackView + Extensions.swift in Sources */,
 				57B6AFFD29BB615200B303AD /* UIViewController + Extensions.swift in Sources */,
