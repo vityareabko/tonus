@@ -14,8 +14,9 @@ class MainViewController: UIViewController {
     private let headerView = HeaderUIView()
     private let weatherUIView = WeatherUIView()
     private let viewWhenTableIsEmty = ViewWhenTableIsEmty() // TODO: - is view whe our table is empty
-    private let workOutTasksView = WorkOutTasksView()
-    public var closureCalendarDelegate : (()->Void)?
+    private let workoutTableView = WorkoutTableView()
+    private let exerciceLabel = UILabel(text: "Workout today", textColor: .specialLightBrown, font: .robotoMedium18())
+    
     
     
     private lazy var addWorkoutButton: UIButton = {
@@ -43,6 +44,7 @@ class MainViewController: UIViewController {
         // TODO: - получаем дату из календаря по тапу и надо обновить даные из бд в таблице
         headerView.setDelegateCalendarView(self) // mainViewController я стучусь к делегату через функцию в HeaderUIView
         
+        workoutTableView.tableViewCellDelegate = self     // достучаться до делегата
         
         setupUI()
         setConstraints()
@@ -60,13 +62,15 @@ class MainViewController: UIViewController {
         self.view.addSubview(addWorkoutButton)
         self.view.addSubview(weatherUIView)
         self.view.addSubview(viewWhenTableIsEmty)
-        self.view.addSubview(workOutTasksView)
+        self.view.addSubview(exerciceLabel)
+        self.view.addSubview(workoutTableView)
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         addWorkoutButton.translatesAutoresizingMaskIntoConstraints = false
         weatherUIView.translatesAutoresizingMaskIntoConstraints = false
         viewWhenTableIsEmty.translatesAutoresizingMaskIntoConstraints = false
-        workOutTasksView.translatesAutoresizingMaskIntoConstraints = false
+        exerciceLabel.translatesAutoresizingMaskIntoConstraints = false
+        workoutTableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     // MARK: - Selectors
@@ -75,7 +79,7 @@ class MainViewController: UIViewController {
         let vc = NewWorkoutController()
         vc.modalPresentationStyle = .fullScreen
         vc.closureReloadData = { [weak self] in
-            self?.workOutTasksView.reloadDataTable()
+            self?.workoutTableView.reloadDataTable()
         }
         
         present(vc, animated: true)
@@ -89,6 +93,29 @@ extension MainViewController : CalendarViewProtocol{
     }
 }
 
+extension MainViewController : TableViewEditProtocol {
+    func getViewController(workoutTitle: String, workoutDate: Date, workoutRepeat: Bool,  reps: Int, sets: Int, timer: Int ,imageName: String, indexPath: IndexPath) {
+        let vc = NewWorkoutController(title: "Edit Workout")
+        vc.workoutTitle = workoutTitle
+        vc.workoutdate = workoutDate
+        vc.workoutRepeat = workoutRepeat
+        vc.reps = reps
+        vc.sets = sets
+        vc.timer = timer
+        vc.nameImageSelected = imageName
+        vc.isUpdate = true
+        vc.indexPath = indexPath
+        
+        vc.updateForEditData()
+        
+        vc.closureReloadData = { [weak self] in
+            self?.workoutTableView.reloadDataTable()
+        }
+        // передаем в vc
+        present(vc, animated: true)
+    }
+}
+
 extension MainViewController {
     private func setConstraints(){
         
@@ -98,12 +125,12 @@ extension MainViewController {
             headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 120),
             
-            addWorkoutButton.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
+            addWorkoutButton.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             addWorkoutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
             addWorkoutButton.widthAnchor.constraint(equalToConstant: 80),
             addWorkoutButton.heightAnchor.constraint(equalToConstant: 80),
             
-            weatherUIView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
+            weatherUIView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             weatherUIView.leadingAnchor.constraint(equalTo: addWorkoutButton.trailingAnchor, constant: 15),
             weatherUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
             weatherUIView.heightAnchor.constraint(equalToConstant: 80),
@@ -113,10 +140,16 @@ extension MainViewController {
             viewWhenTableIsEmty.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
             viewWhenTableIsEmty.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50),
             
-            workOutTasksView.topAnchor.constraint(equalTo: weatherUIView.bottomAnchor, constant: 15),
-            workOutTasksView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            workOutTasksView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            workOutTasksView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
+            exerciceLabel.topAnchor.constraint(equalTo: weatherUIView.bottomAnchor, constant: 10),
+            exerciceLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 22),
+            exerciceLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
+            exerciceLabel.heightAnchor.constraint(equalToConstant: 20),
+
+            
+            workoutTableView.topAnchor.constraint(equalTo: exerciceLabel.bottomAnchor, constant: 10),
+            workoutTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            workoutTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            workoutTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
             
         ])
     }

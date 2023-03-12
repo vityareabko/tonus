@@ -83,6 +83,15 @@ class RepsOrTimerView: UIView {
     public func shakeTimerSlider() {
         timerBlockView.shake(horizontal: 2)
     }
+    
+    public func setSliderValues (sets: Int, reps: Int, timer: Int) {
+        setsBlockView.didSetValue(type: .sets, value: sets)
+        repsBlockView.didSetValue(type: .reps, value: reps)
+        timerBlockView.didSetValue(type: .timer, value: timer)
+        self.sets = sets
+        self.reps = reps
+        self.timer = timer
+    }
 }
 
 extension RepsOrTimerView : SliderViewProtocol {

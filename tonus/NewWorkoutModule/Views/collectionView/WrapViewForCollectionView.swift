@@ -34,9 +34,13 @@ class WrapViewForCollectionView: UIView {
         setConstraints()
     }
     
-    public func getSelectedImage() -> UIImage {
-        return selectImageCollectionView.getNameImage()
+    public func getSelectedImage() -> (image: UIImage, nameImage: String) {
+        return selectImageCollectionView.getSelectedImage()
     }
+    public func setSelectedImage(selectedImage: String){
+        selectImageCollectionView.setSelectedImage(selectedImage: selectedImage)
+    }
+    
 }
 
 extension WrapViewForCollectionView {

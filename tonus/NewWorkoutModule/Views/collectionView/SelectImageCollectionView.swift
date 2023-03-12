@@ -10,7 +10,7 @@ import UIKit
 class SelectImageCollectionView : UICollectionView {
     
     private let imageNames = ["default", "biceps", "pushup", "pullup", "squats", "triceps"]
-    private var isSelectedNameImage: String = ""
+    private var isSelectedNameImage: String = "default"
     private let layoutCV = UICollectionViewFlowLayout()
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -34,8 +34,13 @@ class SelectImageCollectionView : UICollectionView {
         self.dataSource                     = self
     }
     
-    public func getNameImage() -> UIImage{
-        return UIImage(named: isSelectedNameImage) ?? UIImage(named: "default")!
+    public func getSelectedImage() -> (image: UIImage, nameImage: String) {
+        return (UIImage(named: isSelectedNameImage)!, isSelectedNameImage)
+
+    }
+    public func setSelectedImage(selectedImage: String){
+        self.isSelectedNameImage = selectedImage
+        print("selected image - ",selectedImage)
     }
 }
 
@@ -54,7 +59,7 @@ extension SelectImageCollectionView : UICollectionViewDataSource{
             fatalError(" The cell could not to dequque CollectionViewCustomCell in SelectImageCollectionView")
         }
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])
-        if imageNames[indexPath.item] == "default" {
+        if imageNames[indexPath.item] == isSelectedNameImage {
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
         }
         

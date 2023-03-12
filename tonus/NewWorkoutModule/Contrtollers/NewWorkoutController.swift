@@ -17,9 +17,39 @@ class NewWorkoutController: UIViewController {
     private let dateAndRepeatView = DateAndRepeatView()
     private let repsOrTimerView = RepsOrTimerView()
     
+    private var workoutModel = WorkoutModel()
+    
     public var closureReloadData: (() -> Void)?
     
-    private var workoutModel = WorkoutModel()
+    //--------------------- for update Cell in main VC
+    
+    /* эти даные мы используем только при update Cell
+     когда мы образаемся к контролеру для update
+     то мы там же переопределчем эти даные по-этому они пубдичные
+    */
+     var workoutTitle : String = ""
+    var nameImageSelected : String = ""
+    var workoutdate: Date = Date()
+    var workoutRepeat: Bool = false
+    var sets: Int = 0
+    var reps: Int = 0
+    var timer: Int = 0
+    var isUpdate: Bool = false
+    var indexPath: IndexPath? = nil
+    
+    
+    // здесь мы подставляем нашы даные из конкретной ячейки
+    // помним что - нашы даные переопределены в mainVC для понимания
+    // мы создали set функция где меняем значения из ячейки для update
+    public func updateForEditData(){
+        workoutInputNameView.nameTextField.text = workoutTitle
+        wrapViewForCollectionView.setSelectedImage(selectedImage: nameImageSelected)
+        dateAndRepeatView.setContainDateAndRepeatView(date: workoutdate, isRepeat: workoutRepeat)
+        repsOrTimerView.setSliderValues(sets: sets, reps: reps, timer: timer)
+    }
+      
+    //---------------------
+    
     
     private lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -44,7 +74,11 @@ class NewWorkoutController: UIViewController {
         setupUI()
     }
     
-    
+    convenience init(title: String){
+        self.init()
+        self.titleAndCloseButtonUIView.titleLabel.text = title
+    }
+
     
     private func setupUI() {
         self.view.backgroundColor = .specialMainBackground
@@ -80,20 +114,35 @@ class NewWorkoutController: UIViewController {
         workoutModel.workoutDate = dateAndRepeatView.getContainDateAndReatView().date
         workoutModel.workoutRepeatEveryWeek = dateAndRepeatView.getContainDateAndReatView().isRepeat
         workoutModel.workoutNumberOfDay = getNumberOfDayofWeek
-        workoutModel.workoutImage = wrapViewForCollectionView.getSelectedImage().pngData()
+        workoutModel.workoutImageData = wrapViewForCollectionView.getSelectedImage().image.pngData()
+        workoutModel.workoutImageName = wrapViewForCollectionView.getSelectedImage().nameImage
         workoutModel.workoutSets = repsOrTimerView.sets
         workoutModel.workoutReps = repsOrTimerView.reps
         workoutModel.workoutTimer = repsOrTimerView.timer
     }
     
-    private func saveModel() -> Bool{
+    private func updateModel(){
+        let updateObjectDB = RealmManager.shared.realm.objects(WorkoutModel.self)
+        try! RealmManager.shared.realm.write {
+            updateObjectDB[indexPath!.row].titleWorkout = workoutInputNameView.getContainTextField()
+            updateObjectDB[indexPath!.row].workoutDate = dateAndRepeatView.getContainDateAndReatView().date
+            updateObjectDB[indexPath!.row].workoutRepeatEveryWeek = dateAndRepeatView.getContainDateAndReatView().isRepeat
+            updateObjectDB[indexPath!.row].workoutNumberOfDay = dateAndRepeatView.getContainDateAndReatView().date.getNumberOfDayOfWeek()
+            updateObjectDB[indexPath!.row].workoutImageData = wrapViewForCollectionView.getSelectedImage().image.pngData()
+            updateObjectDB[indexPath!.row].workoutImageName = wrapViewForCollectionView.getSelectedImage().nameImage
+            updateObjectDB[indexPath!.row].workoutSets = repsOrTimerView.sets
+            updateObjectDB[indexPath!.row].workoutReps = repsOrTimerView.reps
+            updateObjectDB[indexPath!.row].workoutTimer = repsOrTimerView.timer
+        }
+    }
+    
+    private func validModel() -> Bool{
         let text = workoutInputNameView.getContainTextField()
         let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if trimmedText.count != 0 &&
             repsOrTimerView.sets != 0 &&
             (repsOrTimerView.reps != 0 || repsOrTimerView.timer != 0){
-            RealmManager.shared.saveWorkoutModel(model: workoutModel)
             return true
         }
         
@@ -122,11 +171,18 @@ class NewWorkoutController: UIViewController {
     }
     
     @objc private func didTappedSaveButton(){
-        setModel()
-        saveModel() ? dismiss(animated: true) : shakeViewsWhichNeedToComplited()
-        closureReloadData!()
-
         
+        if !isUpdate{
+            setModel()
+            validModel() ? dismiss(animated: true) : shakeViewsWhichNeedToComplited()
+            validModel() ? RealmManager.shared.saveWorkoutModel(model: workoutModel) : print("not valid")
+            closureReloadData?()
+        } else {
+            updateModel()
+            validModel() ? dismiss(animated: true) : shakeViewsWhichNeedToComplited()
+            closureReloadData?()
+            isUpdate = !isUpdate
+        }
     }
 }
 

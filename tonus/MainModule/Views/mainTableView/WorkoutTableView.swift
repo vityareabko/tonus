@@ -7,20 +7,24 @@
 
 import UIKit
 
+protocol TableViewEditProtocol : AnyObject {
+    func getViewController (workoutTitle: String, workoutDate: Date, workoutRepeat: Bool, reps: Int, sets: Int, timer: Int, imageName: String, indexPath: IndexPath)
+}
 
-
-class WorkoutTasksTableView : UITableView {
-    
+class WorkoutTableView : UITableView {
     
     // MARK: - Variables
     let resultsDB = RealmManager.shared.realm.objects(WorkoutModel.self)
     
+    weak var tableViewCellDelegate : TableViewEditProtocol?
+    
+    private var closureGetIndexPath : (() -> IndexPath)?
     // MARK: - Init
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: style)
         register(WorkoutTasksTableViewCell.self, forCellReuseIdentifier: WorkoutTasksTableViewCell.identifier)
-
+        
         self.dataSource = self
         self.delegate = self
         config()
@@ -44,11 +48,22 @@ class WorkoutTasksTableView : UITableView {
         self.reloadData()
     }
     
+    @objc private func didTappedEditButton(sender: UIButton){
+        let indexPathRow = sender.tag
+        let imageName = resultsDB[indexPathRow].workoutImageName
+        let titleWorkout = resultsDB[indexPathRow].titleWorkout
+        let workoutDate = resultsDB[indexPathRow].workoutDate
+        let workoutRepeat = resultsDB[indexPathRow].workoutRepeatEveryWeek
+        let reps = resultsDB[indexPathRow].workoutReps
+        let sets = resultsDB[indexPathRow].workoutSets
+        let timer = resultsDB[indexPathRow].workoutTimer
+        self.tableViewCellDelegate?.getViewController(workoutTitle: titleWorkout, workoutDate: workoutDate, workoutRepeat: workoutRepeat, reps: reps, sets: sets, timer: timer, imageName: imageName, indexPath: [0, indexPathRow])
+    }
 }
 
 // MARK: - Extensions
 
-extension WorkoutTasksTableView : UITableViewDataSource{
+extension WorkoutTableView : UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         115
     }
@@ -64,58 +79,39 @@ extension WorkoutTasksTableView : UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WorkoutTasksTableViewCell.identifier, for: indexPath) as? WorkoutTasksTableViewCell else {
             fatalError("The cell could not to dequeue WorkoutTasksTableViewCell in WorkoutTasksTableView")
         }
-        guard let dataImage = resultsDB[indexPath.row].workoutImage else { return cell }
-        let imageWorkout = UIImage(data: dataImage)
+        guard let dataImage = resultsDB[indexPath.row].workoutImageData else { return cell }
+        guard let imageWorkout = UIImage(data: dataImage) else {return cell}
         let titleWorkout = resultsDB[indexPath.row].titleWorkout
-        let subTitleReps = resultsDB[indexPath.row].workoutReps
-        let subTitleSets = resultsDB[indexPath.row].workoutSets
+        let subTitleReps = "Reps. \(resultsDB[indexPath.row].workoutReps)"
+        let subTitleSets = "Sets. \(resultsDB[indexPath.row].workoutSets)"
         
-        cell.workoutTypeTaskIcon.image = imageWorkout
-        cell.titleTask.text = titleWorkout
-        cell.subTitleReps.text = "Reps. \(subTitleReps)"
-        cell.subTitleSets.text = "Sets. \(subTitleSets)"
+        cell.setValuesOnCellComponents(titleCell: titleWorkout, subTitleReps: subTitleReps, subTitleSets: subTitleSets, workoutImage: imageWorkout)
+    
+        cell.editButton.addTarget(self, action: #selector(didTappedEditButton), for: .touchUpInside) // try after indexPath instead sender
+        cell.editButton.tag = indexPath.row
         
         return cell
     }
+    
 }
 
-extension WorkoutTasksTableView : UITableViewDelegate {
+extension WorkoutTableView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("our cell with index at:", indexPath)
     }
-    
-    
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let pinImage =  UIImage(systemName: "pin")?.withTintColor(.orange, renderingMode: .alwaysOriginal)
-        let pinFullImage =  UIImage(systemName: "pin.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal)
-        
-        let editAction = UIContextualAction(style: .normal, title: "") { action, view, handler in
-            print("edit")
-        }
-        editAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
-        editAction.image = pinImage
-        let config = UISwipeActionsConfiguration(actions: [editAction])
-        
-        return config
-    }
-    
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let item = resultsDB[indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: "") { action, view, handler in
             try! RealmManager.shared.realm.write {
-                RealmManager.shared.realm.delete(item)
+                RealmManager.shared.realm.delete(self.resultsDB[indexPath.row])
                 self.reloadData()
             }
         }
-        
+       
         deleteAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
         deleteAction.image = UIImage(systemName: "trash")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        return UISwipeActionsConfiguration(actions: [deleteAction])
         
-        let config = UISwipeActionsConfiguration(actions: [deleteAction])
-        
-        
-        return config
     }
 }
 

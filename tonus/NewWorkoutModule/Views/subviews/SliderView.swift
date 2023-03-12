@@ -46,11 +46,11 @@ class SliderView : UIView {
     
     init(name: String, minValue: Float, maxValue: Float, sliderType: SlideType){
         super.init(frame: .zero)
-        
         nameLabel.text = name
         currentValueSliderLabel.text = "\(Int(0))"
         self.slider.minimumValue = minValue
         self.slider.maximumValue = maxValue
+        self.slider.value = 0
         self.slider.addTarget(self, action: #selector(didChangedValueSlider), for: .valueChanged)
         self.sliderType = sliderType
         
@@ -82,6 +82,21 @@ class SliderView : UIView {
         
         setConstraints()
     }
+    
+    
+    public func didSetValue(type: SlideType, value: Int) {
+        self.slider.value = Float(value)
+        self.currentValueSliderLabel.text = "\(value)"
+        
+        switch type {
+        case .sets,.reps:
+            self.currentValueSliderLabel.text = "\(value)"
+        case .timer:
+            self.currentValueSliderLabel.text = "\(value.getTimeFromSecond())"
+        }
+        
+    }
+    
     
     @objc private func didChangedValueSlider() {
         currentValueSliderLabel.text = sliderType == .timer ? "\(Int(slider.value).getTimeFromSecond())" : "\(Int(slider.value))"

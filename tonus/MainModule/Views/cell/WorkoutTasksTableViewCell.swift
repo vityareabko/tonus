@@ -7,6 +7,9 @@
 
 import UIKit
 
+
+
+
 class WorkoutTasksTableViewCell : UITableViewCell {
     
     // MARK: - Variables
@@ -14,11 +17,18 @@ class WorkoutTasksTableViewCell : UITableViewCell {
     
     // MARK: - UI Components
     
-    var workoutTypeTaskIcon = UIImageView(nameImage: "sunny")
-    var titleTask = UILabel(text: "Pull Ups", textColor: .specialBlack, font: .robotoMedium22())
-    var subTitleReps = UILabel(text: "Reps. 10", textColor: .specialGray, font: .robotoMedium16())
-    var subTitleSets = UILabel(text: "Sets 2", textColor: .specialGray, font: .robotoMedium16())
-    private let stackView = UIStackView()
+    private var workoutTypeTaskIcon = UIImageView(nameImage: "sunny")
+    private var titleTask = UILabel(text: "Pull Ups", textColor: .specialBlack, font: .robotoMedium22())
+    private var subTitleReps = UILabel(text: "Reps. 10", textColor: .specialGray, font: .robotoMedium16())
+    private var subTitleSets = UILabel(text: "Sets 2", textColor: .specialGray, font: .robotoMedium16())
+    private var stackViewSubtitle = UIStackView()
+    
+    public lazy var editButton : UIButton = {
+        let button = UIButton(type: .system)
+        let editIcon = UIImage(named: "edit")?.withTintColor(.specialDarkGreen, renderingMode: .alwaysOriginal)
+        button.setImage(editIcon, for: .normal)
+        return button
+    }()
     
     private var bagroundCell: UIView = {
         let view = UIView()
@@ -34,7 +44,7 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         return view
     }()
     
-    private lazy var button: UIButton = {
+    private lazy var startButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("START", for: .normal)
         button.tintColor = .white
@@ -63,44 +73,53 @@ class WorkoutTasksTableViewCell : UITableViewCell {
     private func setupUI() {
         self.selectionStyle = .none
         self.backgroundColor = .clear
-
+        
         self.addSubview(bagroundCell)
         self.addSubview(bagroundIcon)
         bagroundIcon.addSubview(workoutTypeTaskIcon)
         self.addSubview(titleTask)
+        self.addSubview(editButton)
         self.addSubview(subTitleReps)
         self.addSubview(subTitleSets)
-        self.addSubview(button)
+        self.addSubview(startButton)
         
-        self.contentView.addSubview(button) // we had put button up to the cell for user can do some action with button
-        stackViewTask()
+        self.contentView.addSubview(startButton) // we had put button up to the cell for user can do some action with button
+        self.contentView.addSubview(editButton) // we had put button up to the cell for user can do some action with button
+        
+        stackViewSettings()
         
         bagroundCell.translatesAutoresizingMaskIntoConstraints = false
         bagroundIcon.translatesAutoresizingMaskIntoConstraints = false
         workoutTypeTaskIcon.translatesAutoresizingMaskIntoConstraints = false
         titleTask.translatesAutoresizingMaskIntoConstraints = false
+        editButton.translatesAutoresizingMaskIntoConstraints = false
         subTitleReps.translatesAutoresizingMaskIntoConstraints = false
         subTitleSets.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
+        startButton.translatesAutoresizingMaskIntoConstraints = false
         
         setConstraints()
     }
     
-    private func stackViewTask(){
-        stackView.addArrangedSubview(subTitleReps)
-        stackView.addArrangedSubview(subTitleSets)
-        stackView.axis = .horizontal
-        stackView.spacing = 10
-        stackView.distribution = .equalSpacing
-        
-        self.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+    private func stackViewSettings(){
+        stackViewSubtitle = UIStackView(arrangedSubviews: [subTitleReps, subTitleSets], axis: .horizontal, spacing: 10)
+//        stackViewSubtitle.distribution = .equalSpacing
+
+        self.addSubview(stackViewSubtitle)
+        stackViewSubtitle.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    public func setValuesOnCellComponents(titleCell : String, subTitleReps: String, subTitleSets: String, workoutImage: UIImage){
+        self.titleTask.text = titleCell
+        self.subTitleReps.text = subTitleReps
+        self.subTitleSets.text = subTitleSets
+        self.workoutTypeTaskIcon.image = workoutImage
     }
     
     
     @objc private func didTappedStart(){
         print("DEBUG PRINT:", "did tapped")
     }
+
 }
 
 // MARK: - Extensions
@@ -111,8 +130,8 @@ extension WorkoutTasksTableViewCell {
         NSLayoutConstraint.activate([
         
             bagroundCell.topAnchor.constraint(equalTo: self.topAnchor, constant: 7.5),
-            bagroundCell.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            bagroundCell.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            bagroundCell.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            bagroundCell.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
             bagroundCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -7.5),
             
             bagroundIcon.centerYAnchor.constraint(equalTo: bagroundCell.centerYAnchor),
@@ -129,14 +148,20 @@ extension WorkoutTasksTableViewCell {
             titleTask.leadingAnchor.constraint(equalTo: bagroundIcon.trailingAnchor, constant: 10),
             titleTask.trailingAnchor.constraint(equalTo: bagroundCell.trailingAnchor, constant: 10),
             
-            stackView.topAnchor.constraint(equalTo: titleTask.bottomAnchor, constant: 0),
-            stackView.leadingAnchor.constraint(equalTo: bagroundIcon.trailingAnchor, constant: 10),
-            stackView.heightAnchor.constraint(equalToConstant: 20),
+            editButton.topAnchor.constraint(equalTo: bagroundIcon.topAnchor),
+            editButton.trailingAnchor.constraint(equalTo: bagroundCell.trailingAnchor, constant: -15),
+            editButton.heightAnchor.constraint(equalToConstant: 20),
+            editButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            stackViewSubtitle.topAnchor.constraint(equalTo: titleTask.bottomAnchor, constant: 0),
+            stackViewSubtitle.leadingAnchor.constraint(equalTo: bagroundIcon.trailingAnchor, constant: 10),
+//            stackViewSubtitle.trailingAnchor.constraint(equalTo: bagroundCell.trailingAnchor, constant: -10),
+            stackViewSubtitle.heightAnchor.constraint(equalToConstant: 20),
         
-            button.topAnchor.constraint(equalTo: subTitleReps.bottomAnchor, constant: 3),
-            button.leadingAnchor.constraint(equalTo: bagroundIcon.trailingAnchor, constant: 10),
-            button.trailingAnchor.constraint(equalTo: bagroundCell.trailingAnchor, constant: -10),
-            button.heightAnchor.constraint(equalTo: bagroundCell.widthAnchor, multiplier: 0.07),
+            startButton.topAnchor.constraint(equalTo: subTitleReps.bottomAnchor, constant: 3),
+            startButton.leadingAnchor.constraint(equalTo: bagroundIcon.trailingAnchor, constant: 10),
+            startButton.trailingAnchor.constraint(equalTo: bagroundCell.trailingAnchor, constant: -10),
+            startButton.heightAnchor.constraint(equalTo: bagroundCell.widthAnchor, multiplier: 0.07),
         ])
     }
 }

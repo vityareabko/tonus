@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class WorkoutModel: Object {
+    @Persisted(primaryKey: true) var _id: RealmSwift.ObjectId
     @Persisted var workoutDate : Date
     @Persisted var workoutNumberOfDay : Int = 0
     @Persisted var titleWorkout : String = "Unknown"
@@ -16,6 +17,7 @@ class WorkoutModel: Object {
     @Persisted var workoutSets : Int = 0
     @Persisted var workoutReps : Int = 0
     @Persisted var workoutTimer : Int = 0 // in seconds
-    @Persisted var workoutImage : Data?
+    @Persisted var workoutImageData : Data?
+    @Persisted var workoutImageName : String = ""
     @Persisted var workoutStatus : Bool = false
 }

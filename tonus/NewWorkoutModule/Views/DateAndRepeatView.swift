@@ -83,6 +83,11 @@ class DateAndRepeatView: UIView {
     public func getContainDateAndReatView() -> (date: Date, isRepeat: Bool){
         return (datePicker.date, switchReapeat.isOn)
     }
+    
+    public func setContainDateAndRepeatView(date: Date, isRepeat: Bool){
+        self.datePicker.date = date
+        self.switchReapeat.isOn = isRepeat
+    }
 }
 
 extension DateAndRepeatView {
