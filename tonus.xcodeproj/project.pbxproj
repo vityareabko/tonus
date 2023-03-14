@@ -14,6 +14,8 @@
 		573A7C7129B1085C006FF7DE /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */; };
 		573A7C8229B28B44006FF7DE /* UIGreenSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */; };
 		573A7C8429B28BC4006FF7DE /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A7C8329B28BC4006FF7DE /* SliderView.swift */; };
+		57809FA629BF5F16005D90F6 /* StartWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57809FA529BF5F16005D90F6 /* StartWorkoutController.swift */; };
+		57809FA829BF6A48005D90F6 /* DetailsWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57809FA729BF6A48005D90F6 /* DetailsWorkoutView.swift */; };
 		579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2A29A41A080090D715 /* AppDelegate.swift */; };
 		579A0C2D29A41A080090D715 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2C29A41A080090D715 /* SceneDelegate.swift */; };
 		579A0C2F29A41A080090D715 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A0C2E29A41A080090D715 /* MainViewController.swift */; };
@@ -62,6 +64,8 @@
 		573A7C7029B1085C006FF7DE /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
 		573A7C8129B28B44006FF7DE /* UIGreenSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGreenSlider.swift; sourceTree = "<group>"; };
 		573A7C8329B28BC4006FF7DE /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		57809FA529BF5F16005D90F6 /* StartWorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutController.swift; sourceTree = "<group>"; };
+		57809FA729BF6A48005D90F6 /* DetailsWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWorkoutView.swift; sourceTree = "<group>"; };
 		579A0C2729A41A080090D715 /* tonus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tonus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		579A0C2A29A41A080090D715 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		579A0C2C29A41A080090D715 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +184,39 @@
 			path = SpecialUIComponents;
 			sourceTree = "<group>";
 		};
+		57809FA129BF5EC9005D90F6 /* StartWorkoutModule */ = {
+			isa = PBXGroup;
+			children = (
+				57809FA429BF5EE9005D90F6 /* Views */,
+				57809FA329BF5EE0005D90F6 /* Models */,
+				57809FA229BF5ED7005D90F6 /* Controllers */,
+			);
+			path = StartWorkoutModule;
+			sourceTree = "<group>";
+		};
+		57809FA229BF5ED7005D90F6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				57809FA529BF5F16005D90F6 /* StartWorkoutController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		57809FA329BF5EE0005D90F6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		57809FA429BF5EE9005D90F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				57809FA729BF6A48005D90F6 /* DetailsWorkoutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		579A0C1E29A41A080090D715 = {
 			isa = PBXGroup;
 			children = (
@@ -202,10 +239,10 @@
 			isa = PBXGroup;
 			children = (
 				57B6AFFE29BB6B3800B303AD /* ProfileModule */,
-				573A7C6929B0B6DF006FF7DE /* reusableUIViews */,
-				573A7C6329B0B5AB006FF7DE /* NewWorkoutModule */,
 				57FAE50D29AA10DB004DFE2E /* StatisticModule */,
 				579A0C3E29A41F710090D715 /* MainModule */,
+				57809FA129BF5EC9005D90F6 /* StartWorkoutModule */,
+				573A7C6329B0B5AB006FF7DE /* NewWorkoutModule */,
 				57DD8F0329AD4DF000B12D06 /* NavigationModule */,
 				57F9969D29B64D740062E8E9 /* Service */,
 				57FAE4BB29A6BA1E004DFE2E /* Extenstions + UIComponents */,
@@ -364,6 +401,7 @@
 		57FAE4BB29A6BA1E004DFE2E /* Extenstions + UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				573A7C6929B0B6DF006FF7DE /* reusableUIViews */,
 				573A7C7429B26DE9006FF7DE /* SpecialUIComponents */,
 				57F9969129B618B70062E8E9 /* UIKit */,
 				57F9969229B618EA0062E8E9 /* Int + Extensions.swift */,
@@ -568,6 +606,7 @@
 				573A7C6F29B0FE71006FF7DE /* DateAndRepeatView.swift in Sources */,
 				573A7C8429B28BC4006FF7DE /* SliderView.swift in Sources */,
 				57FAE4BD29A6BA6F004DFE2E /* UIView + Extensions.swift in Sources */,
+				57809FA829BF6A48005D90F6 /* DetailsWorkoutView.swift in Sources */,
 				57FAE4BF29A6BAE8004DFE2E /* UIColor + Extensions.swift in Sources */,
 				57FAE51729AA2249004DFE2E /* StatisticTableView.swift in Sources */,
 				57FAE4D129A6EB02004DFE2E /* CalendarCollectionViewCell.swift in Sources */,
@@ -578,6 +617,7 @@
 				57FAE4CD29A6E896004DFE2E /* CalendarCollectionView.swift in Sources */,
 				57FAE4C129A6BB1F004DFE2E /* UIFont + Extensions.swift in Sources */,
 				579A0C2B29A41A080090D715 /* AppDelegate.swift in Sources */,
+				57809FA629BF5F16005D90F6 /* StartWorkoutController.swift in Sources */,
 				57FAE51B29AA7FD7004DFE2E /* UIImage + Extension.swift in Sources */,
 				57FAE50829A91761004DFE2E /* WorkoutTableView.swift in Sources */,
 				57F9964729B3BA930062E8E9 /* UIButton + Extensions.swift in Sources */,

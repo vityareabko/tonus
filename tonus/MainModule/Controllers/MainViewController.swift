@@ -44,7 +44,9 @@ class MainViewController: UIViewController {
         // TODO: - получаем дату из календаря по тапу и надо обновить даные из бд в таблице
         headerView.setDelegateCalendarView(self) // mainViewController я стучусь к делегату через функцию в HeaderUIView
         
-        workoutTableView.tableViewCellDelegate = self     // достучаться до делегата
+        /* стучимся к делегатам в вьюхн tableView чтобы через делегат выполнять функции из вьюхе tableView но здесь - с возможностями viewController */
+        workoutTableView.tableViewCellEditDelegate = self
+        workoutTableView.tableViewStartWorkoutDelegate = self
         
         setupUI()
         setConstraints()
@@ -112,6 +114,15 @@ extension MainViewController : TableViewEditProtocol {
             self?.workoutTableView.reloadDataTable()
         }
         // передаем в vc
+        present(vc, animated: true)
+    }
+}
+
+extension MainViewController : TableViewStartWorkoutProtocol {
+    func getStartWorkout() {
+        let vc = StartWorkoutController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .coverVertical
         present(vc, animated: true)
     }
 }

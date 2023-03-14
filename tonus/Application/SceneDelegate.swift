@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
 
+//        let vc = StartWorkoutController()
         let vc = MainTabBarController()
         
         window?.rootViewController = vc

@@ -55,13 +55,8 @@ class NewWorkoutController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .none
         scrollView.frame = view.bounds
-        scrollView.contentSize = contentSize
         return scrollView
     }()
-    
-    private var contentSize: CGSize {
-        CGSize(width: self.view.frame.width, height: 750)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +84,9 @@ class NewWorkoutController: UIViewController {
         
         saveButton.addTarget(self, action: #selector(didTappedSaveButton), for: .touchUpInside)
         
-        self.view.addSubview(titleAndCloseButtonUIView)
+        
         self.view.addSubview(scrollView)
+        scrollView.addSubview(titleAndCloseButtonUIView)
         scrollView.addSubview(workoutInputNameView)
         scrollView.addSubview(wrapViewForCollectionView)
         scrollView.addSubview(dateAndRepeatView)
@@ -190,41 +186,45 @@ extension NewWorkoutController {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            titleAndCloseButtonUIView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleAndCloseButtonUIView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            titleAndCloseButtonUIView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            titleAndCloseButtonUIView.heightAnchor.constraint(equalToConstant: 30),
             
-            scrollView.topAnchor.constraint(equalTo: titleAndCloseButtonUIView.bottomAnchor, constant: 5),
+            scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+
+            titleAndCloseButtonUIView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
+            titleAndCloseButtonUIView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            titleAndCloseButtonUIView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            titleAndCloseButtonUIView.heightAnchor.constraint(equalToConstant: 30),
             
-            workoutInputNameView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 5),
-            workoutInputNameView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            workoutInputNameView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            /* это для того чтобы растянуть stackView и соотвественно и скроллВию растяниться базируись на нем */
+            titleAndCloseButtonUIView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
+            
+            workoutInputNameView.topAnchor.constraint(equalTo: titleAndCloseButtonUIView.bottomAnchor, constant: 5),
+            workoutInputNameView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            workoutInputNameView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             workoutInputNameView.heightAnchor.constraint(equalToConstant: 60),
             
             wrapViewForCollectionView.topAnchor.constraint(equalTo: workoutInputNameView.bottomAnchor, constant: 15),
-            wrapViewForCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            wrapViewForCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            wrapViewForCollectionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            wrapViewForCollectionView.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor, constant: -20),
             wrapViewForCollectionView.heightAnchor.constraint(equalToConstant: 115),
             
-            
             dateAndRepeatView.topAnchor.constraint(equalTo: wrapViewForCollectionView.bottomAnchor, constant: 15),
-            dateAndRepeatView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            dateAndRepeatView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            dateAndRepeatView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            dateAndRepeatView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             dateAndRepeatView.heightAnchor.constraint(equalToConstant: 120),
             
             repsOrTimerView.topAnchor.constraint(equalTo: dateAndRepeatView.bottomAnchor, constant: 15),
-            repsOrTimerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            repsOrTimerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            repsOrTimerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            repsOrTimerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             repsOrTimerView.heightAnchor.constraint(equalToConstant: 295),
             
             saveButton.topAnchor.constraint(equalTo: repsOrTimerView.bottomAnchor, constant: 15),
-            saveButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            saveButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            saveButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            saveButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             saveButton.heightAnchor.constraint(equalToConstant: 50),
+            saveButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20)
         ])
     }
 }

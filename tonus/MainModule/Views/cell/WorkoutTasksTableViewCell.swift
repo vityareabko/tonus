@@ -44,7 +44,7 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         return view
     }()
     
-    private lazy var startButton: UIButton = {
+    public lazy var startButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("START", for: .normal)
         button.tintColor = .white
@@ -52,7 +52,6 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         button.titleLabel?.font = .robotoBold16()
         button.layer.cornerRadius = 10
         button.addShadowOnView()
-        button.addTarget(self, action: #selector(didTappedStart), for: .touchUpInside)
         return button
     }()
     
@@ -113,11 +112,6 @@ class WorkoutTasksTableViewCell : UITableViewCell {
         self.subTitleReps.text = subTitleReps
         self.subTitleSets.text = subTitleSets
         self.workoutTypeTaskIcon.image = workoutImage
-    }
-    
-    
-    @objc private func didTappedStart(){
-        print("DEBUG PRINT:", "did tapped")
     }
 
 }

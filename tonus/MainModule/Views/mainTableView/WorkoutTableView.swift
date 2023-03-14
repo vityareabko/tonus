@@ -11,12 +11,17 @@ protocol TableViewEditProtocol : AnyObject {
     func getViewController (workoutTitle: String, workoutDate: Date, workoutRepeat: Bool, reps: Int, sets: Int, timer: Int, imageName: String, indexPath: IndexPath)
 }
 
+protocol TableViewStartWorkoutProtocol: AnyObject {
+    func getStartWorkout()
+}
+
 class WorkoutTableView : UITableView {
     
     // MARK: - Variables
     let resultsDB = RealmManager.shared.realm.objects(WorkoutModel.self)
     
-    weak var tableViewCellDelegate : TableViewEditProtocol?
+    weak var tableViewCellEditDelegate : TableViewEditProtocol?
+    weak var tableViewStartWorkoutDelegate : TableViewStartWorkoutProtocol?
     
     private var closureGetIndexPath : (() -> IndexPath)?
     // MARK: - Init
@@ -57,7 +62,11 @@ class WorkoutTableView : UITableView {
         let reps = resultsDB[indexPathRow].workoutReps
         let sets = resultsDB[indexPathRow].workoutSets
         let timer = resultsDB[indexPathRow].workoutTimer
-        self.tableViewCellDelegate?.getViewController(workoutTitle: titleWorkout, workoutDate: workoutDate, workoutRepeat: workoutRepeat, reps: reps, sets: sets, timer: timer, imageName: imageName, indexPath: [0, indexPathRow])
+        self.tableViewCellEditDelegate?.getViewController(workoutTitle: titleWorkout, workoutDate: workoutDate, workoutRepeat: workoutRepeat, reps: reps, sets: sets, timer: timer, imageName: imageName, indexPath: [0, indexPathRow])
+    }
+    
+    @objc private func didTappedStart(){
+        tableViewStartWorkoutDelegate?.getStartWorkout()
     }
 }
 
@@ -70,6 +79,7 @@ extension WorkoutTableView : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if resultsDB.count != 0 {
+            self.backgroundColor = .specialMainBackground
             return resultsDB.count
         }
         return 0
@@ -88,6 +98,7 @@ extension WorkoutTableView : UITableViewDataSource{
         cell.setValuesOnCellComponents(titleCell: titleWorkout, subTitleReps: subTitleReps, subTitleSets: subTitleSets, workoutImage: imageWorkout)
     
         cell.editButton.addTarget(self, action: #selector(didTappedEditButton), for: .touchUpInside) // try after indexPath instead sender
+        cell.startButton.addTarget(self, action: #selector(didTappedStart), for: .touchUpInside)
         cell.editButton.tag = indexPath.row
         
         return cell
@@ -105,6 +116,9 @@ extension WorkoutTableView : UITableViewDelegate {
             try! RealmManager.shared.realm.write {
                 RealmManager.shared.realm.delete(self.resultsDB[indexPath.row])
                 self.reloadData()
+            }
+            if self.resultsDB.isEmpty {
+                self.backgroundColor = .clear
             }
         }
        
